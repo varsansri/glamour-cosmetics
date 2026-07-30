@@ -1,86 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard - Kanak</title>
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard — Kanak</title>
 <link rel="stylesheet" href="../css/admin.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--salmon-pink:hsl(35,53%,51%);--salmon-pink-dark:hsl(35,53%,42%);--salmon-pink-light:hsl(35,53%,90%)}</style>
 </head>
 <body>
 <script>if(!sessionStorage.getItem("glamour_admin")){window.location.href="login.html";}</script>
 
 <aside class="sidebar">
-  <div class="sidebar-logo"><a href="../index.html" target="_blank">Kanak</a><small>Admin</small></div>
+  <div class="sidebar-logo"><a href="../index.html" target="_blank">Kanak<span>.</span></a><small>Admin Panel</small></div>
   <nav class="sidebar-nav">
-    <a href="#" class="nav-item active" data-page="dashboard">
-      <span class="nav-icon">📊</span> Dashboard
-    </a>
-    <a href="#" class="nav-item" data-page="products">
-      <span class="nav-icon">📦</span> Products
-    </a>
-    <a href="#" class="nav-item" data-page="orders">
-      <span class="nav-icon">📋</span> Orders
-    </a>
-    <a href="#" class="nav-item" data-page="settings">
-      <span class="nav-icon">⚙️</span> Settings
-    </a>
-    <a href="../index.html" class="nav-item" target="_blank">
-      <span class="nav-icon">🏪</span> View Store
-    </a>
-    <a href="#" class="nav-item" onclick="logout()">
-      <span class="nav-icon">🚪</span> Logout
-    </a>
+    <a href="#" class="nav-item active" data-page="dashboard"><span class="nav-icon">📊</span> Dashboard</a>
+    <a href="#" class="nav-item" data-page="products"><span class="nav-icon">📦</span> Products</a>
+    <a href="#" class="nav-item" data-page="orders"><span class="nav-icon">📋</span> Orders</a>
+    <a href="#" class="nav-item" data-page="settings"><span class="nav-icon">⚙️</span> Settings</a>
+    <div style="margin:10px 0;border-top:1px solid rgba(255,255,255,.08)"></div>
+    <a href="../index.html" class="nav-item" target="_blank"><span class="nav-icon">🏪</span> View Store</a>
+    <a href="#" class="nav-item" onclick="logout()" style="color:#f87171"><span class="nav-icon">🚪</span> Logout</a>
   </nav>
 </aside>
 
 <main class="main-content">
   <header class="topbar">
-    <div class="topbar-search">
-      <input type="text" id="admin-search" placeholder="Search products or orders...">
-    </div>
-    <div class="topbar-user"><span>👤 Admin</span></div>
+    <div class="topbar-search"><input type="text" id="admin-search" placeholder="Search products or orders..."></div>
+    <div class="topbar-user">👤 Admin</div>
   </header>
 
   <div class="page-content">
-    <!-- DASHBOARD PAGE -->
+    <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
       <h1>Dashboard</h1>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-info"><span class="stat-label">Total Products</span><span class="stat-value" id="stat-products">0</span></div></div>
-        <div class="stat-card"><div class="stat-icon">📋</div><div class="stat-info"><span class="stat-label">Total Orders</span><span class="stat-value" id="stat-orders">0</span></div></div>
-        <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-info"><span class="stat-label">Revenue</span><span class="stat-value" id="stat-revenue">₹0.00</span></div></div>
-        <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-info"><span class="stat-label">Orders Today</span><span class="stat-value" id="stat-today">0</span></div></div>
+        <div class="stat-card"><div class="stat-icon">📦</div><div><span class="stat-label">Total Products</span><span class="stat-value" id="stat-products">0</span></div></div>
+        <div class="stat-card"><div class="stat-icon">📋</div><div><span class="stat-label">Total Orders</span><span class="stat-value" id="stat-orders">0</span></div></div>
+        <div class="stat-card"><div class="stat-icon">💰</div><div><span class="stat-label">Revenue</span><span class="stat-value" id="stat-revenue">₹0</span></div></div>
+        <div class="stat-card"><div class="stat-icon">✅</div><div><span class="stat-label">Orders Today</span><span class="stat-value" id="stat-today">0</span></div></div>
       </div>
 
       <div class="panel">
         <div class="panel-header"><h3>Revenue — Last 7 Days</h3></div>
-        <div style="padding:16px"><canvas id="revenue-chart" width="700" height="200" style="width:100%;max-height:200px"></canvas></div>
+        <div class="chart-container"><canvas id="revenue-chart" style="width:100%;max-height:220px"></canvas></div>
       </div>
 
       <div class="panel">
-        <div class="panel-header">
-          <h3>Recent Orders</h3>
-          <a href="#" onclick="switchPage('orders')">View All →</a>
-        </div>
-        <table class="data-table">
-          <thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
-          <tbody id="recent-orders"></tbody>
-        </table>
+        <div class="panel-header"><h3>Recent Orders</h3><a href="#" onclick="switchPage('orders')">View All →</a></div>
+        <table class="data-table"><thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody id="recent-orders"></tbody></table>
       </div>
 
       <div class="panel">
-        <div class="panel-header">
-          <h3>Low Stock Products</h3>
-        </div>
-        <table class="data-table">
-          <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th></tr></thead>
-          <tbody id="low-stock-products"></tbody>
-        </table>
+        <div class="panel-header"><h3>Low Stock Products</h3></div>
+        <table class="data-table"><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th></tr></thead><tbody id="low-stock-products"></tbody></table>
       </div>
     </div>
 
-    <!-- PRODUCTS PAGE -->
+    <!-- PRODUCTS -->
     <div class="page" id="page-products">
       <div class="panel-header">
         <h1>Products</h1>
@@ -89,57 +63,48 @@
           <button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button>
         </div>
       </div>
-      <div id="bulk-bar" style="display:none;background:var(--gold-light);padding:8px 16px;border-radius:6px;margin-bottom:12px;align-items:center;gap:10px">
+      <div id="bulk-bar" style="display:none;background:var(--primary-light);padding:10px 16px;border-radius:8px;margin-bottom:12px;align-items:center;gap:10px">
         <span style="font-size:13px"><strong id="bulk-count">0</strong> selected</span>
         <button class="btn btn-sm btn-outline" onclick="bulkToggleFeatured(true)">⭐ Mark Featured</button>
         <button class="btn btn-sm btn-outline" onclick="bulkToggleFeatured(false)">Unmark Featured</button>
         <button class="btn btn-sm btn-danger" onclick="bulkDelete()">🗑 Delete</button>
       </div>
       <div class="panel">
-        <table class="data-table">
-          <thead><tr><th><input type="checkbox" onclick="document.querySelectorAll('.bulk-check').forEach(cb=>cb.checked=this.checked);updateBulkBar()"></th><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Actions</th></tr></thead>
-          <tbody id="products-table"></tbody>
-        </table>
+        <table class="data-table"><thead><tr><th><input type="checkbox" onclick="document.querySelectorAll('.bulk-check').forEach(cb=>cb.checked=this.checked);updateBulkBar()"></th><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Actions</th></tr></thead><tbody id="products-table"></tbody></table>
       </div>
     </div>
 
-    <!-- ORDERS PAGE -->
+    <!-- ORDERS -->
     <div class="page" id="page-orders">
       <h1>Orders</h1>
       <div class="order-filters" style="display:flex;gap:10px;align-items:center">
         <select id="order-status-filter" onchange="renderOrdersPage()">
           <option value="all">All Statuses</option>
-          <option value="pending">Pending</option>
-          <option value="confirmed">Confirmed</option>
-          <option value="shipped">Shipped</option>
-          <option value="delivered">Delivered</option>
-          <option value="cancelled">Cancelled</option>
+          <option value="pending">Pending</option><option value="confirmed">Confirmed</option><option value="shipped">Shipped</option><option value="delivered">Delivered</option><option value="cancelled">Cancelled</option>
         </select>
+        <button class="btn btn-sm btn-outline" onclick="exportOrders()">📥 Export CSV</button>
       </div>
       <div class="panel">
-        <table class="data-table">
-          <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-          <tbody id="orders-table"></tbody>
-        </table>
+        <table class="data-table"><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody id="orders-table"></tbody></table>
       </div>
     </div>
 
-    <!-- SETTINGS PAGE -->
+    <!-- SETTINGS -->
     <div class="page" id="page-settings">
       <h1>Settings</h1>
-      <div class="panel" style="padding:22px">
-        <div class="panel-header" style="padding:0 0 14px"><h3>Store Settings</h3></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="panel" style="padding:24px">
+        <div class="panel-header" style="padding:0 0 16px;border:none"><h3>Store Settings</h3></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
           <div class="form-group"><label>Store Name</label><input type="text" value="Kanak"></div>
           <div class="form-group"><label>Admin Password</label><input type="password" id="admin-password-input" placeholder="New password"></div>
-          <div class="form-group"><label>Store Email</label><input type="email" value="hello@glamourcosmetics.com"></div>
+          <div class="form-group"><label>Store Email</label><input type="email" value="hello@kanakbeauty.com"></div>
         </div>
-        <button class="btn btn-primary" onclick="saveSettings()" style="margin-top:8px">Save Settings</button>
+        <button class="btn btn-primary" onclick="saveSettings()" style="margin-top:10px">Save Settings</button>
       </div>
-      <div class="panel" style="padding:22px">
-        <div class="panel-header" style="padding:0 0 14px"><h3>Danger Zone</h3></div>
+      <div class="panel" style="padding:24px">
+        <div class="panel-header" style="padding:0 0 16px;border:none"><h3>Danger Zone</h3></div>
         <button class="btn btn-danger" onclick="resetStore()">Reset All Data</button>
-        <p style="margin-top:8px;color:var(--gray-500);font-size:13px">This will reset all products to defaults and delete all orders.</p>
+        <p style="margin-top:10px;color:var(--gray-500);font-size:13px;line-height:1.6">This will reset all products to defaults and delete all orders. Cannot be undone.</p>
       </div>
     </div>
   </div>
@@ -148,21 +113,14 @@
 <!-- Product Modal -->
 <div class="modal-overlay" id="product-modal">
   <div class="modal-admin">
-    <div class="modal-header">
-      <h3 id="product-modal-title">Add Product</h3>
-      <button class="modal-close-btn" onclick="closeProductModal()">✕</button>
-    </div>
+    <div class="modal-header"><h3 id="product-modal-title">Add Product</h3><button class="modal-close-btn" onclick="closeProductModal()">✕</button></div>
     <form id="product-form" onsubmit="saveProduct(event)">
       <input type="hidden" id="pf-id">
+      <div class="form-row"><div class="form-group full"><label>Product Name *</label><input type="text" id="pf-name" required></div></div>
       <div class="form-row">
-        <div class="form-group full"><label>Product Name *</label><input type="text" id="pf-name" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Category *</label><select id="pf-category" required>
-          <option value="skincare">Skincare</option><option value="makeup">Makeup</option><option value="tools">Tools</option><option value="sets">Gift Sets</option>
-        </select></div>
-        <div class="form-group"><label>Price * ($)</label><input type="number" id="pf-price" step="0.01" required></div>
-        <div class="form-group"><label>Original Price ($)</label><input type="number" id="pf-originalPrice" step="0.01" placeholder="Optional"></div>
+        <div class="form-group"><label>Category *</label><select id="pf-category" required><option value="skincare">Skincare</option><option value="makeup">Makeup</option><option value="tools">Tools</option><option value="sets">Gift Sets</option></select></div>
+        <div class="form-group"><label>Price (₹) *</label><input type="number" id="pf-price" step="0.01" required></div>
+        <div class="form-group"><label>Original Price (₹)</label><input type="number" id="pf-originalPrice" step="0.01" placeholder="Optional"></div>
       </div>
       <div class="form-row">
         <div class="form-group"><label>Stock *</label><input type="number" id="pf-stock" required></div>
@@ -187,5 +145,4 @@
 
 <script src="../js/products.js"></script>
 <script src="../js/admin.js"></script>
-</body>
-</html>
+</body></html>

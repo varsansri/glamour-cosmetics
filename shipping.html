@@ -2,102 +2,86 @@
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Shipping Policy — Kanak | Your skin is gold.</title>
 <meta name="description" content="Kanak Shipping Policy — Standard ₹49, Express ₹99, free above ₹999. Delivery times, tracking, and COD details.">
-<meta property="og:title" content="Shipping Policy — Kanak | Your skin is gold."><meta property="og:description" content="Fast, reliable shipping across India. Free above ₹999."><meta property="og:type" content="website">
+<meta property="og:title" content="Shipping Policy — Kanak"><meta property="og:description" content="Fast, reliable shipping across India."><meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>">
-<link rel="stylesheet" href="css/style.css"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></head>
-<body>
-<header class="header"><div class="header-top"><p>Free shipping above ₹999 ✨ | COD available 🇮🇳</p></div><div class="header-main"><div class="container"><a href="index.html" class="logo">Kanak</a><button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">☰</button><nav class="nav" id="main-nav"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><div class="header-icons"><a href="cart.html" class="cart-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cart-count">0</span></a></div></div></div></header>
-<div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
-<div class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" onclick="closeMobileNav()">✕</button><a href="index.html" onclick="closeMobileNav()">Home</a><a href="products.html" onclick="closeMobileNav()">Shop</a><a href="about.html" onclick="closeMobileNav()">About</a><a href="contact.html" onclick="closeMobileNav()">Contact</a><a href="cart.html" onclick="closeMobileNav()">Cart</a></div>
-<div class="slogan-strip"><p>Your skin is gold. Treat it that way.</p></div>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head><body>
 
-<section style="padding:60px 0"><div class="container" style="max-width:860px">
-<h1 style="font-size:38px;margin-bottom:10px">Shipping Policy</h1>
-<p style="color:var(--text-light);margin-bottom:36px;font-size:13px;">Last updated: July 30, 2026</p>
+<header>
+<div class="header-top">Free shipping above ₹999 ✨ | COD available 🇮🇳</div>
+<div class="header-main"><div class="container">
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><ion-icon name="menu-outline"></ion-icon></button>
+  <a href="index.html" class="header-logo">Kanak<span>.</span></a>
+  <div class="header-user-actions" style="display:flex">
+    <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a>
+  </div>
+</div></div>
+</header>
 
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">1. Shipping Options</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">We offer three shipping tiers across India:</p>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px">
-<div style="background:var(--gold-pale);border-radius:var(--radius-sm);padding:20px;text-align:center">
-<strong style="display:block;font-size:16px;color:var(--espresso);margin-bottom:6px">Standard</strong>
-<span style="font-size:24px;font-weight:700;color:var(--gold)">₹49</span>
-<p style="font-size:12px;color:var(--text-light);margin-top:6px">5–7 business days<br>via BlueDart / Delhivery</p>
-</div>
-<div style="background:var(--gold-pale);border-radius:var(--radius-sm);padding:20px;text-align:center">
-<strong style="display:block;font-size:16px;color:var(--espresso);margin-bottom:6px">Express</strong>
-<span style="font-size:24px;font-weight:700;color:var(--gold)">₹99</span>
-<p style="font-size:12px;color:var(--text-light);margin-top:6px">2–3 business days<br>via BlueDart Air</p>
-</div>
-<div style="background:var(--gold);border-radius:var(--radius-sm);padding:20px;text-align:center;color:var(--white)">
-<strong style="display:block;font-size:16px;margin-bottom:6px">Free</strong>
-<span style="font-size:24px;font-weight:700">₹0</span>
-<p style="font-size:12px;margin-top:6px;opacity:.85">Orders above ₹999<br>Standard delivery time</p>
-</div>
-</div>
-</div>
+<div class="overlay" id="overlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-navigation-menu" id="mobile-nav">
+  <div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><ion-icon name="close-outline"></ion-icon></button></div>
+  <ul class="mobile-menu-category-list">
+    <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li><li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li>
+    <li class="menu-category"><a href="cart.html" class="menu-title">Cart</a></li><li class="menu-category"><a href="contact.html" class="menu-title">Contact</a></li>
+    <li class="menu-category"><a href="track.html" class="menu-title">Track Order</a></li>
+  </ul>
+</nav>
 
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">2. Delivery Timelines</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">Processing time: Orders are processed within <strong>1–2 business days</strong> after payment confirmation.</p>
-<div style="overflow-x:auto;margin-top:16px">
-<table style="width:100%;border-collapse:collapse;font-size:14px">
-<thead><tr style="background:var(--gold-pale)"><th style="padding:12px 14px;text-align:left;color:var(--espresso)">Region</th><th style="padding:12px 14px;text-align:left;color:var(--espresso)">Standard</th><th style="padding:12px 14px;text-align:left;color:var(--espresso)">Express</th></tr></thead>
-<tbody>
-<tr style="border-bottom:1px solid var(--gray-200)"><td style="padding:10px 14px">Metro cities (Mumbai, Delhi, Bengaluru, Chennai, Kolkata, Hyderabad)</td><td style="padding:10px 14px">3–5 days</td><td style="padding:10px 14px">1–2 days</td></tr>
-<tr style="border-bottom:1px solid var(--gray-200)"><td style="padding:10px 14px">Tier-2 cities</td><td style="padding:10px 14px">5–7 days</td><td style="padding:10px 14px">2–3 days</td></tr>
-<tr style="border-bottom:1px solid var(--gray-200)"><td style="padding:10px 14px">Tier-3 / rural areas</td><td style="padding:10px 14px">7–10 days</td><td style="padding:10px 14px">3–5 days</td></tr>
-<tr><td style="padding:10px 14px">North East & J&K</td><td style="padding:10px 14px">10–14 days</td><td style="padding:10px 14px">5–7 days</td></tr>
-</tbody>
-</table>
-</div>
-<p style="font-size:13px;color:var(--text-light);margin-top:10px">Note: These are estimated timelines. Actual delivery may vary due to weather, holidays, or courier delays.</p>
+<div class="mobile-bottom-navigation">
+  <button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button>
+  <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a>
+  <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
+  <a href="products.html" class="action-btn"><ion-icon name="grid-outline"></ion-icon></a>
 </div>
 
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">3. Order Tracking</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">Once your order is dispatched, you will receive a <strong>tracking number</strong> via email and SMS. You can track your order:</p>
-<ul style="font-size:14px;color:var(--text-light);line-height:1.8;padding-left:20px;margin-top:8px">
-<li>On our <a href="track.html" style="color:var(--gold)">Track Order</a> page by entering your order ID and email.</li>
-<li>Directly on the courier partner's website (BlueDart / Delhivery) using your tracking number.</li>
-<li>Via WhatsApp updates if you opted in during checkout.</li>
-</ul>
+<div class="page-section">
+  <div class="container" style="max-width:860px">
+    <h1 style="font-size:2rem;color:var(--eerie-black);margin-bottom:8px;font-weight:var(--weight-700)">Shipping Policy</h1>
+    <p class="content-meta">Last updated: July 30, 2026</p>
+
+    <div class="content-card"><h2>1. Shipping Options</h2><p>We offer three shipping tiers across India:</p>
+      <div class="shipping-cards" style="margin-top:16px">
+        <div class="shipping-card"><strong>Standard</strong><span class="ship-price">₹49</span><p>5–7 business days<br>via BlueDart / Delhivery</p></div>
+        <div class="shipping-card"><strong>Express</strong><span class="ship-price">₹99</span><p>2–3 business days<br>via BlueDart Air</p></div>
+        <div class="shipping-card highlight"><strong>Free</strong><span class="ship-price">₹0</span><p>Orders above ₹999<br>Standard delivery time</p></div>
+      </div>
+    </div>
+    <div class="content-card"><h2>2. Delivery Timelines</h2><p>Processing time: Orders are processed within <strong>1–2 business days</strong> after payment confirmation.</p>
+      <div class="delivery-table-wrap"><table class="delivery-table"><thead><tr><th>Region</th><th>Standard</th><th>Express</th></tr></thead><tbody>
+        <tr><td>Metro cities (Mumbai, Delhi, Bengaluru, etc.)</td><td>3–5 days</td><td>1–2 days</td></tr>
+        <tr><td>Tier-2 cities</td><td>5–7 days</td><td>2–3 days</td></tr>
+        <tr><td>Tier-3 / rural areas</td><td>7–10 days</td><td>3–5 days</td></tr>
+        <tr><td>North East & J&K</td><td>10–14 days</td><td>5–7 days</td></tr>
+      </tbody></table></div>
+      <p style="font-size:var(--fs-8)">Note: These are estimated timelines. Actual delivery may vary due to weather, holidays, or courier delays.</p>
+    </div>
+    <div class="content-card"><h2>3. Order Tracking</h2><p>Once your order is dispatched, you will receive a <strong>tracking number</strong> via email and SMS. You can track your order on our <a href="track.html">Track Order</a> page by entering your order ID and email, or directly on the courier partner's website.</p></div>
+    <div class="content-card"><h2>4. Cash on Delivery (COD)</h2><p>Cash on Delivery is available for most pin codes across India. A <strong>₹49 COD charge</strong> applies to all COD orders. COD is not available for orders above ₹10,000. Our delivery partner will collect the payment in cash when your package arrives. Please have the exact amount ready.</p></div>
+    <div class="content-card"><h2>5. Shipping Partners</h2><p>We partner with India's most reliable courier services:</p><ul><li><strong>BlueDart</strong> — Standard & Express shipping</li><li><strong>Delhivery</strong> — Standard shipping to all pin codes</li><li><strong>India Post</strong> — Remote and rural areas</li></ul></div>
+    <div class="content-card"><h2>6. Undelivered Packages</h2><p>If a package is returned to us due to an incorrect address, three failed delivery attempts, or refusal to accept, we will contact you. Re-shipment charges will apply. If we cannot reach you within 7 days, the order will be refunded minus shipping and handling charges of ₹100.</p></div>
+    <div class="content-card"><h2>7. Questions?</h2><p>For shipping-related queries, reach out to us:</p><p>Email: <a href="mailto:hello@kanakbeauty.com">hello@kanakbeauty.com</a><br>Phone: +91 99999 99999</p></div>
+  </div>
 </div>
 
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">4. Cash on Delivery (COD)</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">Cash on Delivery is available for most pin codes across India. A <strong>₹49 COD charge</strong> applies to all COD orders. COD is not available for orders above ₹10,000. Our delivery partner will collect the payment in cash when your package arrives. Please have the exact amount ready.</p>
-</div>
+<footer>
+  <div class="container">
+    <div class="footer-nav">
+      <div class="footer-nav-list"><p class="nav-title">Kanak<span style="color:var(--salmon-pink)">.</span></p><p style="color:var(--sonic-silver);font-size:var(--fs-7);margin-bottom:15px">Premium cosmetics for Indian skin. Clean, conscious, made with love.</p><p style="color:var(--salmon-pink);font-style:italic;font-size:var(--fs-8)">Your skin is gold.</p></div>
+      <div class="footer-nav-list"><p class="nav-title">Shop</p><ul><li class="footer-nav-item"><a href="products.html?cat=skincare" class="footer-nav-link">Skincare</a></li><li class="footer-nav-item"><a href="products.html?cat=makeup" class="footer-nav-link">Makeup</a></li><li class="footer-nav-item"><a href="products.html?cat=tools" class="footer-nav-link">Tools</a></li><li class="footer-nav-item"><a href="products.html?cat=sets" class="footer-nav-link">Gift Sets</a></li></ul></div>
+      <div class="footer-nav-list"><p class="nav-title">Help</p><ul><li class="footer-nav-item"><a href="shipping.html" class="footer-nav-link">Shipping</a></li><li class="footer-nav-item"><a href="returns.html" class="footer-nav-link">Returns</a></li><li class="footer-nav-item"><a href="faq.html" class="footer-nav-link">FAQ</a></li><li class="footer-nav-item"><a href="track.html" class="footer-nav-link">Track Order</a></li></ul></div>
+      <div class="footer-nav-list"><p class="nav-title">Legal</p><ul><li class="footer-nav-item"><a href="privacy.html" class="footer-nav-link">Privacy</a></li><li class="footer-nav-item"><a href="terms.html" class="footer-nav-link">Terms</a></li><li class="footer-nav-item"><a href="contact.html" class="footer-nav-link">Contact</a></li></ul></div>
+      <div class="footer-nav-list"><p class="nav-title">Connect</p><ul><li class="footer-nav-item"><a href="#" class="footer-nav-link">Instagram</a></li><li class="footer-nav-item"><a href="#" class="footer-nav-link">YouTube</a></li><li class="footer-nav-item"><a href="#" class="footer-nav-link">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="copyright">&copy; 2026 <a href="index.html">Kanak</a>. All rights reserved. Your skin is gold. ✨</p></div>
+  </div>
+</footer>
 
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">5. Shipping Partners</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">We partner with India's most reliable courier services:</p>
-<ul style="font-size:14px;color:var(--text-light);line-height:1.8;padding-left:20px;margin-top:8px">
-<li><strong>BlueDart</strong> — Standard & Express shipping</li>
-<li><strong>Delhivery</strong> — Standard shipping to all pin codes</li>
-<li><strong>India Post</strong> — Remote and rural areas</li>
-</ul>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8;margin-top:10px">The courier is selected automatically based on your location for the fastest delivery.</p>
-</div>
-
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">6. Undelivered Packages</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">If a package is returned to us due to an incorrect address, three failed delivery attempts, or refusal to accept, we will contact you. Re-shipment charges will apply. If we cannot reach you within 7 days, the order will be refunded minus shipping and handling charges of ₹100.</p>
-</div>
-
-<div style="background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:32px;margin-bottom:18px">
-<h2 style="font-size:20px;margin-bottom:12px">7. Questions?</h2>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8">For shipping-related queries, reach out to us:</p>
-<p style="font-size:14px;color:var(--text-light);line-height:1.8;margin-top:8px">
-Email: <a href="mailto:hello@kanakbeauty.com" style="color:var(--gold)">hello@kanakbeauty.com</a><br>
-Phone: +91 99999 99999<br>
-WhatsApp: Chat with us for instant support</p>
-</div>
-</div></section>
-
-<footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Kanak</h3><p class="slogan-footer">Your skin is gold.</p><p>Premium cosmetics crafted for Indian skin. Clean, conscious, made with love.</p></div><div><h4>Shop</h4><a href="products.html?cat=skincare">Skincare</a><a href="products.html?cat=makeup">Makeup</a><a href="products.html?cat=tools">Tools</a><a href="products.html?cat=sets">Gift Sets</a></div><div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="contact.html">Contact Us</a><a href="track.html">Track Order</a></div><div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="returns.html">Return Policy</a></div></div><div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div></div></footer>
-<a href="https://wa.me/919XXXXXXXXX" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><span>💬</span></a>
-<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 <div class="toast" id="toast"></div>
 <script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/app.js"></script>
+<script>function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('active');document.getElementById('overlay').classList.toggle('active')}</script>
 </body></html>

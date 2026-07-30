@@ -1,36 +1,28 @@
 <!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Shopping Cart — Kanak | Your skin is gold.</title>
-<meta name="description" content="Review your Kanak shopping cart. Premium cosmetics for Indian skin. Free shipping above ₹999.">
-<meta property="og:title" content="Kanak — Shopping Cart"><meta property="og:description" content="Your skin is gold."><meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>">
-<link rel="stylesheet" href="css/style.css"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></head>
-<body>
-<header class="header"><div class="header-top"><p>Free shipping above ₹999 ✨ | COD available 🇮🇳</p></div><div class="header-main"><div class="container"><a href="index.html" class="logo">Kanak</a><button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">☰</button><nav class="nav" id="main-nav"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><div class="header-icons"><a href="cart.html" class="cart-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cart-count">0</span></a></div></div></div></header>
-<div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
-<div class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" onclick="closeMobileNav()">✕</button><a href="index.html" onclick="closeMobileNav()">Home</a><a href="products.html" onclick="closeMobileNav()">Shop</a><a href="about.html" onclick="closeMobileNav()">About</a><a href="contact.html" onclick="closeMobileNav()">Contact</a><a href="cart.html" onclick="closeMobileNav()">Cart</a></div>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Cart — Kanak</title><meta name="description" content="Your Kanak shopping cart."><meta property="og:title" content="Kanak Cart"><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script><script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></head><body>
+<header><div class="header-top">Free shipping above ₹999 ✨</div><div class="header-main"><div class="container"><button class="hamburger" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="index.html" class="header-logo">Kanak<span>.</span></a><div class="header-user-actions" style="display:flex"><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a></div></div></div></header>
+<div class="overlay" id="overlay" onclick="toggleMobileNav()"></div><nav class="mobile-navigation-menu" id="mobile-nav"><div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><ion-icon name="close-outline"></ion-icon></button></div><ul class="mobile-menu-category-list"><li class="menu-category"><a href="index.html" class="menu-title">Home</a></li><li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li><li class="menu-category"><a href="cart.html" class="menu-title">Cart</a></li></ul></nav>
+<div class="mobile-bottom-navigation"><button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a><a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a><a href="products.html" class="action-btn"><ion-icon name="grid-outline"></ion-icon></a></div>
 
-<section class="cart-section"><div class="container" id="cart-page"><h1>Shopping Cart</h1>
+<div class="product-featured" style="margin-top:30px"><div class="container" id="cart-page" style="max-width:800px;margin:0 auto"><h2 class="title">Shopping Cart<a href="products.html" class="view-all">Continue Shopping →</a></h2>
 
-<div class="shipping-progress" id="shipping-progress"><p class="progress-text" id="progress-text">Add <strong>₹999.00</strong> more for free shipping</p><div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div></div>
+<div id="cart-empty" style="display:none;text-align:center;padding:80px 0"><p style="font-size:60px;margin-bottom:15px">🛒</p><h3 style="font-size:var(--fs-4);color:var(--eerie-black);margin-bottom:8px">Your cart is empty</h3><p style="color:var(--sonic-silver);margin-bottom:20px">Looks like you haven't added anything yet.</p><a href="products.html" class="add-cart-btn" style="display:inline-block;width:auto;padding:12px 30px">Start Shopping</a></div>
 
-<div id="cart-empty" style="display:none"><div class="empty-cart"><div class="empty-icon">🛒</div><h2>Your cart is empty</h2><p>Looks like you haven't added anything yet.</p><a href="products.html" class="btn btn-primary">Start Shopping</a></div></div>
+<div id="cart-items" style="display:none"></div>
 
-<div id="cart-items"></div>
+<div id="cart-summary" style="display:none;background:var(--white);border:1px solid var(--cultured);border-radius:var(--radius-md);padding:25px;margin-top:30px">
+<h3 style="font-size:var(--fs-5);color:var(--eerie-black);margin-bottom:15px">Order Summary</h3>
+<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:var(--fs-7);color:var(--sonic-silver)"><span>Subtotal</span><span id="ca-sub">₹0</span></div>
+<div id="ca-disc-row" style="display:none;justify-content:space-between;padding:8px 0;font-size:var(--fs-7);color:var(--ocean-green)"><span>Discount</span><span id="ca-disc">-₹0</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:var(--fs-7);color:var(--sonic-silver)"><span>Shipping</span><span id="ca-ship">—</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:var(--fs-7);color:var(--sonic-silver)"><span>GST (18%)</span><span id="ca-tax">₹0</span></div>
+<div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--cultured);margin-top:8px;font-size:var(--fs-5);font-weight:var(--weight-700);color:var(--eerie-black)"><span>Total</span><span id="ca-total">₹0</span></div>
+<div style="display:flex;gap:8px;margin:15px 0"><input type="text" id="coupon-input" placeholder="Coupon code (GOLDEN15 / KANAK200 / WELCOME10)" style="flex:1;font-size:var(--fs-7);padding:10px 14px;border:1px solid var(--cultured);border-radius:var(--radius-sm);outline:none"><button class="add-cart-btn" onclick="applyCouponCode()" style="font-size:var(--fs-9);padding:10px 18px;width:auto;white-space:nowrap">Apply</button></div>
+<a href="checkout.html" class="add-cart-btn" style="display:block;width:100%;text-align:center;padding:14px;font-size:var(--fs-7)">Proceed to Checkout</a>
+</div></div></div>
 
-<div class="cart-summary" id="cart-summary" style="display:none"><h3>Order Summary</h3>
-<div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">₹0.00</span></div>
-<div class="summary-row" id="cart-discount-row" style="display:none"><span>Discount</span><span id="cart-discount" class="discount">-₹0.00</span></div>
-<div class="summary-row"><span>Shipping</span><span id="cart-shipping">—</span></div>
-<div class="summary-row"><span>GST (18%)</span><span id="cart-tax">₹0.00</span></div>
-<div class="summary-row total"><span>Total</span><span id="cart-total">₹0.00</span></div>
-<div class="cart-coupon"><input type="text" id="coupon-input" placeholder="Coupon code (try GOLDEN15, KANAK200, WELCOME10)"><button class="btn btn-outline btn-sm" onclick="applyCouponCode()">Apply</button></div>
-<a href="checkout.html" class="btn btn-primary btn-lg btn-block">Proceed to Checkout</a>
-<a href="products.html" class="continue-shopping">← Continue Shopping</a></div></div></section>
-
-<footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Kanak</h3><p class="slogan-footer">Your skin is gold.</p><p>Premium cosmetics crafted for Indian skin. Clean, conscious, made with love.</p></div><div><h4>Shop</h4><a href="products.html?cat=skincare">Skincare</a><a href="products.html?cat=makeup">Makeup</a><a href="products.html?cat=tools">Tools</a><a href="products.html?cat=sets">Gift Sets</a></div><div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="contact.html">Contact Us</a><a href="track.html">Track Order</a></div><div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="returns.html">Return Policy</a></div></div><div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div></div></footer>
-<a href="https://wa.me/919XXXXXXXXX" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><span>💬</span></a>
-<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<footer><div class="container"><div class="footer-bottom"><p class="copyright">&copy; 2026 Kanak. Your skin is gold. ✨</p></div></div></footer>
 <div class="toast" id="toast"></div>
 <script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/app.js"></script>
+<script>function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('active');document.getElementById('overlay').classList.toggle('active')}</script>
 </body></html>

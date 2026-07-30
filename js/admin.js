@@ -65,7 +65,7 @@ function renderLowStock() {
     return;
   }
   tbody.innerHTML = products.map(function(p) {
-    return '<tr><td>' + p.image + ' ' + p.name + '</td><td>' + p.category + '</td><td>$' + p.price.toFixed(2) + '</td><td><span class="stock-warning">' + p.stock + '</span></td></tr>';
+    return '<tr><td><img src="' + p.image + '" alt="" style="width:28px;height:28px;object-fit:cover;border-radius:3px;vertical-align:middle;margin-right:8px" onerror="this.outerHTML=\'<span>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"> ' + p.name + '</td><td>' + p.category + '</td><td>$' + p.price.toFixed(2) + '</td><td><span class="stock-warning">' + p.stock + '</span></td></tr>';
   }).join("");
 }
 
@@ -73,7 +73,7 @@ function renderProductsPage() {
   var products = loadProducts();
   var tbody = document.getElementById("products-table");
   tbody.innerHTML = products.map(function(p) {
-    return '<tr><td><span class="table-emoji">' + p.image + '</span></td><td><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '</td><td><span class="tag">' + p.category + '</span></td><td>$' + p.price.toFixed(2) + '</td><td>' + p.stock + '</td><td>⭐ ' + p.rating + '</td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
+    return '<tr><td><span class="table-emoji"><img src="' + p.image + '" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:4px;vertical-align:middle" onerror="this.outerHTML=\'<span style=font-size:24px>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"></span></td><td><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '</td><td><span class="tag">' + p.category + '</span></td><td>$' + p.price.toFixed(2) + '</td><td>' + p.stock + '</td><td>⭐ ' + p.rating + '</td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
   }).join("");
 }
 

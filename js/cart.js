@@ -56,7 +56,7 @@ function renderCartPage() {
   
   let html = '<div class="cart-items-list">';
   cart.forEach(item => {
-    html += '<div class="cart-item"><div class="cart-item-img">' + item.image + '</div><div class="cart-item-info"><h4>' + item.name + '</h4><p>$' + item.price.toFixed(2) + '</p></div><div class="cart-item-qty"><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty - 1) + ')">−</button><span>' + item.qty + '</span><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty + 1) + ')">+</button></div><div class="cart-item-total">$' + (item.price * item.qty).toFixed(2) + '</div><button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\');renderCartPage();">✕</button></div>';
+    html += '<div class="cart-item"><div class="cart-item-img"><img src="' + item.image + '" alt="" onerror="this.parentElement.innerHTML=\'' + (item.image && item.image.length <= 4 ? item.image : '📦') + '\'" style="width:72px;height:72px;object-fit:cover;border-radius:6px"></div><div class="cart-item-info"><h4>' + item.name + '</h4><p>$' + item.price.toFixed(2) + '</p></div><div class="cart-item-qty"><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty - 1) + ')">−</button><span>' + item.qty + '</span><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty + 1) + ')">+</button></div><div class="cart-item-total">$' + (item.price * item.qty).toFixed(2) + '</div><button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\');renderCartPage();">✕</button></div>';
   });
   html += '</div>';
   if (itemsEl) itemsEl.innerHTML = html;

@@ -6,6 +6,22 @@
 <title>Checkout — Glamour Cosmetics</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+.StripeElement{box-sizing:border-box;padding:13px 14px;border:1.5px solid var(--gray-300);border-radius:6px;background:var(--white);transition:border .2s,box-shadow .2s}
+.StripeElement--focus{border-color:var(--primary);box-shadow:0 0 0 1px rgba(212,165,116,.3)}
+.StripeElement--invalid{border-color:var(--danger)}
+.StripeElement--complete{border-color:var(--success)}
+#card-errors{color:var(--danger);font-size:12px;margin-top:6px;min-height:18px}
+.payment-processing{display:none;text-align:center;padding:40px 0}
+.payment-processing.show{display:block}
+.spinner{width:44px;height:44px;border:3px solid var(--gray-200);border-top:3px solid var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stripe-note{font-size:11px;color:var(--gray-500);margin-top:6px;text-align:center}
+.stripe-note img{height:20px;vertical-align:middle;margin-left:4px}
+.test-card-hint{background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-bottom:14px;line-height:1.5}
+.test-card-hint strong{display:block;margin-bottom:2px}
+</style>
 </head>
 <body>
 <header class="header">
@@ -31,52 +47,52 @@
     <div id="checkout-content">
       <h1>Checkout</h1>
       <div class="checkout-layout">
-
         <div class="checkout-form-col">
+
           <div class="checkout-section-box">
             <h3>Contact Information</h3>
             <div class="form-row">
-              <div class="form-group"><label>Email *</label><input type="email" id="c-email" required></div>
-              <div class="form-group"><label>Phone</label><input type="tel" id="c-phone"></div>
+              <div class="form-group"><label>Email *</label><input type="email" id="c-email" required placeholder="you@example.com"></div>
+              <div class="form-group"><label>Phone</label><input type="tel" id="c-phone" placeholder="+1 (555) 000-0000"></div>
             </div>
           </div>
 
           <div class="checkout-section-box">
             <h3>Shipping Address</h3>
-            <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required></div>
-            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required></div>
-            <div class="form-group"><label>Apartment, suite, etc.</label><input type="text" id="c-apt"></div>
+            <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required placeholder="Jane Doe"></div>
+            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required placeholder="123 Beauty Lane"></div>
+            <div class="form-group"><label>Apartment, suite, etc.</label><input type="text" id="c-apt" placeholder="Apt 4B"></div>
             <div class="form-row three">
-              <div class="form-group"><label>City *</label><input type="text" id="c-city" required></div>
-              <div class="form-group"><label>State *</label><input type="text" id="c-state" required></div>
-              <div class="form-group"><label>ZIP *</label><input type="text" id="c-zip" required></div>
+              <div class="form-group"><label>City *</label><input type="text" id="c-city" required placeholder="Los Angeles"></div>
+              <div class="form-group"><label>State *</label><input type="text" id="c-state" required placeholder="CA"></div>
+              <div class="form-group"><label>ZIP *</label><input type="text" id="c-zip" required placeholder="90001"></div>
             </div>
           </div>
 
-          <div class="checkout-section-box">
-            <h3>Payment Method</h3>
-            <div class="payment-options">
-              <label class="payment-option active">
-                <input type="radio" name="payment" value="card" checked onchange="togglePayment()">
-                <span>💳 Credit / Debit Card</span>
-              </label>
-              <label class="payment-option">
-                <input type="radio" name="payment" value="paypal" onchange="togglePayment()">
-                <span>🅿️ PayPal</span>
-              </label>
-              <label class="payment-option">
-                <input type="radio" name="payment" value="cod" onchange="togglePayment()">
-                <span>📦 Cash on Delivery</span>
-              </label>
+          <div class="checkout-section-box" id="payment-section">
+            <h3>Payment</h3>
+            <div class="test-card-hint">
+              <strong>🔬 Test Mode</strong>
+              Use card: <code>4242 4242 4242 4242</code>, any future date, any CVC.
             </div>
-            <div id="card-fields">
-              <div class="form-group"><label>Card Number *</label><input type="text" id="c-card" placeholder="1234 5678 9012 3456" required></div>
-              <div class="form-row">
-                <div class="form-group"><label>Expiry *</label><input type="text" id="c-expiry" placeholder="MM/YY" required></div>
-                <div class="form-group"><label>CVC *</label><input type="text" id="c-cvc" placeholder="123" required></div>
-              </div>
-              <div class="form-group"><label>Name on Card *</label><input type="text" id="c-card-name" required></div>
+
+            <div class="form-group">
+              <label>Card Information</label>
+              <div id="card-element"></div>
+              <div id="card-errors"></div>
             </div>
+
+            <div class="payment-processing" id="payment-processing">
+              <div class="spinner"></div>
+              <p>Processing your payment securely...</p>
+              <p style="font-size:12px;color:var(--gray-500)">Please don't close this page</p>
+            </div>
+
+            <div class="form-group" style="margin-top:8px">
+              <label>Name on Card</label>
+              <input type="text" id="c-card-name" required placeholder="Jane Doe">
+            </div>
+            <p class="stripe-note">Payments secured by <strong>Stripe</strong></p>
           </div>
         </div>
 
@@ -86,10 +102,12 @@
             <div id="checkout-items"></div>
             <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
             <div class="summary-row"><span>Shipping</span><span id="co-shipping">—</span></div>
-            <div class="summary-row"><span>Tax (8%)</span><span id="co-tax">$0.00</span></div>
+            <div class="summary-row"><span>Tax</span><span id="co-tax">$0.00</span></div>
             <div class="summary-row total"><span>Total</span><span id="co-total">$0.00</span></div>
-            <button class="btn btn-primary btn-lg btn-block" onclick="placeOrder()">Place Order</button>
-            <p class="secure-note">🔒 Secure checkout. Your info is safe.</p>
+            <button class="btn btn-primary btn-lg btn-block" id="pay-button" onclick="handlePayment()">
+              <span id="pay-button-text">Pay <span id="pay-amount">$0.00</span></span>
+            </button>
+            <p class="secure-note">🔒 Secure checkout · Your info is safe</p>
           </div>
         </div>
       </div>
@@ -101,7 +119,8 @@
   <div class="modal-content order-confirm">
     <div class="success-icon">✅</div>
     <h2>Order Placed!</h2>
-    <p>Thank you for your purchase. Order <strong id="order-id-display"></strong> has been confirmed.</p>
+    <p>Thank you for your purchase.</p>
+    <p>Order <strong id="order-id-display"></strong> confirmed.</p>
     <p>A confirmation email will be sent shortly.</p>
     <div class="confirm-actions">
       <a href="index.html" class="btn btn-primary">Continue Shopping</a>
@@ -111,15 +130,42 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/app.js"></script>
 <script>
-function togglePayment() {
-  var val = document.querySelector('input[name="payment"]:checked').value;
-  document.getElementById("card-fields").style.display = val === "card" ? "block" : "none";
-  document.querySelectorAll(".payment-option").forEach(function(el){el.classList.remove("active")});
-  document.querySelector('input[name="payment"]:checked').parentElement.classList.add("active");
+var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+var elements = stripe.elements();
+var card = null;
+var cardComplete = false;
+
+function initStripe() {
+  if (!document.getElementById("card-element")) return;
+  
+  card = elements.create('card', {
+    style: {
+      base: {
+        fontFamily: '"Inter", sans-serif',
+        fontSize: '15px',
+        color: '#1a1a1a',
+        '::placeholder': { color: '#999' }
+      },
+      invalid: { color: '#c62828' }
+    },
+    hidePostalCode: true
+  });
+  card.mount('#card-element');
+  
+  card.on('change', function(event) {
+    cardComplete = event.complete;
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
 }
 
 function renderCheckout() {
@@ -134,7 +180,8 @@ function renderCheckout() {
 
   var itemsHtml = "";
   cart.forEach(function(item) {
-    itemsHtml += '<div class="co-item"><div class="co-item-img">' + item.image + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>$' + (item.price * item.qty).toFixed(2) + '</div></div>';
+    var imgHtml = '<img src="' + item.image + '" alt="" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'">';
+    itemsHtml += '<div class="co-item"><div class="co-item-img">' + imgHtml + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>$' + (item.price * item.qty).toFixed(2) + '</div></div>';
   });
   document.getElementById("checkout-items").innerHTML = itemsHtml;
 
@@ -147,44 +194,110 @@ function renderCheckout() {
   document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "$" + shipping.toFixed(2);
   document.getElementById("co-tax").textContent = "$" + tax.toFixed(2);
   document.getElementById("co-total").textContent = "$" + total.toFixed(2);
+  document.getElementById("pay-amount").textContent = "$" + total.toFixed(2);
+  window._orderTotal = total;
+  window._orderSubtotal = subtotal;
+  window._orderShipping = shipping;
+  window._orderTax = tax;
 }
 
-function placeOrder() {
-  var cart = getCart();
-  if (cart.length === 0) { showToast("Your cart is empty!"); return; }
-
+async function handlePayment() {
   var name = document.getElementById("c-name").value.trim();
   var email = document.getElementById("c-email").value.trim();
   var address = document.getElementById("c-address").value.trim();
   var city = document.getElementById("c-city").value.trim();
-  if (!name || !email || !address || !city) { showToast("Please fill all required fields"); return; }
 
-  var subtotal = getCartTotal();
-  var shipping = subtotal >= 50 ? 0 : 5.99;
-  var tax = subtotal * 0.08;
-  var total = subtotal + shipping + tax;
-  var orderId = "GC-" + Date.now().toString(36).toUpperCase();
-  var payment = document.querySelector('input[name="payment"]:checked').value;
+  if (!name || !email || !address || !city) {
+    showToast("Please fill all required shipping fields.");
+    return;
+  }
+  if (!cardComplete) {
+    showToast("Please complete your card information.");
+    document.getElementById("card-errors").textContent = "Please fill in all card details correctly.";
+    return;
+  }
 
-  addOrder({
-    id: orderId, date: new Date().toISOString(),
+  var btn = document.getElementById("pay-button");
+  btn.disabled = true;
+  document.getElementById("pay-button-text").textContent = "Processing…";
+  document.getElementById("payment-processing").classList.add("show");
+
+  try {
+    var result = await stripe.createPaymentMethod({
+      type: 'card',
+      card: card,
+      billing_details: {
+        name: document.getElementById("c-card-name").value || name,
+        email: email,
+        address: {
+          line1: address,
+          city: city,
+          state: document.getElementById("c-state").value,
+          postal_code: document.getElementById("c-zip").value
+        }
+      }
+    });
+
+    if (result.error) {
+      document.getElementById("card-errors").textContent = result.error.message;
+      btn.disabled = false;
+      document.getElementById("pay-button-text").innerHTML = 'Pay <span id="pay-amount">$' + window._orderTotal.toFixed(2) + '</span>';
+      document.getElementById("payment-processing").classList.remove("show");
+      return;
+    }
+
+    // Payment method created successfully
+    // In production, send result.paymentMethod.id to your server to create a charge
+    finalizeOrder(name, email, address, result.paymentMethod.id);
+
+  } catch (err) {
+    document.getElementById("card-errors").textContent = "Payment failed. Please try again.";
+    btn.disabled = false;
+    document.getElementById("pay-button-text").innerHTML = 'Pay <span id="pay-amount">$' + window._orderTotal.toFixed(2) + '</span>';
+    document.getElementById("payment-processing").classList.remove("show");
+  }
+}
+
+function finalizeOrder(name, email, address, paymentMethodId) {
+  var cart = getCart();
+  var orderId = "GC-" + Date.now().toString(36).toUpperCase() + "-" + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+  var order = {
+    id: orderId,
+    date: new Date().toISOString(),
     customer: {
       name: name, email: email,
       address: address + (document.getElementById("c-apt").value ? " " + document.getElementById("c-apt").value : ""),
-      city: city, state: document.getElementById("c-state").value, zip: document.getElementById("c-zip").value,
+      city: document.getElementById("c-city").value,
+      state: document.getElementById("c-state").value,
+      zip: document.getElementById("c-zip").value,
       phone: document.getElementById("c-phone").value
     },
-    items: cart.map(function(i) { return { productId: i.id, name: i.name, price: i.price, qty: i.qty }; }),
-    subtotal: subtotal, shipping: shipping, tax: tax, total: total,
-    status: "confirmed", paymentMethod: payment
-  });
+    items: cart.map(function(i) {
+      return { productId: i.id, name: i.name, price: i.price, qty: i.qty };
+    }),
+    subtotal: window._orderSubtotal,
+    shipping: window._orderShipping,
+    tax: window._orderTax,
+    total: window._orderTotal,
+    status: "confirmed",
+    paymentMethod: "card",
+    paymentId: paymentMethodId
+  };
 
-  saveCart([]); updateCartCount();
+  addOrder(order);
+  saveCart([]);
+  updateCartCount();
+
+  document.getElementById("payment-processing").classList.remove("show");
   document.getElementById("order-id-display").textContent = orderId;
   document.getElementById("confirmation-modal").style.display = "flex";
 }
 
-document.addEventListener("DOMContentLoaded", renderCheckout);
+document.addEventListener("DOMContentLoaded", function() {
+  renderCheckout();
+  initStripe();
+});
 </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ function renderProductCard(product) {
   
   return '<div class="product-card" onclick="location.href=\'product.html?id=' + product.id + '\'">' +
     '<div class="product-img">' +
-      '<span class="product-emoji">' + product.image + '</span>' +
+      '<img src="' + product.image + '" alt="' + product.name + '" onerror="this.parentElement.innerHTML=\'<span class=product-emoji-fallback>' + (product.image && product.image.length <= 4 ? product.image : '📦') + '</span>\'">' +
       badgeHtml + discountHtml +
     '</div>' +
     '<div class="product-info">' +
@@ -132,7 +132,7 @@ function initProductDetail() {
   
   detailEl.innerHTML = '<section class="product-detail-section"><div class="container"><div class="product-detail-layout">' +
     '<div class="product-detail-img">' +
-      '<span class="product-emoji-large">' + product.image + '</span>' +
+      '<img src="' + product.image + '" alt="' + product.name + '" class="product-detail-image" onerror="this.parentElement.innerHTML=\'<span class=product-emoji-large>' + (product.image && product.image.length <= 4 ? product.image : '📦') + '</span>\'">' +
       badges +
     '</div>' +
     '<div class="product-detail-info">' +

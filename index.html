@@ -20,7 +20,7 @@
     <div class="header-search-container"><input type="search" class="search-field" placeholder="Search products..." onkeydown="if(event.key==='Enter'){window.location.href='products.html?q='+encodeURIComponent(this.value)}"><button class="search-btn" onclick="window.location.href='products.html?q='+encodeURIComponent(document.querySelector('.search-field').value)"><ion-icon name="search-outline"></ion-icon></button></div>
     <div class="header-user-actions">
       <a href="admin/login.html" class="action-btn"><ion-icon name="person-outline"></ion-icon></a>
-      <button class="action-btn" onclick="location.href='products.html'"><ion-icon name="heart-outline"></ion-icon><span class="count wishlist-count" style="display:none">0</span></button>
+      <button class="action-btn" href="wishlist.html"><ion-icon name="heart-outline"></ion-icon><span class="count wishlist-count" style="display:none">0</span></button>
       <a href="cart.html" class="action-btn" id="cart-icon-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a>
     </div>
   </div></div>

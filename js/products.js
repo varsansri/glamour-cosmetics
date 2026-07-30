@@ -1,198 +1,146 @@
 const DEFAULT_PRODUCTS = [
   {
-    id: "rose-gold-serum",
-    name: "Rose Gold Radiance Serum",
+    id: "24k-gold-elixir",
+    name: "24K Gold Elixir Serum",
     category: "skincare",
-    price: 4199,
-    originalPrice: 5199,
-    description: "A lightweight, fast-absorbing serum infused with 24k gold flakes and rosehip oil. Brightens skin tone, reduces fine lines, and delivers a luminous glow. Suitable for all skin types.",
+    price: 4199, originalPrice: 5199,
+    description: "A light-as-air serum infused with pure 24K gold flakes, rosehip oil, and vitamin C. Brightens, firms, and delivers that unmistakable golden-hour glow. Because your skin is gold.",
     image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop",
-    stock: 85,
-    featured: true,
-    rating: 4.8,
-    reviews: 234,
-    ingredients: "Rosehip Oil, Vitamin C, Hyaluronic Acid, 24k Gold Flakes, Jojoba Oil, Vitamin E, Aloe Vera Extract",
-    howToUse: "Apply 3-4 drops to clean, damp skin morning and evening. Gently press into face and neck. Follow with moisturizer.",
+    stock: 85, featured: true, rating: 4.8, reviews: 234,
+    ingredients: "24K Gold Flakes, Rosehip Oil, Vitamin C, Hyaluronic Acid, Jojoba Oil, Vitamin E",
+    howToUse: "Apply 3-4 drops to clean, damp skin morning and evening. Gently press into face and neck. Your skin is gold.",
     badge: "Best Seller"
   },
   {
-    id: "velvet-matte-lipstick",
-    name: "Velvet Matte Lipstick",
+    id: "pure-gold-lip-oil",
+    name: "Pure Gold Lip Oil",
     category: "makeup",
-    price: 1999,
-    originalPrice: null,
-    description: "Creamy, highly pigmented matte lipstick that glides on smoothly and stays put for up to 12 hours. Infused with vitamin E to keep lips hydrated all day.",
+    price: 1999, originalPrice: null,
+    description: "A lightweight, non-sticky tinted lip oil infused with real gold shimmer. Hydrates for 12 hours, leaving lips with a sheer golden tint. Lip care that celebrates you.",
     image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop",
-    stock: 120,
-    featured: true,
-    rating: 4.6,
-    reviews: 189,
-    ingredients: "Vitamin E, Shea Butter, Jojoba Oil, Caprylic Triglyceride, Candelilla Wax",
-    howToUse: "Apply directly to lips or use with a lip liner for a precise finish. Blot gently for a softer look.",
-    colors: ["Ruby Kiss", "Rose Nude", "Berry Crush", "Coral Dream", "Wine Hour"],
-    badge: null
+    stock: 120, featured: true, rating: 4.6, reviews: 189,
+    ingredients: "Vitamin E, Shea Butter, Jojoba Oil, Gold Mica, Hyaluronic Acid",
+    howToUse: "Apply directly to lips. Wear alone for a golden glow or layer over lipstick.",
+    colors: ["Gold Shimmer", "Rose Gold", "Honey", "Clear Gold"], badge: null
   },
   {
-    id: "diamond-glow-highlighter",
-    name: "Diamond Glow Highlighter",
+    id: "golden-hour-highlighter",
+    name: "Golden Hour Highlighter",
     category: "makeup",
-    price: 2899,
-    originalPrice: 3499,
-    description: "Ultra-fine, light-reflecting highlighter that creates a stunning diamond-like shimmer. Buildable formula for a natural to blinding glow.",
+    price: 2899, originalPrice: 3499,
+    description: "A silky, ultra-refined highlighter that captures golden hour in a compact. Buildable from a subtle glow to a blinding radiance. Because golden hour looks good on you.",
     image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop",
-    stock: 64,
-    featured: true,
-    rating: 4.9,
-    reviews: 312,
-    ingredients: "Mica, Squalane, Vitamin E, Silica, Pearl Powder, Diamond Powder",
-    howToUse: "Apply to the high points of your face — cheekbones, brow bone, and cupid's bow. Use a fan brush for subtle glow or a dense brush for maximum impact.",
-    colors: ["Champagne Diamond", "Rose Quartz", "Golden Pearl", "Silver Frost"],
-    badge: "Top Rated"
+    stock: 64, featured: true, rating: 4.9, reviews: 312,
+    ingredients: "Mica, Squalane, Vitamin E, Pearl Powder, Gold Pigments",
+    howToUse: "Apply to cheekbones, brow bone, cupid's bow, and anywhere you want to glow.",
+    colors: ["Champagne Gold", "Rose Gold", "Warm Bronze", "Pearl"], badge: "Top Rated"
   },
   {
-    id: "silk-foundation-spf30",
-    name: "Silk Foundation SPF 30",
+    id: "liquid-silk-foundation",
+    name: "Liquid Silk Foundation",
     category: "makeup",
-    price: 3599,
-    originalPrice: 4599,
-    description: "A medium-coverage, buildable foundation with a natural satin finish. Broad-spectrum SPF 30 protection combined with skincare benefits for a flawless complexion.",
+    price: 3599, originalPrice: 4599,
+    description: "A breathable, buildable foundation with a natural satin finish. 22 shades designed for Indian skin tones. SPF 30. Coverage that feels like silk, looks like skin.",
     image: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400&h=400&fit=crop",
-    stock: 93,
-    featured: true,
-    rating: 4.5,
-    reviews: 178,
-    ingredients: "SPF 30 (Zinc Oxide), Hyaluronic Acid, Niacinamide, Squalane, Glycerin, Vitamin E",
-    howToUse: "Shake well. Apply 1-2 pumps to moisturized face using fingertips, brush, or sponge. Blend outward for even coverage.",
-    colors: ["Porcelain", "Ivory", "Sand", "Warm Beige", "Golden", "Deep Tan", "Espresso"],
-    badge: null
+    stock: 93, featured: true, rating: 4.5, reviews: 178,
+    ingredients: "SPF 30, Hyaluronic Acid, Niacinamide, Squalane, Glycerin, Vitamin E",
+    howToUse: "Shake well. Apply 1-2 pumps with fingertips, brush, or sponge. Your skin, perfected.",
+    colors: ["Porcelain", "Warm Ivory", "Sand", "Golden", "Honey", "Deep Tan", "Espresso"], badge: null
   },
   {
-    id: "crystal-eye-palette",
-    name: "Crystal Dream Eye Palette",
+    id: "gilded-eye-palette",
+    name: "Gilded Eye Palette",
     category: "makeup",
-    price: 4899,
-    originalPrice: null,
-    description: "12 highly pigmented shades in a mix of mattes, shimmers, and metallics. From everyday neutrals to bold glam, this palette has it all.",
+    price: 4899, originalPrice: null,
+    description: "12 richly pigmented shades inspired by gold in all its forms — matte earth tones, shimmering metallics, and a pure gold foil. From everyday elegance to evening drama.",
     image: "https://images.unsplash.com/photo-1599305090598-fe179d501227?w=400&h=400&fit=crop",
-    stock: 45,
-    featured: false,
-    rating: 4.7,
-    reviews: 423,
-    ingredients: "Talc, Mica, Dimethicone, Zinc Stearate, Caprylyl Glycol, Vitamin E",
-    howToUse: "Use lighter shades as base and transition colors. Apply deeper shades to the crease and outer corner. Pat shimmer shades onto center of lid.",
+    stock: 45, featured: false, rating: 4.7, reviews: 423,
+    ingredients: "Mica, Talc, Dimethicone, Zinc Stearate, Vitamin E",
+    howToUse: "Use matte shades to define the crease. Pat gold shimmer onto center lid with fingertip for maximum impact.",
     badge: null
   },
   {
-    id: "pearl-radiance-cream",
-    name: "Pearl Radiance Face Cream",
+    id: "pearl-gold-cream",
+    name: "Pearl & Gold Face Cream",
     category: "skincare",
-    price: 5399,
-    originalPrice: 6499,
-    description: "A rich, luxurious face cream infused with crushed pearl powder and marine collagen. Deeply nourishes, firms, and restores skin's natural luminosity.",
+    price: 5399, originalPrice: 6499,
+    description: "A decadent, whipped face cream infused with crushed freshwater pearls and colloidal gold. Deeply nourishes, firms, and restores the skin's natural luminosity. You deserve pearls.",
     image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
-    stock: 38,
-    featured: true,
-    rating: 4.9,
-    reviews: 156,
-    ingredients: "Pearl Powder, Marine Collagen, Squalane, Ceramides, Peptides, Niacinamide, Green Tea Extract",
-    howToUse: "Apply a pea-sized amount to clean face and neck morning and evening. Gently massage in upward circular motions.",
+    stock: 38, featured: true, rating: 4.9, reviews: 156,
+    ingredients: "Pearl Powder, Colloidal Gold, Marine Collagen, Ceramides, Peptides, Niacinamide",
+    howToUse: "Apply a pearl-sized amount to face and neck. Massage upward. Let your skin take the gold.",
     badge: "Premium"
   },
   {
-    id: "midnight-mascara",
-    name: "Midnight Volume Mascara",
+    id: "midnight-gold-mascara",
+    name: "Midnight Gold Mascara",
     category: "makeup",
-    price: 2399,
-    originalPrice: null,
-    description: "Dramatic volume and length with our unique hourglass-shaped wand. Smudge-proof, flake-proof, and lasts all day without clumping.",
+    price: 2399, originalPrice: null,
+    description: "Dramatic volume with a subtle gold shimmer that catches the light. Our signature hourglass wand defines every lash without clumping. Smudge-proof, tear-proof, confidence-proof.",
     image: "https://images.unsplash.com/photo-1583241800698-3b7f4b51cebf?w=400&h=400&fit=crop",
-    stock: 150,
-    featured: false,
-    rating: 4.4,
-    reviews: 567,
-    ingredients: "Beeswax, Carnauba Wax, Panthenol, Biotin, Castor Oil, Vitamin E",
-    howToUse: "Wiggle the wand from root to tip. Layer for more volume. Use the tip of the wand for lower lashes and hard-to-reach corners.",
+    stock: 150, featured: false, rating: 4.4, reviews: 567,
+    ingredients: "Beeswax, Carnauba Wax, Panthenol, Biotin, Castor Oil, Gold Pigments",
+    howToUse: "Wiggle wand from root to tip. Layer for more drama. Your eyes, your power.",
     badge: null
   },
   {
-    id: "hydra-lip-gloss",
-    name: "Hydra Plump Lip Gloss",
+    id: "honey-glow-lip-gloss",
+    name: "Honey Glow Lip Gloss",
     category: "makeup",
-    price: 1599,
-    originalPrice: 1999,
-    description: "Non-sticky, high-shine lip gloss with a subtle plumping effect. Infused with hyaluronic acid and peptides for visibly fuller, hydrated lips.",
+    price: 1599, originalPrice: 1999,
+    description: "High-shine, honey-infused gloss with a subtle plumping effect. Non-sticky, utterly addictive. Sweet like honey, golden like you.",
     image: "https://images.unsplash.com/photo-1632169893949-70273471c237?w=400&h=400&fit=crop",
-    stock: 200,
-    featured: true,
-    rating: 4.3,
-    reviews: 345,
-    ingredients: "Hyaluronic Acid, Peptides, Vitamin E, Jojoba Oil, Shea Butter",
-    howToUse: "Apply directly to lips. Wear alone for a glossy look or layer over lipstick for extra dimension.",
-    colors: ["Clear", "Pink Sugar", "Peach Fizz", "Berry Glaze"],
-    badge: null
+    stock: 200, featured: true, rating: 4.3, reviews: 345,
+    ingredients: "Honey Extract, Hyaluronic Acid, Peptides, Vitamin E, Jojoba Oil",
+    howToUse: "Apply directly to lips. Wear alone or layer for extra dimension. Shine on.",
+    colors: ["Clear Honey", "Golden Pink", "Warm Peach", "Berry Gold"], badge: null
   },
   {
-    id: "retinol-night-elixir",
-    name: "Retinol Night Elixir",
+    id: "ancient-gold-retinol",
+    name: "Ancient Gold Retinol Oil",
     category: "skincare",
-    price: 5999,
-    originalPrice: null,
-    description: "Advanced retinol treatment that works overnight to smooth fine lines, even skin tone, and refine texture. Time-release technology minimizes irritation.",
+    price: 5999, originalPrice: null,
+    description: "A potent yet gentle retinol treatment suspended in a golden oil blend. Time-release technology minimizes irritation while maximizing results. Timeless beauty for a timeless you.",
     image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop",
-    stock: 52,
-    featured: false,
-    rating: 4.7,
-    reviews: 198,
-    ingredients: "Retinol (0.5%), Bakuchiol, Peptides, Ceramides, Niacinamide, Squalane",
-    howToUse: "Apply 1 pump to clean, dry face in the evening. Start with 2-3 times per week and gradually increase to nightly use. Always use SPF during the day.",
+    stock: 52, featured: false, rating: 4.7, reviews: 198,
+    ingredients: "Retinol (0.5%), Bakuchiol, Gold, Squalane, Ceramides, Rosehip Oil",
+    howToUse: "Apply 1 pump to clean face at night. Start 3x/week, build to nightly. Always use SPF.",
     badge: null
   },
   {
-    id: "bamboo-brush-set",
-    name: "Bamboo Pro Brush Set",
+    id: "golden-touch-brushes",
+    name: "Golden Touch Brush Set",
     category: "tools",
-    price: 7499,
-    originalPrice: 9999,
-    description: "A complete 15-piece professional brush set with sustainable bamboo handles and ultra-soft synthetic bristles. Includes a stylish carrying case.",
+    price: 7499, originalPrice: 9999,
+    description: "A 15-piece professional brush collection with gold-plated ferrules and sustainably sourced bamboo handles. Every stroke is a golden touch.",
     image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop",
-    stock: 30,
-    featured: false,
-    rating: 4.8,
-    reviews: 89,
-    ingredients: "Bamboo handles, synthetic Taklon bristles, recycled aluminum ferrules",
-    howToUse: "Includes: Powder, Foundation, Concealer, Blush, Contour, Highlighter, Eye Shadow (4), Blending (2), Angled Liner, Brow, and Lip brush.",
+    stock: 30, featured: false, rating: 4.8, reviews: 89,
+    ingredients: "Bamboo handles, synthetic Taklon bristles, gold-plated ferrules",
+    howToUse: "Set includes: Powder, Foundation, Concealer, Blush, Contour, Highlighter, 4 Eye, 2 Blending, Angled, Brow, Lip brush.",
     badge: null
   },
   {
-    id: "glow-gift-set",
-    name: "Ultimate Glow Gift Set",
+    id: "treasure-chest-set",
+    name: "The Treasure Chest",
     category: "sets",
-    price: 10999,
-    originalPrice: 14999,
-    description: "The perfect gift for any beauty lover. Includes our best-selling Rose Gold Serum, Diamond Glow Highlighter, Hydra Lip Gloss, and a limited-edition makeup bag.",
+    price: 10999, originalPrice: 14999,
+    description: "Our signature gift set — the ultimate Kanak experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a hand-embroidered golden pouch. For someone truly precious.",
     image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=400&fit=crop",
-    stock: 25,
-    featured: true,
-    rating: 5.0,
-    reviews: 67,
-    ingredients: "See individual products",
-    howToUse: "Includes: Rose Gold Serum (30ml), Diamond Glow Highlighter in Champagne, Hydra Lip Gloss in Pink Sugar, Limited Edition Velvet Makeup Bag.",
+    stock: 25, featured: true, rating: 5.0, reviews: 67,
+    ingredients: "See individual products inside the set",
+    howToUse: "Includes: 24K Gold Elixir (30ml), Golden Hour Highlighter (Champagne), Honey Glow Lip Gloss (Clear Honey), Golden Velvet Pouch.",
     badge: "Gift Set"
   },
   {
-    id: "cleansing-balm",
-    name: "Botanical Cleansing Balm",
+    id: "gold-cleansing-balm",
+    name: "Pure Gold Cleansing Balm",
     category: "skincare",
-    price: 2999,
-    originalPrice: null,
-    description: "A silky cleansing balm that melts away makeup, sunscreen, and impurities. Transforms from balm to oil to milk for the most satisfying cleanse.",
+    price: 2999, originalPrice: null,
+    description: "A lush, oil-rich balm that melts away makeup, sunscreen, and the day's weight. Transforms from balm to oil to milk. Cleanse like the gold you are.",
     image: "https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=400&h=400&fit=crop",
-    stock: 78,
-    featured: false,
-    rating: 4.6,
-    reviews: 234,
-    ingredients: "Moringa Oil, Sunflower Seed Oil, Shea Butter, Camellia Oil, Vitamin E, Chamomile Extract",
-    howToUse: "Scoop a small amount and massage onto dry skin. Add water to emulsify, then rinse thoroughly. Use as the first step in your double cleanse.",
+    stock: 78, featured: false, rating: 4.6, reviews: 234,
+    ingredients: "Moringa Oil, Sunflower Seed Oil, Shea Butter, Colloidal Gold, Chamomile, Vitamin E",
+    howToUse: "Massage onto dry skin. Add water to emulsify. Rinse away. Feel the gold.",
     badge: null
   }
 ];
@@ -202,10 +150,7 @@ const ORDER_STORE_KEY = "glamour_orders";
 
 function loadProducts() {
   let products;
-  try {
-    const stored = localStorage.getItem(PRODUCT_STORE_KEY);
-    products = stored ? JSON.parse(stored) : null;
-  } catch (e) { products = null; }
+  try { products = JSON.parse(localStorage.getItem(PRODUCT_STORE_KEY)); } catch(e) { products = null; }
   if (!products || !Array.isArray(products) || products.length === 0) {
     localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
     return [...DEFAULT_PRODUCTS];
@@ -213,26 +158,23 @@ function loadProducts() {
   return products;
 }
 
-function saveProducts(products) { localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(products)); }
-
+function saveProducts(p) { localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(p)); }
 function getCart() { try { return JSON.parse(localStorage.getItem("glamour_cart")) || []; } catch(e) { return []; } }
-function saveCart(cart) { localStorage.setItem("glamour_cart", JSON.stringify(cart)); }
-
+function saveCart(c) { localStorage.setItem("glamour_cart", JSON.stringify(c)); }
 function loadOrders() { try { return JSON.parse(localStorage.getItem(ORDER_STORE_KEY)) || []; } catch(e) { return []; } }
-function saveOrders(orders) { localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(orders)); }
-function addOrder(order) { const orders = loadOrders(); orders.unshift(order); saveOrders(orders); }
+function saveOrders(o) { localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(o)); }
+function addOrder(o) { const orders = loadOrders(); orders.unshift(o); saveOrders(orders); }
 function isAdminLoggedIn() { return sessionStorage.getItem("glamour_admin") === "true"; }
 
-function renderStars(rating) {
-  const full = Math.floor(rating);
-  const half = rating % 1 >= 0.25 && rating % 1 < 0.75 ? 1 : 0;
-  const extra = rating % 1 >= 0.75 ? 1 : 0;
-  let html = '';
-  for (let i = 0; i < full + extra; i++) html += '★';
-  if (half) html += '½';
-  const shown = full + extra + half;
-  for (let i = shown; i < 5; i++) html += '<span style=\"color:#ddd\">★</span>';
-  return html;
+function renderStars(r) {
+  const full = Math.floor(r);
+  const half = r % 1 >= 0.25 && r % 1 < 0.75 ? 1 : 0;
+  const extra = r % 1 >= 0.75 ? 1 : 0;
+  let s = '';
+  for (let i = 0; i < full + extra; i++) s += '★';
+  if (half) s += '½';
+  for (let i = full + extra + half; i < 5; i++) s += '<span style="color:#ddd">★</span>';
+  return s;
 }
 
 function getCartTotal() { return getCart().reduce((s, i) => s + i.price * i.qty, 0); }

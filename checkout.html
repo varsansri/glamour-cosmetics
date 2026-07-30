@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout — Glamour Cosmetics</title>
+<title>Checkout — Kanak</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -32,7 +32,7 @@
 <header class="header">
   <div class="header-main">
     <div class="container">
-      <a href="index.html" class="logo">Glamour</a>
+      <a href="index.html" class="logo">Kanak</a>
       <span class="checkout-steps">Cart → <strong>Checkout</strong> → Confirmation</span>
     </div>
   </div>
@@ -331,8 +331,8 @@ function startPayment() {
     key: RAZORPAY_KEY_ID,
     amount: Math.round(window._orderTotal * 100),
     currency: "INR",
-    name: "Glamour Cosmetics",
-    description: "Beauty Products Order",
+    name: "Kanak",
+    description: "Your skin is gold.",
     image: "https://cdn-icons-png.flaticon.com/128/991/991952.png",
     prefill: { name: name, email: email, contact: phone },
     notes: {

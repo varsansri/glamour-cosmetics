@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glamour Cosmetics — Premium Beauty Products</title>
+<title>Kanak — Your skin is gold.</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <header class="header">
-  <div class="header-top"><p>Free shipping on orders above ₹999 ✨ | COD available 🇮🇳</p></div>
+  <div class="header-top"><p>Free shipping above ₹999 ✨ | COD available 🇮🇳</p></div>
   <div class="header-main">
     <div class="container">
-      <a href="index.html" class="logo">Glamour</a>
+      <a href="index.html" class="logo">Kanak</a>
       <nav class="nav">
         <a href="index.html" class="active">Home</a>
         <a href="products.html">Shop</a>
@@ -34,39 +35,45 @@
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Where Beauty<br>Meets Elegance</h1>
-    <p>Discover our curated collection of premium cosmetics designed to enhance your natural radiance. Cruelty-free, vegan, and made with love.</p>
+    <div class="hero-tag">Kanak — Sanskrit for Gold</div>
+    <h1>Because <em>your skin</em><br>is gold.</h1>
+    <p class="hero-slogan">Your skin is gold.</p>
+    <p>Premium cosmetics crafted for Indian skin. Every product celebrates the natural radiance that is already within you. Clean, conscious, and made with love.</p>
     <div class="hero-btns">
-      <a href="products.html" class="btn btn-primary">Shop Now</a>
-      <a href="products.html?cat=skincare" class="btn btn-outline">Best Sellers</a>
+      <a href="products.html" class="btn btn-primary">Explore the Collection</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
     </div>
   </div>
   <div class="hero-visual">
     <div class="hero-shape"></div>
     <div class="hero-product-card">
-      <div class="hero-product-emoji"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop" alt="Rose Gold Serum" style="width:80px;height:80px;object-fit:cover;border-radius:8px"></div>
-      <span class="hero-product-label">NEW</span>
-      <p>Rose Gold Serum</p>
+      <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop" alt="24K Gold Elixir">
+      <span class="hero-product-label">Best Seller</span>
+      <p>24K Gold Elixir</p>
       <small>₹4,199</small>
     </div>
   </div>
 </section>
 
+<div class="slogan-strip">
+  <p>Your skin is gold. Treat it that way.</p>
+</div>
+
 <section class="categories">
   <div class="container">
-    <h2>Shop by Category</h2>
+    <h2>Shop by Ritual</h2>
     <div class="cat-grid">
       <a href="products.html?cat=skincare" class="cat-card">
-        <div class="cat-icon">🧴</div><h3>Skincare</h3><p>Serums, moisturizers & more</p>
+        <div class="cat-icon">🧴</div><h3>Skincare</h3><p>Serums, creams & oils that feed your gold</p>
       </a>
       <a href="products.html?cat=makeup" class="cat-card">
-        <div class="cat-icon">💄</div><h3>Makeup</h3><p>Lipsticks, foundations & palettes</p>
+        <div class="cat-icon">💄</div><h3>Makeup</h3><p>Colors that celebrate, never hide</p>
       </a>
       <a href="products.html?cat=tools" class="cat-card">
-        <div class="cat-icon">🪥</div><h3>Tools & Brushes</h3><p>Professional beauty tools</p>
+        <div class="cat-icon">🪥</div><h3>Tools</h3><p>Every golden touch matters</p>
       </a>
       <a href="products.html?cat=sets" class="cat-card">
-        <div class="cat-icon">🎁</div><h3>Gift Sets</h3><p>Curated collections for gifting</p>
+        <div class="cat-icon">🎁</div><h3>Gift Sets</h3><p>For the precious people in your life</p>
       </a>
     </div>
   </div>
@@ -74,7 +81,7 @@
 
 <section class="featured">
   <div class="container">
-    <h2>Trending Now</h2>
+    <h2>The Gold Standard</h2>
     <div class="product-grid" id="featured-products"></div>
   </div>
 </section>
@@ -82,10 +89,10 @@
 <section class="promo">
   <div class="container">
     <div class="promo-content">
-      <span>Limited Edition</span>
-      <h2>Summer Glow<br>Collection 2026</h2>
-      <p>Get that sun-kissed radiance with our new bronzing drops and illuminating primer duo.</p>
-      <a href="products.html" class="btn btn-primary">Explore Collection</a>
+      <span>New Launch</span>
+      <h2>The Gold Edit<br>Summer 2026</h2>
+      <p>A limited-edition collection inspired by the molten gold of Indian summers. Three new shades. One golden rule: you are enough.</p>
+      <a href="products.html" class="btn btn-primary">Shop the Edit</a>
     </div>
   </div>
 </section>
@@ -94,17 +101,18 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
-        <span>Our Story</span>
-        <h2>Clean Beauty,<br>Redefined</h2>
-        <p>At Glamour Cosmetics, we believe that beauty should be good for you and the planet. Every product is formulated with carefully sourced ingredients, free from parabens, sulfates, and synthetic fragrances.</p>
+        <span class="label">Our Philosophy</span>
+        <h2>Beauty is not a standard.<br>It's an inheritance.</h2>
+        <p>In Sanskrit, <em>Kanak</em> means gold — and we believe every person carries gold within them. Our products don't create beauty. They reveal what's already there.</p>
+        <p>Every formulation is clean, cruelty-free, and designed specifically for Indian skin tones and climates. No parabens, no sulfates, no compromises.</p>
         <div class="about-stats">
           <div><strong>100%</strong><span>Cruelty-Free</span></div>
-          <div><strong>50K+</strong><span>Happy Customers</span></div>
-          <div><strong>200+</strong><span>Products</span></div>
+          <div><strong>22</strong><span>Foundation Shades</span></div>
+          <div><strong>50K+</strong><span>Golden Community</span></div>
         </div>
       </div>
       <div class="about-visual">
-        <div class="about-img-placeholder">🌿</div>
+        <div class="about-img-placeholder">✨</div>
       </div>
     </div>
   </div>
@@ -112,11 +120,11 @@
 
 <section class="newsletter">
   <div class="container">
-    <h2>Join the Glamour Club</h2>
-    <p>Get 15% off your first order and be the first to know about new launches and exclusive offers.</p>
+    <h2>The Golden Circle</h2>
+    <p>Join 50,000+ who get early access to launches, skincare rituals, and 15% off your first order. Gold comes to those who subscribe.</p>
     <form class="newsletter-form" id="newsletter-form">
       <input type="email" placeholder="Enter your email" required>
-      <button type="submit" class="btn btn-primary">Subscribe</button>
+      <button type="submit" class="btn btn-primary">Join Free</button>
     </form>
   </div>
 </section>
@@ -125,8 +133,9 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h3>Glamour</h3>
-        <p>Premium cosmetics for the modern you. Clean, ethical, beautiful.</p>
+        <h3>Kanak</h3>
+        <p class="slogan-footer">Your skin is gold.</p>
+        <p>Premium cosmetics crafted for Indian skin. Clean, conscious, made with love.</p>
       </div>
       <div>
         <h4>Shop</h4>
@@ -145,12 +154,12 @@
       <div>
         <h4>Connect</h4>
         <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="#">Pinterest</a>
         <a href="#">YouTube</a>
+        <a href="#">Pinterest</a>
+        <a href="#">WhatsApp</a>
       </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Glamour Cosmetics. All rights reserved.</p></div>
+    <div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div>
   </div>
 </footer>
 

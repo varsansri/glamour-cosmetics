@@ -1,0 +1,292 @@
+let editingProductId = null;
+const currentPage = "dashboard";
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (!isAdminLoggedIn()) {
+    window.location.href = "login.html";
+    return;
+  }
+  switchPage("dashboard");
+  
+  document.querySelectorAll(".nav-item[data-page]").forEach(item => {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      switchPage(this.dataset.page);
+    });
+  });
+});
+
+function switchPage(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+  
+  const pageEl = document.getElementById("page-" + page);
+  if (pageEl) pageEl.classList.add("active");
+  
+  const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+  if (navItem) navItem.classList.add("active");
+  
+  if (page === "dashboard") renderDashboard();
+  if (page === "products") renderProductsPage();
+  if (page === "orders") renderOrdersPage();
+}
+
+function renderDashboard() {
+  const products = loadProducts();
+  const orders = loadOrders();
+  
+  document.getElementById("stat-products").textContent = products.length;
+  document.getElementById("stat-orders").textContent = orders.length;
+  
+  const revenue = orders.reduce((sum, o) => o.status !== "cancelled" ? sum + o.total : sum, 0);
+  document.getElementById("stat-revenue").textContent = "$" + revenue.toFixed(2);
+  
+  const today = new Date().toISOString().split("T")[0];
+  const todayOrders = orders.filter(o => o.date.startsWith(today));
+  document.getElementById("stat-today").textContent = todayOrders.length;
+  
+  renderRecentOrders();
+  renderLowStock();
+}
+
+function renderRecentOrders() {
+  const orders = loadOrders();
+  const tbody = document.getElementById("recent-orders");
+  const recent = orders.slice(0, 5);
+  
+  if (recent.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty-cell">No orders yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = recent.map(o => `
+    <tr>
+      <td><code>${o.id}</code></td>
+      <td>${o.customer.name}</td>
+      <td>$${o.total.toFixed(2)}</td>
+      <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+      <td>${new Date(o.date).toLocaleDateString()}</td>
+    </tr>`).join("");
+}
+
+function renderLowStock() {
+  const products = loadProducts();
+  const tbody = document.getElementById("low-stock-products");
+  const lowStock = products.filter(p => p.stock <= 50).sort((a,b) => a.stock - b.stock);
+  
+  if (lowStock.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty-cell">All products well stocked</td></tr>';
+    return;
+  }
+  tbody.innerHTML = lowStock.map(p => `
+    <tr>
+      <td>${p.image} ${p.name}</td>
+      <td>${p.category}</td>
+      <td>$${p.price.toFixed(2)}</td>
+      <td><span class="stock-warning">${p.stock}</span></td>
+    </tr>`).join("");
+}
+
+function renderProductsPage() {
+  const products = loadProducts();
+  const tbody = document.getElementById("products-table");
+  tbody.innerHTML = products.map(p => `
+    <tr>
+      <td><span class="table-emoji">${p.image}</span></td>
+      <td><strong>${p.name}</strong>${p.featured ? ' <span class="table-badge">Featured</span>' : ""}</td>
+      <td><span class="tag">${p.category}</span></td>
+      <td>$${p.price.toFixed(2)}</td>
+      <td>${p.stock}</td>
+      <td>⭐ ${p.rating}</td>
+      <td class="actions-cell">
+        <button class="btn btn-sm btn-outline" onclick="editProduct('${p.id}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${p.id}')">Delete</button>
+      </td>
+    </tr>`).join("");
+}
+
+function renderOrdersPage() {
+  const orders = loadOrders();
+  const filter = document.getElementById("order-status-filter").value;
+  const filtered = filter === "all" ? orders : orders.filter(o => o.status === filter);
+  const tbody = document.getElementById("orders-table");
+  
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty-cell">No orders found</td></tr>';
+    return;
+  }
+  tbody.innerHTML = filtered.map(o => `
+    <tr>
+      <td><code>${o.id}</code></td>
+      <td><strong>${o.customer.name}</strong><br><small>${o.customer.email}</small></td>
+      <td>${o.items.length} item${o.items.length > 1 ? 's' : ''}</td>
+      <td>$${o.total.toFixed(2)}</td>
+      <td><span class="status-badge status-${o.status}">${o.status}</span></td>
+      <td>${new Date(o.date).toLocaleDateString()}</td>
+      <td class="actions-cell">
+        <select onchange="updateOrderStatus('${o.id}', this.value)" class="status-select">
+          <option value="pending" ${o.status === "pending" ? "selected" : ""}>Pending</option>
+          <option value="confirmed" ${o.status === "confirmed" ? "selected" : ""}>Confirmed</option>
+          <option value="shipped" ${o.status === "shipped" ? "selected" : ""}>Shipped</option>
+          <option value="delivered" ${o.status === "delivered" ? "selected" : ""}>Delivered</option>
+          <option value="cancelled" ${o.status === "cancelled" ? "selected" : ""}>Cancelled</option>
+        </select>
+        <button class="btn btn-sm btn-outline" onclick="viewOrderDetails('${o.id}')">View</button>
+      </td>
+    </tr>`).join("");
+}
+
+function updateOrderStatus(orderId, newStatus) {
+  const orders = loadOrders();
+  const order = orders.find(o => o.id === orderId);
+  if (order) {
+    order.status = newStatus;
+    saveOrders(orders);
+    renderOrdersPage();
+    renderDashboard();
+  }
+}
+
+function viewOrderDetails(orderId) {
+  const orders = loadOrders();
+  const order = orders.find(o => o.id === orderId);
+  if (!order) return;
+  alert(
+    `Order: ${order.id}\nDate: ${new Date(order.date).toLocaleString()}\n\n` +
+    `Customer: ${order.customer.name}\nEmail: ${order.customer.email}\n` +
+    `Address: ${order.customer.address}, ${order.customer.city}, ${order.customer.state} ${order.customer.zip}\n\n` +
+    `Items:\n${order.items.map(i => `  - ${i.name} x${i.qty} @ $${i.price}`).join("\n")}\n\n` +
+    `Subtotal: $${order.subtotal.toFixed(2)}\nShipping: $${order.shipping.toFixed(2)}\n` +
+    `Tax: $${order.tax.toFixed(2)}\nTotal: $${order.total.toFixed(2)}\n` +
+    `Payment: ${order.paymentMethod}\nStatus: ${order.status}`
+  );
+}
+
+function openProductModal() {
+  editingProductId = null;
+  document.getElementById("product-modal-title").textContent = "Add Product";
+  document.getElementById("product-form").reset();
+  document.getElementById("pf-id").value = "";
+  document.getElementById("pf-featured").checked = false;
+  document.getElementById("pf-rating").value = "4.5";
+  document.getElementById("product-modal").style.display = "flex";
+}
+
+function closeProductModal() {
+  document.getElementById("product-modal").style.display = "none";
+  editingProductId = null;
+}
+
+function editProduct(id) {
+  const products = loadProducts();
+  const p = products.find(pr => pr.id === id);
+  if (!p) return;
+  
+  editingProductId = id;
+  document.getElementById("product-modal-title").textContent = "Edit Product";
+  document.getElementById("pf-id").value = p.id;
+  document.getElementById("pf-name").value = p.name;
+  document.getElementById("pf-category").value = p.category;
+  document.getElementById("pf-price").value = p.price;
+  document.getElementById("pf-originalPrice").value = p.originalPrice || "";
+  document.getElementById("pf-stock").value = p.stock;
+  document.getElementById("pf-rating").value = p.rating;
+  document.getElementById("pf-reviews").value = p.reviews;
+  document.getElementById("pf-image").value = p.image;
+  document.getElementById("pf-description").value = p.description;
+  document.getElementById("pf-ingredients").value = p.ingredients || "";
+  document.getElementById("pf-howToUse").value = p.howToUse || "";
+  document.getElementById("pf-badge").value = p.badge || "";
+  document.getElementById("pf-featured").checked = p.featured;
+  document.getElementById("product-modal").style.display = "flex";
+}
+
+function saveProduct(e) {
+  e.preventDefault();
+  const products = loadProducts();
+  
+  const productData = {
+    id: editingProductId || document.getElementById("pf-name").value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+    name: document.getElementById("pf-name").value,
+    category: document.getElementById("pf-category").value,
+    price: parseFloat(document.getElementById("pf-price").value),
+    originalPrice: parseFloat(document.getElementById("pf-originalPrice").value) || null,
+    stock: parseInt(document.getElementById("pf-stock").value),
+    rating: parseFloat(document.getElementById("pf-rating").value),
+    reviews: parseInt(document.getElementById("pf-reviews").value),
+    image: document.getElementById("pf-image").value,
+    description: document.getElementById("pf-description").value,
+    ingredients: document.getElementById("pf-ingredients").value,
+    howToUse: document.getElementById("pf-howToUse").value,
+    badge: document.getElementById("pf-badge").value || null,
+    featured: document.getElementById("pf-featured").checked
+  };
+  
+  if (editingProductId) {
+    const idx = products.findIndex(p => p.id === editingProductId);
+    if (idx !== -1) products[idx] = productData;
+  } else {
+    products.push(productData);
+  }
+  
+  saveProducts(products);
+  closeProductModal();
+  renderProductsPage();
+  renderDashboard();
+}
+
+function deleteProduct(id) {
+  if (!confirm("Delete this product? This cannot be undone.")) return;
+  let products = loadProducts();
+  products = products.filter(p => p.id !== id);
+  saveProducts(products);
+  renderProductsPage();
+  renderDashboard();
+}
+
+function saveSettings() {
+  const pw = document.getElementById("admin-password-input").value;
+  if (pw) {
+    alert("Note: Admin password can't be changed from here (stored in code). Contact your developer.");
+  }
+  showToast("Settings saved!");
+}
+
+function resetStore() {
+  if (!confirm("This will delete ALL products and orders! Are you sure?")) return;
+  if (!confirm("This action CANNOT be undone. Continue?")) return;
+  localStorage.removeItem("glamour_products");
+  localStorage.removeItem("glamour_orders");
+  localStorage.removeItem("glamour_cart");
+  loadProducts();
+  renderDashboard();
+  renderProductsPage();
+  renderOrdersPage();
+}
+
+function logout() {
+  sessionStorage.removeItem("glamour_admin");
+  window.location.href = "login.html";
+}
+
+function showToast(msg) {
+  const toast = document.createElement("div");
+  toast.className = "admin-toast show";
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}
+
+window.switchPage = switchPage;
+window.openProductModal = openProductModal;
+window.closeProductModal = closeProductModal;
+window.editProduct = editProduct;
+window.deleteProduct = deleteProduct;
+window.saveProduct = saveProduct;
+window.updateOrderStatus = updateOrderStatus;
+window.viewOrderDetails = viewOrderDetails;
+window.saveSettings = saveSettings;
+window.resetStore = resetStore;
+window.logout = logout;

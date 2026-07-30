@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop - Glamour Cosmetics</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+  <div class="header-top">
+    <p>Free shipping on orders over $50 ✨</p>
+  </div>
+  <div class="header-main">
+    <div class="container">
+      <a href="index.html" class="logo">Glamour</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">Shop</a>
+        <a href="products.html?cat=skincare">Skincare</a>
+        <a href="products.html?cat=makeup">Makeup</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <div class="header-icons">
+        <a href="cart.html" class="cart-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="shop-hero">
+  <div class="container">
+    <h1>All Products</h1>
+    <p>Discover your perfect beauty routine</p>
+  </div>
+</section>
+
+<section class="shop-main">
+  <div class="container">
+    <div class="shop-layout">
+      <aside class="shop-filters">
+        <div class="filter-section">
+          <h4>Category</h4>
+          <label><input type="radio" name="cat" value="all" checked onchange="applyFilters()"> All</label>
+          <label><input type="radio" name="cat" value="skincare" onchange="applyFilters()"> Skincare</label>
+          <label><input type="radio" name="cat" value="makeup" onchange="applyFilters()"> Makeup</label>
+          <label><input type="radio" name="cat" value="tools" onchange="applyFilters()"> Tools & Brushes</label>
+          <label><input type="radio" name="cat" value="sets" onchange="applyFilters()"> Gift Sets</label>
+        </div>
+        <div class="filter-section">
+          <h4>Price Range</h4>
+          <label><input type="radio" name="price" value="all" checked onchange="applyFilters()"> All</label>
+          <label><input type="radio" name="price" value="under25" onchange="applyFilters()"> Under $25</label>
+          <label><input type="radio" name="price" value="25-50" onchange="applyFilters()"> $25 - $50</label>
+          <label><input type="radio" name="price" value="50-100" onchange="applyFilters()"> $50 - $100</label>
+          <label><input type="radio" name="price" value="over100" onchange="applyFilters()"> Over $100</label>
+        </div>
+        <div class="filter-section">
+          <h4>Sort By</h4>
+          <select id="sort" onchange="applyFilters()">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="name">Name A-Z</option>
+          </select>
+        </div>
+      </aside>
+      <div class="shop-products">
+        <div class="shop-header-bar">
+          <input type="text" id="search" class="search-input" placeholder="Search products..." oninput="applyFilters()">
+          <span id="results-count"></span>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Glamour Cosmetics. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+function applyFilters() {
+  let products = loadProducts();
+  const cat = document.querySelector('input[name="cat"]:checked')?.value;
+  const price = document.querySelector('input[name="price"]:checked')?.value;
+  const sort = document.getElementById("sort").value;
+  const search = document.getElementById("search").value.toLowerCase();
+  
+  if (cat && cat !== "all") products = products.filter(p => p.category === cat);
+  if (price && price !== "all") {
+    if (price === "under25") products = products.filter(p => p.price < 25);
+    else if (price === "25-50") products = products.filter(p => p.price >= 25 && p.price <= 50);
+    else if (price === "50-100") products = products.filter(p => p.price > 50 && p.price <= 100);
+    else if (price === "over100") products = products.filter(p => p.price > 100);
+  }
+  if (search) products = products.filter(p => p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search));
+  
+  if (sort === "price-low") products.sort((a, b) => a.price - b.price);
+  else if (sort === "price-high") products.sort((a, b) => b.price - a.price);
+  else if (sort === "rating") products.sort((a, b) => b.rating - a.rating);
+  else if (sort === "name") products.sort((a, b) => a.name.localeCompare(b.name));
+  
+  document.getElementById("results-count").textContent = `${products.length} product${products.length !== 1 ? "s" : ""}`;
+  document.getElementById("product-grid").innerHTML = products.map(p => {
+    const discount = p.originalPrice ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
+    return `
+      <div class="product-card" onclick="location.href='product.html?id=${p.id}'">
+        <div class="product-img">
+          <span class="product-emoji">${p.image}</span>
+          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+          ${discount > 0 ? `<span class="product-discount">-${discount}%</span>` : ""}
+        </div>
+        <div class="product-info">
+          <span class="product-category">${p.category}</span>
+          <h3>${p.name}</h3>
+          <div class="product-stars">${renderStars(p.rating)}<span>(${p.reviews})</span></div>
+          <div class="product-price">
+            <span class="current">$${p.price.toFixed(2)}</span>
+            ${p.originalPrice ? `<span class="original">$${p.originalPrice.toFixed(2)}</span>` : ""}
+          </div>
+          <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();addToCart('${p.id}')">Add to Cart</button>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function renderStars(r){const f=Math.floor(r);const h=r%1>=0.5;let s="";for(let i=0;i<f;i++)s+="★";if(h)s+="½";for(let i=h?f+1:f;i<5;i++)s+="☆";return s;}
+
+(function init(){
+  const cat = new URL(window.location.href).searchParams.get("cat");
+  if (cat) {
+    const radio = document.querySelector(`input[name="cat"][value="${cat}"]`);
+    if (radio) radio.checked = true;
+  }
+  applyFilters();
+})();
+</script>
+</body>
+</html>

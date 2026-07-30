@@ -96,18 +96,18 @@ function applyTheme(key) {
     root.style.setProperty(prop, theme.css[prop]);
   }
   
-  // Update the theme picker UI
-  var btns = document.querySelectorAll(".theme-swatch");
-  btns.forEach(function(b) { b.classList.toggle("active", b.dataset.theme === key); });
-  var label = document.getElementById("theme-label");
-  if (label) label.textContent = theme.name;
-  
-  showToast && showToast(theme.emoji + " " + theme.name + " theme applied");
+  // Update active state on swatches
+  document.querySelectorAll(".theme-swatch").forEach(function(b) {
+    b.classList.toggle("active", b.dataset.theme === key);
+  });
+  // Update emoji on toggle button  
+  var emoji = document.getElementById("theme-emoji");
+  if (emoji) emoji.textContent = theme.emoji;
 }
 
 function toggleThemePicker() {
   var panel = document.getElementById("theme-picker-panel");
-  panel.classList.toggle("show");
+  if (panel) panel.classList.toggle("show");
 }
 
 // Create and inject theme picker UI
@@ -115,18 +115,18 @@ function initThemePicker() {
   // Apply saved theme first
   applyTheme(KANAK_CURRENT_THEME);
   
+  var cur = KANAK_THEMES[KANAK_CURRENT_THEME];
   var html = '<div class="theme-picker-container">';
-  html += '<button class="theme-toggle-btn" onclick="toggleThemePicker()" title="Change color theme"><span id="theme-emoji">🎨</span></button>';
+  html += '<button class="theme-toggle-btn" onclick="toggleThemePicker()" title="Change color theme"><span id="theme-emoji">' + cur.emoji + '</span></button>';
   html += '<div class="theme-picker-panel" id="theme-picker-panel">';
-  html += '<div class="theme-picker-header"><span>Color Themes</span><button onclick="toggleThemePicker()">✕</button></div>';
-  html += '<div class="theme-swatches">';
+  html += '<div class="theme-picker-header"><span style="font-size:16px">🎨</span><button onclick="toggleThemePicker()">✕</button></div>';
+  html += '<div class="theme-swatches" style="display:flex;flex-wrap:wrap;justify-content:center;max-width:200px">';
   
   for (var key in KANAK_THEMES) {
     var t = KANAK_THEMES[key];
     var active = key === KANAK_CURRENT_THEME ? ' active' : '';
-    html += '<button class="theme-swatch' + active + '" data-theme="' + key + '" onclick="applyTheme(\'' + key + '\')">';
+    html += '<button class="theme-swatch' + active + '" data-theme="' + key + '" onclick="applyTheme(\'' + key + '\')" title="' + t.name + '">';
     html += '<span class="swatch-color" style="background:' + t.css["--salmon-pink"] + '"></span>';
-    html += '<span class="swatch-name">' + t.emoji + ' ' + t.name + '</span>';
     html += '</button>';
   }
   
@@ -145,16 +145,16 @@ function injectThemeCSS() {
     + '@media(min-width:1024px){.theme-picker-container{bottom:40px}}'
     + '.theme-toggle-btn{width:48px;height:48px;border-radius:50%;background:var(--white);border:2px solid var(--cultured);box-shadow:0 4px 16px rgba(0,0,0,.12);cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2}'
     + '.theme-toggle-btn:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.18)}'
-    + '.theme-picker-panel{background:var(--white);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.15);padding:16px;display:none;width:240px;max-height:80vh;overflow-y:auto}'
+    + '.theme-picker-panel{background:var(--white);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.15);padding:12px;display:none;width:auto;text-align:center}'
     + '.theme-picker-panel.show{display:block;animation:themeSlideIn .25s ease}'
     + '@keyframes themeSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}'
     + '.theme-picker-header{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--eerie-black);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--cultured)}'
     + '.theme-picker-header button{background:none;border:none;font-size:14px;cursor:pointer;color:var(--sonic-silver);padding:2px 6px}'
-    + '.theme-swatch{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;background:none;cursor:pointer;border-radius:8px;transition:all .15s;margin-bottom:2px;font-size:12px;color:var(--onyx);font-family:inherit;text-align:left}'
+    + '.theme-swatch{display:inline-flex;align-items:center;justify-content:center;padding:6px;border:none;background:none;cursor:pointer;border-radius:50%;transition:all .15s;margin:3px}'
     + '.theme-swatch:hover{background:var(--cultured)}'
-    + '.theme-swatch.active{background:var(--salmon-pink);color:var(--white)}'
-    + '.theme-swatch.active .swatch-name{color:var(--white)}'
-    + '.swatch-color{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid var(--cultured)}'
+    + '.theme-swatch.active{background:var(--salmon-pink)}'
+    + '.theme-swatch.active .swatch-color{border-color:var(--white)}'
+    + '.swatch-color{width:30px;height:30px;border-radius:50%;flex-shrink:0;border:2px solid var(--cultured);transition:border-color .15s}'
     + '.swatch-name{font-size:12px;font-weight:500}'
   ;
   document.head.appendChild(style);

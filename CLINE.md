@@ -1,4 +1,4 @@
-# GScosmatics Cosmetics — Ecommerce Site
+# GS-Cosmatics Cosmetics — Ecommerce Site
 
 ## 🔒 DESIGN SOURCE — DO NOT CHANGE
 
@@ -7,10 +7,10 @@ The entire UI/design system is built on **[anon-ecommerce-website](https://githu
 **This is the design the user chose and likes. Do NOT change it without explicit instruction.**
 
 - **Anon repo:** https://github.com/codewithsadee/anon-ecommerce-website
-- **Adapted for GScosmatics:** Gold accent (#C8963E) instead of salmon pink, INR currency, Indian cosmetics products
+- **Adapted for GS-Cosmatics:** Gold accent (#C8963E) instead of salmon pink, INR currency, Indian cosmetics products
 
 ## Overview
-GScosmatics (Sanskrit for "gold") is a cosmetic ecommerce site built with vanilla HTML/CSS/JS, hosted on GitHub Pages.
+GS-Cosmatics (Sanskrit for "gold") is a cosmetic ecommerce site built with vanilla HTML/CSS/JS, hosted on GitHub Pages.
 
 - **Live:** https://varsansri.github.io/glamour-cosmetics/
 - **Repo:** https://github.com/varsansri/glamour-cosmetics
@@ -54,7 +54,7 @@ GScosmatics (Sanskrit for "gold") is a cosmetic ecommerce site built with vanill
 ### Assets
 | File | Purpose |
 |------|---------|
-| `css/style.css` | Main design system — Anon-based CSS with GScosmatics gold palette |
+| `css/style.css` | Main design system — Anon-based CSS with GS-Cosmatics gold palette |
 | `css/admin.css` | Admin panel styles |
 | `js/products.js` | Product data (12 products), localStorage CRUD, INR formatter, coupons, wishlist, recently viewed |
 | `js/cart.js` | Cart operations, coupon application, toast notifications |
@@ -72,7 +72,7 @@ GScosmatics (Sanskrit for "gold") is a cosmetic ecommerce site built with vanill
 
 ### CSS Design Tokens
 ```css
---salmon-pink: hsl(35,53%,51%);     /* GScosmatics gold #C8963E */
+--salmon-pink: hsl(35,53%,51%);     /* GS-Cosmatics gold #C8963E */
 --eerie-black: hsl(0,0%,13%);       /* Dark bg, footer */
 --onyx: hsl(0,0%,27%);              /* Nav text */
 --sonic-silver: hsl(0,0%,47%);      /* Secondary text */
@@ -122,7 +122,7 @@ Images: Unsplash hosted
 ## Features
 - Product catalog with search + category filter
 - Product detail with image gallery, shade selection, reviews
-- Shopping cart with qty controls, coupon codes (GOLDEN15, KANAK200, WELCOME10)
+- Shopping cart with qty controls, coupon codes (GOLDEN15, GS200, WELCOME10)
 - Checkout with Razorpay + COD
 - PIN code validation, shipping (Standard ₹49, Express ₹99, Free >₹999)
 - Admin dashboard: product/order CRUD, revenue chart, CSV export, bulk actions

@@ -99,7 +99,7 @@ const DEFAULT_PRODUCTS = [
   },
   {
     id: "treasure-chest-set", name: "The Treasure Chest", category: "sets", price: 10999, originalPrice: 14999,
-    description: "Our signature gift set — the ultimate GScosmatics experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a golden velvet pouch.",
+    description: "Our signature gift set — the ultimate GS-Cosmatics experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a golden velvet pouch.",
     image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
     images: ["https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop"],
     stock: 25, featured: true, rating: 5.0, reviews: 67, reviewsData: [],
@@ -120,7 +120,7 @@ const DEFAULT_PRODUCTS = [
 function formatINR(amount) { return '₹' + amount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
 function formatINR2(amount) { return '₹' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
-var COUPONS = { "GOLDEN15": { type: "percent", value: 15, minOrder: 999 }, "KANAK200": { type: "flat", value: 200, minOrder: 1499 }, "WELCOME10": { type: "percent", value: 10, minOrder: 0 } };
+var COUPONS = { "GOLDEN15": { type: "percent", value: 15, minOrder: 999 }, "GS200": { type: "flat", value: 200, minOrder: 1499 }, "WELCOME10": { type: "percent", value: 10, minOrder: 0 } };
 
 var PRODUCT_STORE_KEY = "glamour_products", ORDER_STORE_KEY = "glamour_orders";
 

@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════
-// GScosmatics — Color Theme Switcher
+// GS-Cosmatics — Color Theme Switcher
 // 6 skin care palettes, localStorage persisted
 // ═══════════════════════════════════════════
 
-var KANAK_THEMES = {
+var GSC_THEMES = {
   "saffron": {
     name: "Saffron & Sand",
     emoji: "🧡",
@@ -71,7 +71,7 @@ var KANAK_THEMES = {
     }
   },
   "gold": {
-    name: "GScosmatics Gold",
+    name: "GS-Cosmatics Gold",
     emoji: "✨",
     css: {
       "--salmon-pink": "hsl(35,53%,51%)",
@@ -83,13 +83,13 @@ var KANAK_THEMES = {
   }
 };
 
-var KANAK_CURRENT_THEME = localStorage.getItem("kanak_theme") || "gold";
+var GSC_CURRENT_THEME = localStorage.getItem("gsc_theme") || "gold";
 
 function applyTheme(key) {
-  var theme = KANAK_THEMES[key];
+  var theme = GSC_THEMES[key];
   if (!theme) return;
-  KANAK_CURRENT_THEME = key;
-  localStorage.setItem("kanak_theme", key);
+  GSC_CURRENT_THEME = key;
+  localStorage.setItem("gsc_theme", key);
   
   var root = document.documentElement;
   for (var prop in theme.css) {
@@ -113,18 +113,18 @@ function toggleThemePicker() {
 // Create and inject theme picker UI
 function initThemePicker() {
   // Apply saved theme first
-  applyTheme(KANAK_CURRENT_THEME);
+  applyTheme(GSC_CURRENT_THEME);
   
-  var cur = KANAK_THEMES[KANAK_CURRENT_THEME];
+  var cur = GSC_THEMES[GSC_CURRENT_THEME];
   var html = '<div class="theme-picker-container">';
   html += '<button class="theme-toggle-btn" onclick="toggleThemePicker()" title="Change color theme"><span id="theme-emoji">' + cur.emoji + '</span></button>';
   html += '<div class="theme-picker-panel" id="theme-picker-panel">';
   html += '<div class="theme-picker-header"><span style="font-size:16px">🎨</span><button onclick="toggleThemePicker()">✕</button></div>';
   html += '<div class="theme-swatches" style="display:flex;flex-wrap:wrap;justify-content:center;max-width:200px">';
   
-  for (var key in KANAK_THEMES) {
-    var t = KANAK_THEMES[key];
-    var active = key === KANAK_CURRENT_THEME ? ' active' : '';
+  for (var key in GSC_THEMES) {
+    var t = GSC_THEMES[key];
+    var active = key === GSC_CURRENT_THEME ? ' active' : '';
     html += '<button class="theme-swatch' + active + '" data-theme="' + key + '" onclick="applyTheme(\'' + key + '\')" title="' + t.name + '">';
     html += '<span class="swatch-color" style="background:' + t.css["--salmon-pink"] + '"></span>';
     html += '</button>';

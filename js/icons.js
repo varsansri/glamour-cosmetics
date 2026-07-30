@@ -1,5 +1,5 @@
-// GScosmatics Custom SVG Icons — all use currentColor for theme switching
-var KANAK_ICONS = {
+// GS-Cosmatics Custom SVG Icons — all use currentColor for theme switching
+var GSC_ICONS = {
   truck: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
   returns: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>',
   bunny: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2 0-4 2-4 5v3c0 3 2 5 4 5s4-2 4-5V8c0-3-2-5-4-5z"/><circle cx="9" cy="4" r="1.5"/><circle cx="15" cy="4" r="1.5"/><path d="M12 13v3c0 1-1 2-2 2"/><path d="M8 15c-2 0-3 1-3 2s1 2 3 2"/></svg>',
@@ -30,7 +30,7 @@ var KANAK_ICONS = {
 
 // Helper to get icon HTML with color
 function icon(name, size) {
-  var s = KANAK_ICONS[name];
+  var s = GSC_ICONS[name];
   if (!s) return '';
   if (size) s = s.replace(/width="[^"]*"/, 'width="' + size + '"').replace(/height="[^"]*"/, 'height="' + size + '"');
   return s;

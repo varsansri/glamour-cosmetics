@@ -73,7 +73,7 @@ function initProductDetail(){
   var id=getQueryParam("id");if(!id)return;
   var products=loadProducts();var product=products.find(function(p){return p.id===id});
   if(!product){document.getElementById("product-detail").innerHTML='<div class="container" style="padding:80px 0;text-align:center"><h2>Product not found</h2><a href="products.html" style="color:var(--salmon-pink)">Back to shop</a></div>';return}
-  addRecentlyViewed(id);document.title=product.name+' — GScosmatics';
+  addRecentlyViewed(id);document.title=product.name+' — GS-Cosmatics';
   var discount=product.originalPrice?Math.round((1-product.price/product.originalPrice)*100):0;
   var images=product.images&&product.images.length?product.images:[product.image];
 

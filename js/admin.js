@@ -166,13 +166,13 @@ function exportOrders() {
   orders.forEach(function(o) {
     csv += o.id + ',"' + new Date(o.date).toLocaleDateString() + '","' + o.customer.name + '","' + o.customer.email + '","' + o.items.map(function(i) { return i.name + ' x' + i.qty; }).join('; ') + '",₹' + o.total.toFixed(2) + ',"' + o.status + '","' + (o.paymentMethod || 'N/A') + '"\n';
   });
-  downloadCSV(csv, "kanak-orders-export.csv");
+  downloadCSV(csv, "gs-cosmatics-orders-export.csv");
 }
 function exportProducts() {
   var products = loadProducts(); if (products.length === 0) { showToast("No products to export"); return; }
   var csv = "ID,Name,Category,Price,Stock,Rating,Reviews,Featured\n";
   products.forEach(function(p) { csv += p.id + ',"' + p.name + '",' + p.category + ',₹' + p.price + ',' + p.stock + ',' + p.rating + ',' + p.reviews + ',' + (p.featured ? "Yes" : "No") + '\n'; });
-  downloadCSV(csv, "kanak-products-export.csv");
+  downloadCSV(csv, "gs-cosmatics-products-export.csv");
 }
 function downloadCSV(csv, filename) {
   var blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });

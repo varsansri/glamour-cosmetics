@@ -99,7 +99,7 @@ const DEFAULT_PRODUCTS = [
   },
   {
     id: "treasure-chest-set", name: "The Treasure Chest", category: "sets", price: 10999, originalPrice: 14999,
-    description: "Our signature gift set — the ultimate Kanak experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a golden velvet pouch.",
+    description: "Our signature gift set — the ultimate GScosmatics experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a golden velvet pouch.",
     image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
     images: ["https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop"],
     stock: 25, featured: true, rating: 5.0, reviews: 67, reviewsData: [],

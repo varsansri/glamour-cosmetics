@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════
-// Kanak — Color Theme Switcher
+// GScosmatics — Color Theme Switcher
 // 6 skin care palettes, localStorage persisted
 // ═══════════════════════════════════════════
 

@@ -12,8 +12,8 @@ The entire UI/design system is built on **[anon-ecommerce-website](https://githu
 ## Overview
 GS-Cosmatics (Sanskrit for "gold") is a cosmetic ecommerce site built with vanilla HTML/CSS/JS, hosted on GitHub Pages.
 
-- **Live:** https://varsansri.github.io/glamour-cosmetics/
-- **Repo:** https://github.com/varsansri/glamour-cosmetics
+- **Live:** https://varsansri.github.io/gs-cosmatics/
+- **Repo:** https://github.com/varsansri/gs-cosmatics
 - **Admin:** `/admin/login.html` (password: `admin123`)
 - **Brand slogan:** "Your skin is gold."
 - **Environment:** Termux mobile app → Ubuntu proot-distro → GitHub Pages

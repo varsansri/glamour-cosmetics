@@ -262,3 +262,26 @@ footer{background:var(--eerie-black);padding:30px 0}
 @media(max-width:1023px){
   .desktop-navigation-menu{display:none}
 }
+
+/* ═══ ADDITIONAL RESPONSIVE FIXES ═══ */
+@media(max-width:767px){
+  .product-detail-grid{grid-template-columns:1fr!important}
+  .showcase-actions{transform:translateX(0)!important}
+  .header-search-container{display:none}
+}
+@media(max-width:479px){
+  .product-grid{grid-template-columns:1fr!important}
+  .banner-title{font-size:1.2rem}
+}
+/* Quick responsive utility */
+.responsive-grid{display:grid;gap:20px}
+@media(min-width:480px){.responsive-grid{grid-template-columns:1fr 1fr}}@media(min-width:1024px){.responsive-grid{grid-template-columns:1fr 1fr}}
+
+/* Cart page layout fix */
+.cart-layout-wrapper{max-width:800px;margin:0 auto}
+.cart-summary-box{background:var(--white);border:1px solid var(--cultured);border-radius:var(--radius-md);padding:25px;margin-top:20px}
+
+/* Fix review stars inline */
+#review-stars{display:flex;gap:4px;font-size:24px;cursor:pointer}
+#review-stars span{transition:transform .15s}
+#review-stars span:hover{transform:scale(1.2)}

@@ -1,47 +1,46 @@
 <!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Shop — Kanak | Premium Indian Skincare</title><meta name="description" content="Browse Kanak's collection of clean, cruelty-free skincare and cosmetics for Indian skin."><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script><script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></head><body>
-<header class="header"><div class="header-top"><p>Free shipping above ₹999 ✨</p><p>COD available 🇮🇳</p></div><div class="header-main"><div class="container"><button class="hamburger" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="index.html" class="header-logo">Kanak<span>.</span></a><div class="header-search-container"><input type="search" class="search-field" id="search-input" placeholder="Search products..." oninput="applyFilters()"><button class="search-btn" onclick="applyFilters()"><ion-icon name="search-outline"></ion-icon></button></div><div class="header-user-actions"><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a></div></div></div></header>
-<div class="mobile-overlay" id="mobile-overlay" onclick="toggleMobileNav()"></div><nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button><a href="index.html">Home</a><a href="products.html">Shop All</a><a href="cart.html">Cart</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-<div class="mobile-bottom-nav"><button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a><a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a><a href="products.html" class="action-btn"><ion-icon name="grid-outline"></ion-icon></a></div>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Shop — Kanak</title><meta name="description" content="Browse Kanak's gold-standard cosmetic collection."><meta property="og:title" content="Kanak Shop"><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script><script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></head><body>
+<header><div class="header-top">Free shipping above ₹999 ✨ | COD 🇮🇳</div><div class="header-main"><div class="container"><button class="hamburger" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="index.html" class="header-logo">Kanak<span>.</span></a><div class="header-search-container"><input type="search" class="search-field" id="search-input" placeholder="Search products..." oninput="applyFilters()"><button class="search-btn" onclick="applyFilters()"><ion-icon name="search-outline"></ion-icon></button></div><div class="header-user-actions"><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a></div></div></div><nav class="desktop-navigation-menu"><ul class="desktop-menu-category-list container"><li class="menu-category"><a href="index.html" class="menu-title">Home</a></li><li class="menu-category"><a href="products.html" class="menu-title active">Shop</a></li><li class="menu-category"><a href="products.html?cat=skincare" class="menu-title">Skincare</a></li><li class="menu-category"><a href="products.html?cat=makeup" class="menu-title">Makeup</a></li><li class="menu-category"><a href="products.html?cat=tools" class="menu-title">Tools</a></li><li class="menu-category"><a href="products.html?cat=sets" class="menu-title">Gift Sets</a></li></ul></nav></header>
+<div class="overlay" id="overlay" onclick="toggleMobileNav()"></div><nav class="mobile-navigation-menu" id="mobile-nav"><div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><ion-icon name="close-outline"></ion-icon></button></div><ul class="mobile-menu-category-list"><li class="menu-category"><a href="index.html" class="menu-title">Home</a></li><li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li><li class="menu-category"><a href="cart.html" class="menu-title">Cart</a></li></ul></nav>
+<div class="mobile-bottom-navigation"><button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button><a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a><a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a><a href="products.html" class="action-btn"><ion-icon name="grid-outline"></ion-icon></a></div>
 
-<section class="section" style="padding-top:40px"><div class="container">
-  <div class="section-header"><h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.5rem)">The Gold Collection</h1><p id="results-count"></p></div>
-  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px">
-    <button class="routine-tab active" onclick="setFilter('all')" id="filter-all">All</button>
-    <button class="routine-tab" onclick="setFilter('skincare')" id="filter-skincare">🧴 Skincare</button>
-    <button class="routine-tab" onclick="setFilter('makeup')" id="filter-makeup">💄 Makeup</button>
-    <button class="routine-tab" onclick="setFilter('tools')" id="filter-tools">🪥 Tools</button>
-    <button class="routine-tab" onclick="setFilter('sets')" id="filter-sets">🎁 Gift Sets</button>
-  </div>
-  <div class="product-grid" id="product-grid"></div>
-</div></section>
+<div class="banner" style="margin:20px 0"><div class="container"><div class="slider-container"><div class="slider-item" style="height:200px"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&h=400&fit=crop" class="banner-img" alt="Makeup"><div class="banner-content"><h2 class="banner-title">The Gold<br>Collection</h2><p class="banner-text" style="display:block">Discover your perfect shade</p></div></div></div></div></div>
 
-<footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Kanak. Your skin is gold. ✨</p></div></div></footer>
+<div class="category"><div class="container"><div class="category-item-container"><div class="category-item" onclick="applyFilter('skincare')"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop" alt="Skincare"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Skincare</h3></div></div></div><div class="category-item" onclick="applyFilter('makeup')"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=200&h=200&fit=crop" alt="Makeup"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Makeup</h3></div></div></div><div class="category-item" onclick="applyFilter('tools')"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&h=200&fit=crop" alt="Tools"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Tools</h3></div></div></div><div class="category-item" onclick="applyFilter('sets')"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=200&h=200&fit=crop" alt="Sets"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Gift Sets</h3></div></div></div></div></div></div>
+
+<div class="product-featured"><div class="container"><h2 class="title">All Products<span id="results-count" class="view-all"></span></h2><div class="product-grid" id="product-grid"></div></div></div>
+
+<footer><div class="container"><div class="footer-bottom"><p class="copyright">&copy; 2026 Kanak. Your skin is gold. ✨</p></div></div></footer>
 <div class="toast" id="toast"></div>
 <script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/app.js"></script>
 <script>
-var _filter='all';
-function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('show');document.getElementById('mobile-overlay').classList.toggle('show')}
-function setFilter(f){_filter=f;document.querySelectorAll('.routine-tab').forEach(function(b){b.classList.toggle('active',b.id==='filter-'+f)});applyFilters()}
+function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('active');document.getElementById('overlay').classList.toggle('active')}
+window._shopFilter='all';
+function applyFilter(cat){window._shopFilter=cat;applyFilters()}
 function applyFilters(){
   var g=document.getElementById("product-grid");if(!g)return;
-  var products=loadProducts();var sq=(document.getElementById("search-input")||{}).value||'';
-  if(_filter!=='all')products=products.filter(function(p){return p.category===_filter});
+  var products=loadProducts();var cat=window._shopFilter||'all';
+  var sq=(document.getElementById("search-input")||{}).value||'';
+  if(cat!=='all')products=products.filter(function(p){return p.category===cat});
   if(sq)products=products.filter(function(p){return p.name.toLowerCase().indexOf(sq.toLowerCase())!==-1});
-  document.getElementById("results-count").textContent=products.length+' product'+(products.length!==1?'s':'');
-  g.innerHTML=products.length===0?'<div style="grid-column:1/-1;text-align:center;padding:60px"><p style="font-size:1.3rem;color:var(--espresso);font-family:Playfair Display,serif">No products found</p><p style="color:var(--text-light)">Try a different search</p></div>':products.map(function(p){
-    var d=p.originalPrice?Math.round((1-p.price/p.originalPrice)*100):0;
-    return '<div class="product-card" onclick="location.href=\'product.html?id='+p.id+'\'">'+
-      '<div class="img-box"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy">'+
-      (p.badge?'<span class="card-badge">'+p.badge+'</span>':'')+(d>0?'<span class="card-save">-'+d+'%</span>':'')+'</div>'+
-      '<div class="card-info"><div class="card-category">'+p.category+'</div><div class="card-name">'+p.name+'</div>'+
-      '<div class="card-rating">'+renderStars(p.rating)+'<span>('+p.reviews+')</span></div>'+
-      '<div class="card-price">'+formatINR(p.price)+(p.originalPrice?'<del>'+formatINR(p.originalPrice)+'</del>':'')+'</div>'+
-      '<div class="card-badges"><span class="ingredient-badge badge-vegan">🌱 Vegan</span><span class="ingredient-badge badge-cruelty">🐰 Cruelty-Free</span></div></div></div>';
+  var ce=document.getElementById("results-count");if(ce)ce.textContent=products.length+' product'+(products.length!==1?'s':'');
+  g.innerHTML=products.length===0?'<div style="grid-column:1/-1;text-align:center;padding:60px"><p style="font-size:1.2rem;color:var(--eerie-black)">No products found</p></div>':products.map(function(p){
+    return '<div class="showcase" onclick="location.href=\'product.html?id='+p.id+'\'">'+
+      '<div class="showcase-banner"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy">'+
+      (p.badge?'<p class="showcase-badge'+(p.badge==='Premium'?' black':'')+'">'+p.badge+'</p>':'')+
+      '</div>'+
+      '<div class="showcase-content">'+
+        '<a class="showcase-category">'+p.category+'</a>'+
+        '<h3 class="showcase-title">'+p.name+'</h3>'+
+        '<div class="showcase-rating">'+renderStars(p.rating)+'<span>('+p.reviews+')</span></div>'+
+        '<div class="price-box"><p class="price">'+formatINR(p.price)+'</p>'+(p.originalPrice?'<del>'+formatINR(p.originalPrice)+'</del>':'')+'</div>'+
+        '<button class="add-cart-btn" onclick="event.stopPropagation();addToCart(\''+p.id+'\')">Add to Cart</button>'+
+      '</div></div>';
   }).join("");
 }
+// Init
 (function(){
-  var c=(new URL(window.location.href)).searchParams.get("cat");if(c)setFilter(c);
+  var c=(new URL(window.location.href)).searchParams.get("cat");if(c){window._shopFilter=c}
   var q=(new URL(window.location.href)).searchParams.get("q");if(q){document.getElementById("search-input").value=q}
   applyFilters();
 })();

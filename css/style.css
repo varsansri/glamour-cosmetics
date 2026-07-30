@@ -415,13 +415,40 @@ footer{background:var(--eerie-black);padding:30px 0}
   .page-section{padding:40px 0}
   .page-header h1{font-size:1.5rem}
   .content-card{padding:20px}
+  #product-detail [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+  .checkout-layout{grid-template-columns:1fr}
+  .checkout-order-summary{position:static}
+  .showcase-container .showcase-banner{min-width:auto;width:100%}
+  .cart-items-list .showcase{flex-wrap:wrap;gap:10px}
+  .footer-nav{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr!important}
+  .category-item{min-width:calc(50% - 5px)}
+  .shipping-cards{grid-template-columns:1fr}
 }
 @media(max-width:1023px){
+  body{padding-bottom:80px}
+  .footer-bottom{margin-bottom:25px}
+  .toast{bottom:85px}
   .desktop-navigation-menu{display:none}
 }
+@media(max-width:380px){
+  .header-logo{font-size:1.5rem}
+  .header-user-actions .action-btn{font-size:22px}
+  .container{padding:0 10px}
+}
 @media(max-width:479px){
-  .product-grid{grid-template-columns:1fr!important}
-  .banner-title{font-size:1.2rem}
+  .banner-title{font-size:1.1rem}
+  .banner-subtitle{font-size:var(--fs-9)}
+  .banner-content{padding:12px 15px;bottom:10px;left:10px;right:10px}
+  .slider-item{height:220px;aspect-ratio:auto}
+  .newsletter{padding:30px 12px}
+  .newsletter-form{flex-direction:column}
+  .promo{padding:50px 15px}
+  .showcase-content{padding:10px 12px 6px}
+  .showcase-title{font-size:var(--fs-9);letter-spacing:0}
+  .price{font-size:var(--fs-8)}
+  .add-cart-btn{padding:6px 10px;font-size:var(--fs-10)}
+  .category-item{min-width:calc(50% - 5px)}
 }
 
 .cart-layout-wrapper{max-width:800px;margin:0 auto}

@@ -1,122 +1,133 @@
 <!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kanak — Your skin is gold. | Premium Indian Beauty</title>
-<meta name="description" content="Kanak means gold. Premium cosmetics for Indian skin — clean, cruelty-free, made with love. Free shipping above ₹999.">
-<meta property="og:title" content="Kanak — Your skin is gold."><meta property="og:description" content="Premium cosmetics crafted for Indian skin. Your skin is gold."><meta property="og:type" content="website"><meta property="og:image" content="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=630&fit=crop">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Kanak — Premium Indian Skincare | Your skin is gold.</title>
+<meta name="description" content="Kanak means gold. Premium, clean, cruelty-free cosmetics crafted for Indian skin. 22 foundation shades. Free shipping above ₹999.">
+<meta property="og:title" content="Kanak — Your skin is gold."><meta property="og:description" content="Premium Indian skincare. Clean, conscious, made with love."><meta property="og:type" content="website"><meta property="og:image" content="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=630&fit=crop">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head><body>
 
 <!-- HEADER -->
-<header>
-  <div class="header-top">Free shipping above ₹999 ✨ | COD available 🇮🇳 | Use <strong>GOLDEN15</strong> for 15% off</div>
+<header class="header">
+  <div class="header-top"><p>Free shipping above ₹999 ✨</p><p>COD available 🇮🇳</p><p>Use <strong>GOLDEN15</strong> for 15% off</p></div>
   <div class="header-main"><div class="container">
-    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><ion-icon name="menu-outline"></ion-icon></button>
+    <button class="hamburger" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button>
     <a href="index.html" class="header-logo">Kanak<span>.</span></a>
-    <div class="header-search-container"><input type="search" class="search-field" placeholder="Search products..." onkeydown="if(event.key==='Enter'){window.location.href='products.html?q='+encodeURIComponent(this.value)}"><button class="search-btn" onclick="window.location.href='products.html?q='+encodeURIComponent(document.querySelector('.search-field').value)"><ion-icon name="search-outline"></ion-icon></button></div>
+    <div class="header-search-container"><input type="search" class="search-field" placeholder="Search serums, lipsticks, creams..." onkeydown="if(event.key==='Enter')window.location.href='products.html?q='+encodeURIComponent(this.value)"><button class="search-btn" onclick="window.location.href='products.html?q='+encodeURIComponent(document.querySelector('.search-field').value)"><ion-icon name="search-outline"></ion-icon></button></div>
     <div class="header-user-actions">
       <a href="admin/login.html" class="action-btn"><ion-icon name="person-outline"></ion-icon></a>
-      <button class="action-btn" onclick="location.href='products.html'"><ion-icon name="heart-outline"></ion-icon><span class="count wishlist-count" style="display:none">0</span></button>
-      <a href="cart.html" class="action-btn" id="cart-icon-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a>
+      <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a>
     </div>
   </div></div>
-  
-  <nav class="desktop-navigation-menu">
-    <ul class="desktop-menu-category-list container">
-      <li class="menu-category"><a href="index.html" class="menu-title active">Home</a></li>
-      <li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li>
-      <li class="menu-category"><a href="products.html?cat=skincare" class="menu-title">Skincare</a></li>
-      <li class="menu-category"><a href="products.html?cat=makeup" class="menu-title">Makeup</a></li>
-      <li class="menu-category"><a href="products.html?cat=sets" class="menu-title">Gift Sets</a></li>
-      <li class="menu-category"><a href="about.html" class="menu-title">About</a></li>
-      <li class="menu-category"><a href="contact.html" class="menu-title">Contact</a></li>
-    </ul>
-  </nav>
+  <nav class="desktop-nav"><div class="container">
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item mega-trigger"><span class="menu-trigger">Shop</span><div class="mega-dropdown"><div class="mega-col"><h4>Categories</h4><a href="products.html?cat=skincare">Skincare</a><a href="products.html?cat=makeup">Makeup</a><a href="products.html?cat=tools">Tools</a><a href="products.html?cat=sets">Gift Sets</a></div><div class="mega-col"><h4>By Skin Type</h4><a href="#">Oily & Acne-Prone</a><a href="#">Dry & Dehydrated</a><a href="#">Combination</a><a href="#">All Skin Types</a></div><div class="mega-col"><h4>Featured</h4><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=180&h=120&fit=crop" alt="Serum"><a href="product.html?id=24k-gold-elixir">24K Gold Elixir</a></div></div></div>
+    <div class="menu-item"><a href="products.html?cat=skincare">Skincare</a></div>
+    <div class="menu-item"><a href="products.html?cat=makeup">Makeup</a></div>
+    <div class="menu-item"><a href="about.html">About</a></div>
+    <div class="menu-item"><a href="contact.html">Contact</a></div>
+  </div></nav>
 </header>
 
-<!-- MOBILE NAV DRAWER -->
-<div class="overlay" id="overlay" onclick="toggleMobileNav()"></div>
-<nav class="mobile-navigation-menu" id="mobile-nav"><div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><ion-icon name="close-outline"></ion-icon></button></div>
-<ul class="mobile-menu-category-list">
-  <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
-  <li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li>
-  <li class="menu-category"><button class="accordion-menu" onclick="toggleAccordion(this)"><p class="menu-title" style="padding:0">Categories</p><div><ion-icon name="add-outline" class="add-icon"></ion-icon><ion-icon name="remove-outline" class="remove-icon"></ion-icon></div></button><ul class="submenu-category-list"><li><a href="products.html?cat=skincare" class="submenu-title">Skincare</a></li><li><a href="products.html?cat=makeup" class="submenu-title">Makeup</a></li><li><a href="products.html?cat=tools" class="submenu-title">Tools</a></li><li><a href="products.html?cat=sets" class="submenu-title">Gift Sets</a></li></ul></li>
-  <li class="menu-category"><a href="about.html" class="menu-title">About</a></li>
-  <li class="menu-category"><a href="contact.html" class="menu-title">Contact</a></li>
-  <li class="menu-category"><a href="track.html" class="menu-title">Track Order</a></li>
-  <li class="menu-category"><a href="cart.html" class="menu-title">Cart</a></li>
-</ul></nav>
+<!-- MOBILE NAV -->
+<div class="mobile-overlay" id="mobile-overlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button><a href="index.html" onclick="closeMobileNav()">Home</a><a href="products.html" onclick="closeMobileNav()">Shop All</a><a href="products.html?cat=skincare" onclick="closeMobileNav()">Skincare</a><a href="products.html?cat=makeup" onclick="closeMobileNav()">Makeup</a><a href="products.html?cat=tools" onclick="closeMobileNav()">Tools</a><a href="products.html?cat=sets" onclick="closeMobileNav()">Gift Sets</a><a href="about.html" onclick="closeMobileNav()">About</a><a href="contact.html" onclick="closeMobileNav()">Contact</a><a href="cart.html" onclick="closeMobileNav()">Cart</a><a href="track.html" onclick="closeMobileNav()">Track Order</a></nav>
 
 <!-- MOBILE BOTTOM NAV -->
-<div class="mobile-bottom-navigation">
+<div class="mobile-bottom-nav">
   <button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button>
   <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a>
   <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
-  <a href="products.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon></a>
-  <button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="grid-outline"></ion-icon></button>
+  <a href="products.html" class="action-btn"><ion-icon name="grid-outline"></ion-icon></a>
 </div>
 
 <!-- HERO -->
-<div class="banner"><div class="container"><div class="slider-container">
-  <div class="slider-item"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=600&fit=crop" alt="Kanak Gold Serum" class="banner-img"><div class="banner-content"><p class="banner-subtitle">New Arrival</p><h2 class="banner-title">Your skin<br>is gold.</h2><p class="banner-text">24K Gold Elixir — starting at ₹4,199</p><a href="product.html?id=24k-gold-elixir" class="banner-btn">Shop Now</a></div></div>
-</div></div></div>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Kanak — Sanskrit for Gold</div>
+    <h1>Because <em>your skin</em><br>is gold.</h1>
+    <p class="hero-slogan">Your skin is gold.</p>
+    <p>Premium, clean, cruelty-free cosmetics designed for Indian skin tones and climates. Every product reveals the radiance already within you.</p>
+    <div class="hero-btns"><a href="products.html" class="btn btn-gold btn-lg">Shop Collection</a><a href="about.html" class="btn btn-outline btn-lg">Our Story</a></div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=800&fit=crop" alt="Kanak Gold Serum" class="hero-img" loading="lazy">
+    <div class="hero-badge"><strong>50K+</strong><span>Happy Customers</span></div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-strip"><div class="container"><div class="trust-grid">
+  <div class="trust-item"><div class="trust-icon">🐰</div><strong>100% Cruelty-Free</strong><span>PETA Certified</span></div>
+  <div class="trust-item"><div class="trust-icon">🌿</div><strong>Clean Ingredients</strong><span>No parabens, sulfates</span></div>
+  <div class="trust-item"><div class="trust-icon">🇮🇳</div><strong>Made for India</strong><span>22 foundation shades</span></div>
+  <div class="trust-item"><div class="trust-icon">🚚</div><strong>Free Shipping</strong><span>On orders above ₹999</span></div>
+</div></div></section>
 
 <!-- CATEGORIES -->
-<div class="category"><div class="container"><h2 class="title">Shop by Ritual<a href="products.html" class="view-all">View All →</a></h2><div class="category-item-container">
-  <div class="category-item" onclick="location.href='products.html?cat=skincare'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=300&h=300&fit=crop" alt="Skincare"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Skincare</h3></div><a href="products.html?cat=skincare" class="category-btn">Show all →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?cat=makeup'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=300&h=300&fit=crop" alt="Makeup"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Makeup</h3></div><a href="products.html?cat=makeup" class="category-btn">Show all →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?cat=tools'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop" alt="Tools"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Tools</h3></div><a href="products.html?cat=tools" class="category-btn">Show all →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?cat=sets'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=300&h=300&fit=crop" alt="Gift Sets"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Gift Sets</h3></div><a href="products.html?cat=sets" class="category-btn">Show all →</a></div></div>
-</div></div></div>
+<section class="section"><div class="container">
+  <div class="section-header"><h2>Shop by Category</h2><p>Every product is designed for Indian skin — for every tone, type, and texture.</p></div>
+  <div class="cat-grid">
+    <a href="products.html?cat=skincare" class="cat-card"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=500&fit=crop" alt="Skincare" loading="lazy"><div class="cat-label"><h3>Skincare</h3><p>Serums, creams & oils</p></div></a>
+    <a href="products.html?cat=makeup" class="cat-card"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=500&fit=crop" alt="Makeup" loading="lazy"><div class="cat-label"><h3>Makeup</h3><p>Colors that celebrate</p></div></a>
+    <a href="products.html?cat=tools" class="cat-card"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=500&fit=crop" alt="Tools" loading="lazy"><div class="cat-label"><h3>Tools</h3><p>Every golden touch</p></div></a>
+    <a href="products.html?cat=sets" class="cat-card"><img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=500&fit=crop" alt="Gift Sets" loading="lazy"><div class="cat-label"><h3>Gift Sets</h3><p>For precious people</p></div></a>
+  </div>
+</div></section>
 
 <!-- FEATURED PRODUCTS -->
-<div class="product-featured"><div class="container"><h2 class="title">The Gold Standard<a href="products.html" class="view-all">View All →</a></h2><div class="product-grid" id="featured-products"></div></div></div>
+<section class="section" style="background:var(--white)"><div class="container">
+  <div class="section-header"><h2>The Gold Standard</h2><p>Our bestsellers. Loved by 50,000+ customers across India.</p></div>
+  <div class="product-grid" id="featured-products"></div>
+</div></section>
 
-<!-- DEAL OF THE DAY -->
-<div class="product-featured"><div class="container"><h2 class="title">Deal of the Day</h2>
-  <div class="showcase-container"><div class="showcase">
-    <div class="showcase-banner"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500&h=500&fit=crop" alt="24K Gold Elixir"></div>
-    <div class="showcase-content">
-      <a href="product.html?id=24k-gold-elixir"><h3 class="showcase-title" style="font-size:var(--fs-3);color:var(--eerie-black);font-weight:var(--weight-600);text-transform:uppercase;margin-bottom:8px">24K Gold Elixir Serum</h3></a>
-      <p style="font-size:var(--fs-7);color:var(--sonic-silver);margin-bottom:10px">Pure 24K gold flakes meet rosehip oil. The serum that made us famous. Brightens, firms, transforms.</p>
-      <div class="price-box"><p class="price">₹4,199</p><del>₹5,199</del></div>
-      <div class="showcase-status"><div class="wrapper"><p>Already Sold: <b>72</b></p><p>Available: <b>13</b></p></div><div class="showcase-status-bar"></div></div>
-      <div class="countdown-box"><p class="countdown-desc">Hurry Up! Offer ends in:</p><div class="countdown" id="deal-countdown"><div class="countdown-content"><p class="display-number" id="deal-days">00</p><p class="display-text">Days</p></div><div class="countdown-content"><p class="display-number" id="deal-hours">00</p><p class="display-text">Hours</p></div><div class="countdown-content"><p class="display-number" id="deal-mins">00</p><p class="display-text">Mins</p></div><div class="countdown-content"><p class="display-number" id="deal-secs">00</p><p class="display-text">Secs</p></div></div></div>
-      <a href="product.html?id=24k-gold-elixir" class="add-cart-btn" style="display:inline-block;width:auto;padding:12px 30px;margin-top:15px">Add to Cart</a>
-    </div></div>
-  </div></div>
-</div>
+<!-- ROUTINE BUILDER -->
+<section class="routine-section section"><div class="container">
+  <div class="section-header"><h2>Build Your Ritual</h2><p>Great skin isn't about products. It's about a routine.</p></div>
+  <div class="routine-tabs"><button class="routine-tab active" onclick="switchRoutine('am')">☀️ Morning Routine</button><button class="routine-tab" onclick="switchRoutine('pm')">🌙 Evening Routine</button></div>
+  <div class="routine-steps" id="routine-steps"></div>
+  <div class="routine-arrows">↓ ↓ ↓</div>
+</div></section>
+
+<!-- INGREDIENT TRANSPARENCY -->
+<section class="section"><div class="container">
+  <div class="section-header"><h2>Ingredients You Can Trust</h2><p>Every ingredient is chosen for a reason. No fillers. No toxins. No compromises.</p></div>
+  <div class="ingredient-grid">
+    <div class="ingredient-card"><div class="ingredient-icon">✨</div><h4>24K Gold</h4><p>Anti-inflammatory, boosts collagen, delivers nutrients deep into skin layers.</p></div>
+    <div class="ingredient-card"><div class="ingredient-icon">🌹</div><h4>Rosehip Oil</h4><p>Rich in Vitamin A & C. Brightens scars, evens skin tone, deeply hydrates.</p></div>
+    <div class="ingredient-card"><div class="ingredient-icon">💧</div><h4>Hyaluronic Acid</h4><p>Holds 1000x its weight in water. Plumps fine lines instantly.</p></div>
+    <div class="ingredient-card"><div class="ingredient-icon">🟢</div><h4>Vitamin C</h4><p>Powerful antioxidant. Protects against pollution, brightens dark spots.</p></div>
+  </div>
+</div></section>
 
 <!-- PROMO -->
-<div class="promo"><div class="container"><span>Limited Edition</span><h2>The Gold Edit<br>Summer 2026</h2><p>Three new shades. One golden rule: you are enough.</p><a href="products.html" class="btn">Explore Collection</a></div></div>
+<section class="promo">
+  <span>Limited Edition</span><h2>The Gold Edit<br>Summer 2026</h2>
+  <p>Three new shades inspired by the molten gold of Indian summers. One golden rule: you are enough.</p>
+  <a href="products.html" class="btn btn-lg">Explore the Collection</a>
+</section>
 
 <!-- NEWSLETTER -->
-<div class="newsletter"><div class="container"><div class="newsletter-header"><h3 class="newsletter-title">Join The Golden Circle</h3><p class="newsletter-desc">50,000+ beauty lovers get early access, skincare rituals, and 15% off their first order.</p></div><form class="newsletter-form" id="newsletter-form"><input type="email" placeholder="Your email address" required><button type="submit">Subscribe</button></form></div></div>
+<section class="newsletter"><div class="container"><h2>Join The Golden Circle</h2><p>50,000+ beauty lovers get early access, skincare rituals, and 15% off their first order.</p><form class="newsletter-form" id="newsletter-form"><input type="email" placeholder="Your email address" required><button type="submit" class="btn btn-primary">Subscribe</button></form></div></section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-nav">
-      <div class="footer-nav-list"><p class="nav-title">Kanak<span style="color:var(--salmon-pink)">.</span></p><p style="color:var(--sonic-silver);font-size:var(--fs-7);margin-bottom:15px">Premium cosmetics for Indian skin. Clean, conscious, made with love.</p><p style="color:var(--salmon-pink);font-style:italic;font-size:var(--fs-8)">Your skin is gold.</p></div>
-      <div class="footer-nav-list"><p class="nav-title">Shop</p><ul><li class="footer-nav-item"><a href="products.html?cat=skincare" class="footer-nav-link">Skincare</a></li><li class="footer-nav-item"><a href="products.html?cat=makeup" class="footer-nav-link">Makeup</a></li><li class="footer-nav-item"><a href="products.html?cat=tools" class="footer-nav-link">Tools</a></li><li class="footer-nav-item"><a href="products.html?cat=sets" class="footer-nav-link">Gift Sets</a></li></ul></div>
-      <div class="footer-nav-list"><p class="nav-title">Help</p><ul><li class="footer-nav-item"><a href="shipping.html" class="footer-nav-link">Shipping</a></li><li class="footer-nav-item"><a href="returns.html" class="footer-nav-link">Returns</a></li><li class="footer-nav-item"><a href="faq.html" class="footer-nav-link">FAQ</a></li><li class="footer-nav-item"><a href="track.html" class="footer-nav-link">Track Order</a></li></ul></div>
-      <div class="footer-nav-list"><p class="nav-title">Legal</p><ul><li class="footer-nav-item"><a href="privacy.html" class="footer-nav-link">Privacy</a></li><li class="footer-nav-item"><a href="terms.html" class="footer-nav-link">Terms</a></li><li class="footer-nav-item"><a href="contact.html" class="footer-nav-link">Contact</a></li></ul></div>
-      <div class="footer-nav-list"><p class="nav-title">Connect</p><ul><li class="footer-nav-item"><a href="#" class="footer-nav-link">Instagram</a></li><li class="footer-nav-item"><a href="#" class="footer-nav-link">YouTube</a></li><li class="footer-nav-item"><a href="#" class="footer-nav-link">WhatsApp</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p class="copyright">&copy; 2026 <a href="index.html">Kanak</a>. All rights reserved. Your skin is gold. ✨</p></div>
-  </div>
-</footer>
+<footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Kanak<span style="color:var(--gold)">.</span></h3><p class="tagline">Your skin is gold.</p><p>Premium, clean, cruelty-free cosmetics crafted for Indian skin. PETA-certified. Made with love in India.</p></div><div><h4>Shop</h4><a href="products.html?cat=skincare">Skincare</a><a href="products.html?cat=makeup">Makeup</a><a href="products.html?cat=tools">Tools</a><a href="products.html?cat=sets">Gift Sets</a></div><div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="contact.html">Contact Us</a><a href="track.html">Track Order</a></div><div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="returns.html">Return Policy</a></div></div><div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div></div></footer>
 
 <div class="toast" id="toast"></div>
 <script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/app.js"></script>
 <script>
-function toggleAccordion(btn){var sub=btn.nextElementSibling;btn.classList.toggle('active');sub.classList.toggle('active')}
-function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('active');document.getElementById('overlay').classList.toggle('active')}
-(function dealCountdown(){var end=new Date();end.setHours(23,59,59,0);function tick(){var t=end-new Date();if(t<=0)return;var h=Math.floor(t/3600000),m=Math.floor((t%3600000)/60000),s=Math.floor((t%60000)/1000);var d=document.getElementById('deal-days'),H=document.getElementById('deal-hours'),M=document.getElementById('deal-mins'),S=document.getElementById('deal-secs');if(d)d.textContent=String(Math.floor(h/24)).padStart(2,'0');if(H)H.textContent=String(h%24).padStart(2,'0');if(M)M.textContent=String(m).padStart(2,'0');if(S)S.textContent=String(s).padStart(2,'0')}tick();setInterval(tick,1000)})();
-document.getElementById('newsletter-form').addEventListener('submit',function(e){e.preventDefault();showToast('Subscribed! Check your email for 15% off code.');this.reset()})
+function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('show');document.getElementById('mobile-overlay').classList.toggle('show')}
+function closeMobileNav(){document.getElementById('mobile-nav').classList.remove('show');document.getElementById('mobile-overlay').classList.remove('show')}
+function switchRoutine(type){document.querySelectorAll('.routine-tab').forEach(function(t,i){t.classList.toggle('active',(type==='am'&&i===0)||(type==='pm'&&i===1))});renderRoutine(type)}
+function renderRoutine(type){
+  var steps=[];
+  if(type==='am'){steps=[{step:1,name:'Cleanse',desc:'Start fresh with our Botanical Cleansing Balm',img:'https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=200&h=200&fit=crop',price:'₹2,999',id:'gold-cleansing-balm'},{step:2,name:'Treat',desc:'Apply 24K Gold Elixir Serum to damp skin',img:'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop',price:'₹4,199',id:'24k-gold-elixir'},{step:3,name:'Protect',desc:'Finish with Pearl & Gold Face Cream + SPF',img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&h=200&fit=crop',price:'₹5,399',id:'pearl-gold-cream'}]}
+  else{steps=[{step:1,name:'Double Cleanse',desc:'Remove makeup with Pure Gold Cleansing Balm',img:'https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=200&h=200&fit=crop',price:'₹2,999',id:'gold-cleansing-balm'},{step:2,name:'Repair',desc:'Ancient Gold Retinol Oil while you sleep',img:'https://images.unsplash.com/photo-1617897903246-719242758050?w=200&h=200&fit=crop',price:'₹5,999',id:'ancient-gold-retinol'},{step:3,name:'Restore',desc:'Seal with Pearl & Gold Face Cream overnight',img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&h=200&fit=crop',price:'₹5,399',id:'pearl-gold-cream'}]}
+  document.getElementById('routine-steps').innerHTML=steps.map(function(s){return '<div class="routine-step"><div class="step-number">'+s.step+'</div><img src="'+s.img+'" class="step-img" loading="lazy" alt="'+s.name+'"><div class="step-name">'+s.name+'</div><div class="step-text">'+s.desc+'</div><div class="step-price">'+s.price+'</div><button class="btn btn-sm btn-outline" onclick="location.href=\'product.html?id='+s.id+'\'">View Product</button></div>'}).join('')}
+renderRoutine('am');
+document.getElementById('newsletter-form').addEventListener('submit',function(e){e.preventDefault();showToast('Subscribed! 15% off code sent to your email.');this.reset()});
 </script>
 </body></html>

@@ -7,8 +7,8 @@ function renderProductCard(product){
       '<img src="'+product.image+'" alt="'+product.name+'" loading="lazy" onerror="this.style.display=\'none\'">'+
       (product.badge?'<p class="showcase-badge'+(product.badge==='Premium'?' black':'')+(product.badge==='Gift Set'?' pink':'')+'">'+product.badge+'</p>':'')+
       '<div class="showcase-actions">'+
-        '<button class="btn-action" onclick="event.stopPropagation();var a=toggleWishlist(\''+product.id+'\',event);this.querySelector(\'ion-icon\').setAttribute(\'name\',a?\'heart\':\'heart-outline\')" title="Wishlist"><ion-icon name="'+(isWishlisted(product.id)?'heart':'heart-outline')+'"></ion-icon></button>'+
-        '<button class="btn-action" onclick="event.stopPropagation();addToCart(\''+product.id+'\')" title="Add to Cart"><ion-icon name="bag-add-outline"></ion-icon></button>'+
+        '<button class="btn-action" onclick="event.stopPropagation();var a=toggleWishlist(\''+product.id+'\',event);this.querySelector(\'.wl-icon\').innerHTML=icon(a?\'heart\':\'heartOutline\')" title="Wishlist"><span class="wl-icon">'+icon(isWishlisted(product.id)?'heart':'heartOutline')+'</span></button>'+
+        '<button class="btn-action" onclick="event.stopPropagation();addToCart(\''+product.id+'\')" title="Add to Cart">'+icon('bagAdd')+'</button>'+
       '</div>'+
     '</div>'+
     '<div class="showcase-content">'+

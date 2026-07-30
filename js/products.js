@@ -2,8 +2,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "24k-gold-elixir", name: "24K Gold Elixir Serum", category: "skincare", price: 4199, originalPrice: 5199,
     description: "A light-as-air serum infused with pure 24K gold flakes, rosehip oil, and vitamin C. Brightens, firms, and delivers that unmistakable golden-hour glow. Because your skin is gold.",
-    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop"],
     stock: 85, featured: true, rating: 4.8, reviews: 234, reviewsData: [{user:"Priya S.",rating:5,comment:"This serum is pure magic. My skin has never glowed like this!","date":"2026-07-15"},{user:"Ananya K.",rating:5,comment:"Worth every rupee. The gold flakes feel so luxurious."}],
     ingredients: "24K Gold Flakes, Rosehip Oil, Vitamin C, Hyaluronic Acid, Jojoba Oil, Vitamin E",
     howToUse: "Apply 3-4 drops to clean, damp skin morning and evening. Gently press into face and neck. Your skin is gold.",
@@ -15,8 +15,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "pure-gold-lip-oil", name: "Pure Gold Lip Oil", category: "makeup", price: 1999,
     description: "A lightweight, non-sticky tinted lip oil infused with real gold shimmer. Hydrates for 12 hours, leaving lips with a sheer golden tint. Lip care that celebrates you.",
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1632169893949-70273471c237?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop"],
     stock: 120, featured: true, rating: 4.6, reviews: 189, reviewsData: [],
     ingredients: "Vitamin E, Shea Butter, Jojoba Oil, Gold Mica, Hyaluronic Acid",
     howToUse: "Apply directly to lips. Wear alone for a golden glow or layer over lipstick.",
@@ -25,8 +25,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "golden-hour-highlighter", name: "Golden Hour Highlighter", category: "makeup", price: 2899, originalPrice: 3499,
     description: "A silky, ultra-refined highlighter that captures golden hour in a compact. Buildable from a subtle glow to a blinding radiance.",
-    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop"],
     stock: 64, featured: true, rating: 4.9, reviews: 312, reviewsData: [],
     ingredients: "Mica, Squalane, Vitamin E, Pearl Powder, Gold Pigments",
     howToUse: "Apply to cheekbones, brow bone, cupid's bow. Because golden hour looks good on you.",
@@ -46,7 +46,7 @@ const DEFAULT_PRODUCTS = [
     id: "gilded-eye-palette", name: "Gilded Eye Palette", category: "makeup", price: 4899,
     description: "12 richly pigmented shades inspired by gold in all its forms — matte earth tones, shimmering metallics, and a pure gold foil.",
     image: "https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop"],
     stock: 45, featured: false, rating: 4.7, reviews: 423, reviewsData: [],
     ingredients: "Mica, Talc, Dimethicone, Zinc Stearate, Vitamin E",
     howToUse: "Use matte shades to define the crease. Pat gold shimmer onto center lid with fingertip."
@@ -54,8 +54,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "pearl-gold-cream", name: "Pearl & Gold Face Cream", category: "skincare", price: 5399, originalPrice: 6499,
     description: "A decadent, whipped face cream infused with crushed freshwater pearls and colloidal gold. Deeply nourishes, firms, and restores luminosity.",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop"],
     stock: 38, featured: true, rating: 4.9, reviews: 156, reviewsData: [],
     ingredients: "Pearl Powder, Colloidal Gold, Marine Collagen, Ceramides, Peptides, Niacinamide",
     howToUse: "Apply a pearl-sized amount to face and neck. Massage upward.", badge: "Premium"
@@ -63,8 +63,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "midnight-gold-mascara", name: "Midnight Gold Mascara", category: "makeup", price: 2399,
     description: "Dramatic volume with a subtle gold shimmer that catches the light. Our signature hourglass wand defines every lash without clumping.",
-    image: "https://images.unsplash.com/photo-1583241800698-3b7f4b51cebf?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1583241800698-3b7f4b51cebf?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop"],
     stock: 150, featured: false, rating: 4.4, reviews: 567, reviewsData: [],
     ingredients: "Beeswax, Carnauba Wax, Panthenol, Biotin, Castor Oil, Gold Pigments",
     howToUse: "Wiggle wand from root to tip. Layer for more drama. Your eyes, your power."
@@ -72,8 +72,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "honey-glow-lip-gloss", name: "Honey Glow Lip Gloss", category: "makeup", price: 1599, originalPrice: 1999,
     description: "High-shine, honey-infused gloss with a subtle plumping effect. Non-sticky, utterly addictive. Sweet like honey, golden like you.",
-    image: "https://images.unsplash.com/photo-1632169893949-70273471c237?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1632169893949-70273471c237?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop"],
     stock: 200, featured: true, rating: 4.3, reviews: 345, reviewsData: [],
     ingredients: "Honey Extract, Hyaluronic Acid, Peptides, Vitamin E, Jojoba Oil",
     howToUse: "Apply directly to lips. Wear alone or layer. Shine on.",
@@ -83,7 +83,7 @@ const DEFAULT_PRODUCTS = [
     id: "ancient-gold-retinol", name: "Ancient Gold Retinol Oil", category: "skincare", price: 5999,
     description: "A potent yet gentle retinol treatment suspended in a golden oil blend. Time-release technology minimizes irritation while maximizing results.",
     image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1617897903246-719242758050?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1617897903246-719242758050?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"],
     stock: 52, featured: false, rating: 4.7, reviews: 198, reviewsData: [],
     ingredients: "Retinol (0.5%), Bakuchiol, Gold, Squalane, Ceramides, Rosehip Oil",
     howToUse: "Apply 1 pump to clean face at night. Start 3x/week, build to nightly. Always use SPF."
@@ -92,7 +92,7 @@ const DEFAULT_PRODUCTS = [
     id: "golden-touch-brushes", name: "Golden Touch Brush Set", category: "tools", price: 7499, originalPrice: 9999,
     description: "A 15-piece professional brush collection with gold-plated ferrules and sustainably sourced bamboo handles. Every stroke is a golden touch.",
     image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop"],
     stock: 30, featured: false, rating: 4.8, reviews: 89, reviewsData: [],
     ingredients: "Bamboo handles, synthetic Taklon bristles, gold-plated ferrules",
     howToUse: "Set includes: Powder, Foundation, Concealer, Blush, Contour, Highlighter, 4 Eye, 2 Blending, Angled, Brow, Lip brush."
@@ -100,8 +100,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "treasure-chest-set", name: "The Treasure Chest", category: "sets", price: 10999, originalPrice: 14999,
     description: "Our signature gift set — the ultimate GScosmatics experience. Includes 24K Gold Elixir, Golden Hour Highlighter, Honey Glow Lip Gloss, and a golden velvet pouch.",
-    image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&h=600&fit=crop"],
     stock: 25, featured: true, rating: 5.0, reviews: 67, reviewsData: [],
     ingredients: "See individual products inside the set",
     howToUse: "Includes: 24K Gold Elixir (30ml), Golden Hour Highlighter (Champagne), Honey Glow Lip Gloss (Clear Honey), Golden Velvet Pouch.", badge: "Gift Set"
@@ -109,8 +109,8 @@ const DEFAULT_PRODUCTS = [
   {
     id: "gold-cleansing-balm", name: "Pure Gold Cleansing Balm", category: "skincare", price: 2999,
     description: "A lush, oil-rich balm that melts away makeup, sunscreen, and the day's weight. Transforms from balm to oil to milk.",
-    image: "https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=600&h=600&fit=crop",
-    images: ["https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop"],
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop",
+    images: ["https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"],
     stock: 78, featured: false, rating: 4.6, reviews: 234, reviewsData: [],
     ingredients: "Moringa Oil, Sunflower Seed Oil, Shea Butter, Colloidal Gold, Chamomile, Vitamin E",
     howToUse: "Massage onto dry skin. Add water to emulsify. Rinse away. Feel the gold."

@@ -74,16 +74,19 @@ input::placeholder,textarea::placeholder{font:inherit}
 .header-main{padding:20px 0;border-bottom:1px solid var(--cultured)}
 @media(min-width:480px){.header-main{padding:25px 0}}
 .header-main .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.header-logo{font-family:'Poppins',sans-serif;font-weight:var(--weight-700);font-size:2rem;letter-spacing:-1px}
+.header-logo{font-family:'Poppins',sans-serif;font-weight:var(--weight-700);font-size:1.5rem;letter-spacing:-1px}
+@media(min-width:480px){.header-logo{font-size:1.75rem}}
+@media(min-width:1024px){.header-logo{font-size:2rem}}
 .header-logo span{color:var(--salmon-pink)}
 .header-search-container{position:relative;display:flex;align-items:center;flex:1;max-width:400px}
 .header-search-container .search-field{font-size:var(--fs-7);color:var(--onyx);padding:10px 15px;padding-right:50px;border:1px solid var(--cultured);border-radius:var(--radius-md)}
 .header-search-container .search-field:focus{border-color:var(--salmon-pink)}
 .header-search-container .search-btn{position:absolute;right:2px;top:2px;bottom:2px;background:var(--white);color:var(--onyx);width:40px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:18px;transition:var(--transition)}
 .header-search-container .search-btn:hover{color:var(--salmon-pink)}
-.header-user-actions{display:none;gap:15px}
-@media(min-width:1024px){.header-user-actions{display:flex}}
-.header-user-actions .action-btn{position:relative;font-size:35px;color:var(--onyx);padding:5px}
+.header-user-actions{display:none;gap:6px}
+@media(min-width:1024px){.header-user-actions{display:flex;gap:15px}}
+.header-user-actions .action-btn{position:relative;font-size:24px;color:var(--onyx);padding:4px}
+@media(min-width:1024px){.header-user-actions .action-btn{font-size:35px;padding:5px}}
 .header-user-actions .count{background:var(--bittersweet);color:var(--white);font-size:12px;font-weight:var(--weight-500);line-height:1;padding:2px 4px;border-radius:var(--radius-lg);position:absolute;top:-2px;right:-3px;display:none}
 
 /* ── HAMBURGER ── */
@@ -432,9 +435,10 @@ footer{background:var(--eerie-black);padding:30px 0}
   .desktop-navigation-menu{display:none}
 }
 @media(max-width:380px){
-  .header-logo{font-size:1.5rem}
-  .header-user-actions .action-btn{font-size:22px}
   .container{padding:0 10px}
+  .header-logo{font-size:1.2rem}
+  .header-main .container{gap:8px}
+  .header-user-actions{gap:2px}
 }
 @media(max-width:479px){
   .banner-title{font-size:1.1rem}

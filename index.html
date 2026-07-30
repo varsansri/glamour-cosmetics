@@ -2,7 +2,7 @@
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>GScosmatics — Your skin is gold. | Premium Indian Beauty</title>
 <meta name="description" content="GScosmatics — Premium cosmetics for Indian skin. Clean, cruelty-free, made with love. Free shipping above ₹999.">
-<meta property="og:title" content="GScosmatics — Your skin is gold."><meta property="og:description" content="Premium cosmetics crafted for Indian skin. Your skin is gold."><meta property="og:type" content="website"><meta property="og:image" content="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=630&fit=crop">
+<meta property="og:title" content="GScosmatics — Your skin is gold."><meta property="og:description" content="Premium cosmetics crafted for Indian skin. Your skin is gold."><meta property="og:type" content="website"><meta property="og:image" content="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=630&fit=crop">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,13 +15,13 @@
 <header>
   <div class="header-top">Free shipping above ₹999 ✨ | COD available 🇮🇳 | Use <strong>GOLDEN15</strong> for 15% off</div>
   <div class="header-main"><div class="container">
-    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><ion-icon name="menu-outline"></ion-icon></button>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <a href="index.html" class="header-logo">GScosmatics<span>.</span></a>
-    <div class="header-search-container"><input type="search" class="search-field" placeholder="Search products..." onkeydown="if(event.key==='Enter'){window.location.href='products.html?q='+encodeURIComponent(this.value)}"><button class="search-btn" onclick="window.location.href='products.html?q='+encodeURIComponent(document.querySelector('.search-field').value)"><ion-icon name="search-outline"></ion-icon></button></div>
+    <div class="header-search-container"><input type="search" class="search-field" placeholder="Search products..." onkeydown="if(event.key==='Enter'){window.location.href='products.html?q='+encodeURIComponent(this.value)}"><button class="search-btn" onclick="window.location.href='products.html?q='+encodeURIComponent(document.querySelector('.search-field').value)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg></button></div>
     <div class="header-user-actions">
-      <a href="admin/login.html" class="action-btn"><ion-icon name="person-outline"></ion-icon></a>
-      <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count wishlist-count" style="display:none">0</span></a>
-      <a href="cart.html" class="action-btn" id="cart-icon-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count">0</span></a>
+      <a href="admin/login.html" class="action-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5"/></svg></a>
+      <a href="wishlist.html" class="action-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="count wishlist-count" style="display:none">0</span></a>
+      <a href="cart.html" class="action-btn" id="cart-icon-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12.5a1 1 0 0 1-1 1.5H6a1 1 0 0 1-1-1.5z"/><path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2"/></svg><span class="count" id="cart-count">0</span></a>
     </div>
   </div></div>
   
@@ -40,11 +40,11 @@
 
 <!-- MOBILE NAV DRAWER -->
 <div class="overlay" id="overlay" onclick="toggleMobileNav()"></div>
-<nav class="mobile-navigation-menu" id="mobile-nav"><div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><ion-icon name="close-outline"></ion-icon></button></div>
+<nav class="mobile-navigation-menu" id="mobile-nav"><div class="menu-top"><h2 class="menu-title">Menu</h2><button class="menu-close-btn" onclick="toggleMobileNav()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
 <ul class="mobile-menu-category-list">
   <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
   <li class="menu-category"><a href="products.html" class="menu-title">Shop</a></li>
-  <li class="menu-category"><button class="accordion-menu" onclick="toggleAccordion(this)"><p class="menu-title" style="padding:0">Categories</p><div><ion-icon name="add-outline" class="add-icon"></ion-icon><ion-icon name="remove-outline" class="remove-icon"></ion-icon></div></button><ul class="submenu-category-list"><li><a href="products.html?cat=skincare" class="submenu-title">Skincare</a></li><li><a href="products.html?cat=makeup" class="submenu-title">Makeup</a></li><li><a href="products.html?cat=tools" class="submenu-title">Tools</a></li><li><a href="products.html?cat=sets" class="submenu-title">Gift Sets</a></li></ul></li>
+  <li class="menu-category"><button class="accordion-menu" onclick="toggleAccordion(this)"><p class="menu-title" style="padding:0">Categories</p><div><svg class="add-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="remove-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M5 12h14"/></svg></div></button><ul class="submenu-category-list"><li><a href="products.html?cat=skincare" class="submenu-title">Skincare</a></li><li><a href="products.html?cat=makeup" class="submenu-title">Makeup</a></li><li><a href="products.html?cat=tools" class="submenu-title">Tools</a></li><li><a href="products.html?cat=sets" class="submenu-title">Gift Sets</a></li></ul></li>
   <li class="menu-category"><a href="about.html" class="menu-title">About</a></li>
   <li class="menu-category"><a href="contact.html" class="menu-title">Contact</a></li>
   <li class="menu-category"><a href="track.html" class="menu-title">Track Order</a></li>
@@ -53,16 +53,16 @@
 
 <!-- MOBILE BOTTOM NAV -->
 <div class="mobile-bottom-navigation">
-  <button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="menu-outline"></ion-icon></button>
-  <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count" id="cart-count-mobile">0</span></a>
-  <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
-  <a href="products.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon></a>
-  <button class="action-btn" onclick="toggleMobileNav()"><ion-icon name="grid-outline"></ion-icon></button>
+  <button class="action-btn" onclick="toggleMobileNav()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a href="cart.html" class="action-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12.5a1 1 0 0 1-1 1.5H6a1 1 0 0 1-1-1.5z"/><path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2"/></svg><span class="count" id="cart-count-mobile">0</span></a>
+  <a href="index.html" class="action-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/></svg></a>
+  <a href="products.html" class="action-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+  <button class="action-btn" onclick="toggleMobileNav()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg></button>
 </div>
 
 <!-- HERO -->
 <div class="banner"><div class="container"><div class="slider-container">
-  <div class="slider-item"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=600&fit=crop" alt="GScosmatics Gold Serum" class="banner-img"><div class="banner-content"><p class="banner-subtitle">New Arrival</p><h2 class="banner-title">Your skin<br>is gold.</h2><p class="banner-text">24K Gold Elixir — starting at ₹4,199</p><a href="product.html?id=24k-gold-elixir" class="banner-btn">Shop Now</a></div></div>
+  <div class="slider-item"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop" alt="GScosmatics Gold Serum" class="banner-img"><div class="banner-content"><p class="banner-subtitle">New Arrival</p><h2 class="banner-title">Your skin<br>is gold.</h2><p class="banner-text">24K Gold Elixir — starting at ₹4,199</p><a href="product.html?id=24k-gold-elixir" class="banner-btn">Shop Now</a></div></div>
 </div></div></div>
 
 <!-- TRUST BAR -->
@@ -75,15 +75,15 @@
 
 <!-- SHOP BY CONCERN -->
 <div class="category reveal"><div class="container"><h2 class="title">Shop by Skin Concern<a href="products.html" class="view-all">View All →</a></h2><div class="category-item-container">
-  <div class="category-item" onclick="location.href='products.html?q=acne'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=300&h=300&fit=crop" alt="Acne"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Acne & Blemishes</h3></div><a class="category-btn">Cleanse & Clarify →</a></div></div>
+  <div class="category-item" onclick="location.href='products.html?q=acne'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=300&h=300&fit=crop" alt="Acne"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Acne & Blemishes</h3></div><a class="category-btn">Cleanse & Clarify →</a></div></div>
   <div class="category-item" onclick="location.href='products.html?q=aging'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1617897903246-719242758050?w=300&h=300&fit=crop" alt="Anti-aging"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Aging & Fine Lines</h3></div><a class="category-btn">Firm & Restore →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?q=pigmentation'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=300&h=300&fit=crop" alt="Dark spots"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Dark Spots & Pigmentation</h3></div><a class="category-btn">Brighten & Even →</a></div></div>
+  <div class="category-item" onclick="location.href='products.html?q=pigmentation'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=300&h=300&fit=crop" alt="Dark spots"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Dark Spots & Pigmentation</h3></div><a class="category-btn">Brighten & Even →</a></div></div>
   <div class="category-item" onclick="location.href='products.html?q=glow'" style="min-width:calc(50% - 8px)"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=300&h=300&fit=crop" alt="Dull skin"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Dull & Tired Skin</h3></div><a class="category-btn">Glow & Revive →</a></div></div>
 </div></div></div><div class="category-item-container">
   <div class="category-item" onclick="location.href='products.html?cat=skincare'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?w=300&h=300&fit=crop" alt="Skincare"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Skincare</h3></div><a href="products.html?cat=skincare" class="category-btn">Show all →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?cat=makeup'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=300&h=300&fit=crop" alt="Makeup"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Makeup</h3></div><a href="products.html?cat=makeup" class="category-btn">Show all →</a></div></div>
+  <div class="category-item" onclick="location.href='products.html?cat=makeup'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?w=300&h=300&fit=crop" alt="Makeup"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Makeup</h3></div><a href="products.html?cat=makeup" class="category-btn">Show all →</a></div></div>
   <div class="category-item" onclick="location.href='products.html?cat=tools'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop" alt="Tools"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Tools</h3></div><a href="products.html?cat=tools" class="category-btn">Show all →</a></div></div>
-  <div class="category-item" onclick="location.href='products.html?cat=sets'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=300&h=300&fit=crop" alt="Gift Sets"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Gift Sets</h3></div><a href="products.html?cat=sets" class="category-btn">Show all →</a></div></div>
+  <div class="category-item" onclick="location.href='products.html?cat=sets'"><div class="category-img-box"><img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=300&h=300&fit=crop" alt="Gift Sets"></div><div class="category-content-box"><div class="category-content-flex"><h3 class="category-item-title">Gift Sets</h3></div><a href="products.html?cat=sets" class="category-btn">Show all →</a></div></div>
 </div></div></div>
 
 <!-- FEATURED PRODUCTS -->
@@ -118,7 +118,7 @@
 </div></div></div>
 <div class="product-featured reveal"><div class="container"><h2 class="title">Deal of the Day</h2>
   <div class="showcase-container"><div class="showcase">
-    <div class="showcase-banner"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500&h=500&fit=crop" alt="24K Gold Elixir"></div>
+    <div class="showcase-banner"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&h=500&fit=crop" alt="24K Gold Elixir"></div>
     <div class="showcase-content">
       <a href="product.html?id=24k-gold-elixir"><h3 class="showcase-title" style="font-size:var(--fs-3);color:var(--eerie-black);font-weight:var(--weight-600);text-transform:uppercase;margin-bottom:8px">24K Gold Elixir Serum</h3></a>
       <p style="font-size:var(--fs-7);color:var(--sonic-silver);margin-bottom:10px">Pure 24K gold flakes meet rosehip oil. The serum that made us famous. Brightens, firms, transforms.</p>
@@ -174,7 +174,7 @@ var _routineType='am';
 function switchRoutine(t){_routineType=t;document.getElementById('r-am').style.background=t==='am'?'var(--eerie-black)':'var(--salmon-pink)';document.getElementById('r-pm').style.background=t==='pm'?'var(--eerie-black)':'var(--salmon-pink)';renderRoutine()}
 function renderRoutine(){
   var g=document.getElementById('routine-steps');if(!g)return;
-  var s=_routineType==='am'?[{n:1,name:'Cleanse',d:'Start fresh with Pure Gold Cleansing Balm',img:'https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=200&h=200&fit=crop',pr:'₹2,999',id:'gold-cleansing-balm'},{n:2,name:'Treat',d:'Apply 24K Gold Elixir to damp skin',img:'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop',pr:'₹4,199',id:'24k-gold-elixir'},{n:3,name:'Protect',d:'Finish with Pearl & Gold Cream + SPF',img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&h=200&fit=crop',pr:'₹5,399',id:'pearl-gold-cream'}]:[{n:1,name:'Cleanse',d:'Remove makeup with Pure Gold Cleansing Balm',img:'https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=200&h=200&fit=crop',pr:'₹2,999',id:'gold-cleansing-balm'},{n:2,name:'Repair',d:'Ancient Gold Retinol Oil overnight',img:'https://images.unsplash.com/photo-1617897903246-719242758050?w=200&h=200&fit=crop',pr:'₹5,999',id:'ancient-gold-retinol'},{n:3,name:'Restore',d:'Seal with Pearl & Gold Face Cream',img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&h=200&fit=crop',pr:'₹5,399',id:'pearl-gold-cream'}];
+  var s=_routineType==='am'?[{n:1,name:'Cleanse',d:'Start fresh with Pure Gold Cleansing Balm',img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=200&h=200&fit=crop',pr:'₹2,999',id:'gold-cleansing-balm'},{n:2,name:'Treat',d:'Apply 24K Gold Elixir to damp skin',img:'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=200&h=200&fit=crop',pr:'₹4,199',id:'24k-gold-elixir'},{n:3,name:'Protect',d:'Finish with Pearl & Gold Cream + SPF',img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=200&h=200&fit=crop',pr:'₹5,399',id:'pearl-gold-cream'}]:[{n:1,name:'Cleanse',d:'Remove makeup with Pure Gold Cleansing Balm',img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=200&h=200&fit=crop',pr:'₹2,999',id:'gold-cleansing-balm'},{n:2,name:'Repair',d:'Ancient Gold Retinol Oil overnight',img:'https://images.unsplash.com/photo-1617897903246-719242758050?w=200&h=200&fit=crop',pr:'₹5,999',id:'ancient-gold-retinol'},{n:3,name:'Restore',d:'Seal with Pearl & Gold Face Cream',img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=200&h=200&fit=crop',pr:'₹5,399',id:'pearl-gold-cream'}];
   g.innerHTML=s.map(function(x){return '<div class="timeline-step"><div class="timeline-connector"></div><div class="timeline-node">'+x.n+'</div><img class="timeline-img" src="'+x.img+'" alt="'+x.name+'" loading="lazy"><div class="timeline-body"><h3>'+x.name+'</h3><p>'+x.d+'</p><p class="timeline-price">'+x.pr+' <a href="product.html?id='+x.id+'" style="color:var(--sonic-silver);font-weight:400;text-decoration:underline">View →</a></p></div></div>'}).join('')}
 renderRoutine();
 

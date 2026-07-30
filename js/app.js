@@ -159,8 +159,8 @@ function buildReviews(product) {
   
   html += '<div class="reviews-list">';
   if (data.length === 0) html += '<p style="font-size:13px;color:var(--text-light)">No reviews yet. Be the first!</p>';
-  else data.forEach(function(r) {
-    html += '<div class="review-item"><div class="review-item-header"><strong>' + r.user + '</strong><span>' + renderStars(r.rating) + ' · ' + r.date + '</span></div><p>' + r.comment + '</p></div>';
+  else data.forEach(function(R) {
+    html += '<div class="review-item"><div class="review-item-header"><strong>' + R.user + ' <span class="review-verified">✓ Verified Buyer</span></strong><span>' + renderStars(R.rating) + ' · ' + R.date + '</span></div><p>' + R.comment + '</p></div>';
   });
   html += '</div>';
   

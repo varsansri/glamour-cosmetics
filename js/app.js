@@ -158,7 +158,7 @@ function initProductDetail() {
       '<div class="accordion">' +
         '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Ingredients</button><div class="accordion-content"><p>' + (product.ingredients || 'N/A') + '</p></div></div>' +
         '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">How to Use</button><div class="accordion-content"><p>' + (product.howToUse || 'N/A') + '</p></div></div>' +
-        '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Shipping & Returns</button><div class="accordion-content"><p>Free shipping on orders over ₹4,150. 30-day hassle-free returns. All products are cruelty-free and vegan.</p></div></div>' +
+        '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Shipping & Returns</button><div class="accordion-content"><p>Free shipping on orders above ₹999. Delivery in 5-7 business days across India. Cash on Delivery available. 30-day easy returns.</p></div></div>' +
       '</div>' +
     '</div></div></div></section>';
     

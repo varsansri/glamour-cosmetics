@@ -8,14 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 .razorpay-note{font-size:11px;color:var(--gray-500);text-align:center;margin-top:6px}
-.rzp-logos{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:8px;flex-wrap:wrap}
-.rzp-badge{background:var(--gray-100);padding:4px 10px;border-radius:4px;font-size:11px;color:var(--gray-700);font-weight:500}
+.rzp-logos{display:flex;gap:6px;justify-content:center;align-items:center;margin-top:8px;flex-wrap:wrap}
+.rzp-badge{background:var(--gray-100);padding:3px 9px;border-radius:4px;font-size:11px;color:var(--gray-700);font-weight:500}
 .test-hint{background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:10px 14px;font-size:11px;color:#92400e;margin-bottom:14px;line-height:1.6}
 .test-hint strong{display:block;margin-bottom:3px;font-size:12px}
 .payment-processing{display:none;text-align:center;padding:40px 0}
 .payment-processing.show{display:block}
 .spinner{width:44px;height:44px;border:3px solid var(--gray-200);border-top:3px solid var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
 @keyframes spin{to{transform:rotate(360deg)}}
+.shipping-option{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-xs);cursor:pointer;margin-bottom:7px;transition:all .2s}
+.shipping-option.active{border-color:var(--primary);background:var(--primary-light)}
+.shipping-option input{accent-color:var(--primary)}
+.shipping-option label{cursor:pointer;flex:1;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.shipping-option small{font-size:11px;color:var(--gray-500);display:block}
+.pin-status{font-size:11px;margin-top:4px;min-height:16px}
+.pin-ok{color:var(--success)}
+.pin-fail{color:var(--danger)}
+.estimated-delivery{background:#e8f5e9;border-radius:6px;padding:8px 12px;font-size:12px;color:var(--success);margin-top:8px}
+.estimated-delivery strong{display:block;margin-bottom:1px}
 </style>
 </head>
 <body>
@@ -42,43 +52,85 @@
     <div id="checkout-content">
       <h1>Checkout</h1>
       <div class="checkout-layout">
-        <div class="checkout-form-col">
 
+        <div class="checkout-form-col">
           <div class="checkout-section-box">
             <h3>Contact Information</h3>
             <div class="form-row">
               <div class="form-group"><label>Email *</label><input type="email" id="c-email" required placeholder="you@example.com"></div>
-              <div class="form-group"><label>Phone *</label><input type="tel" id="c-phone" required placeholder="+91 9876543210"></div>
+              <div class="form-group"><label>Phone *</label><input type="tel" id="c-phone" required placeholder="+91 9876543210" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
             </div>
           </div>
 
           <div class="checkout-section-box">
             <h3>Shipping Address</h3>
             <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required placeholder="Priya Sharma"></div>
-            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required placeholder="123, MG Road"></div>
-            <div class="form-group"><label>Landmark, apartment, etc.</label><input type="text" id="c-apt" placeholder="Near City Mall"></div>
+            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required placeholder="Flat 4B, Sunrise Apartments, MG Road"></div>
+            <div class="form-group"><label>Landmark (optional)</label><input type="text" id="c-apt" placeholder="Near City Mall"></div>
             <div class="form-row three">
-              <div class="form-group"><label>City *</label><input type="text" id="c-city" required placeholder="Mumbai"></div>
-              <div class="form-group"><label>State *</label><input type="text" id="c-state" required placeholder="Maharashtra"></div>
-              <div class="form-group"><label>PIN Code *</label><input type="text" id="c-zip" required placeholder="400001"></div>
+              <div class="form-group"><label>City / District *</label><input type="text" id="c-city" required placeholder="Mumbai"></div>
+              <div class="form-group"><label>State *</label><select id="c-state" required>
+                <option value="">Select state</option>
+                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option selected>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Delhi</option><option>Chandigarh</option><option>Puducherry</option>
+              </select></div>
+              <div class="form-group"><label>PIN Code *</label><input type="text" id="c-zip" required placeholder="400001" maxlength="6" oninput="checkPincode(this.value);this.value=this.value.replace(/[^0-9]/g,'')"><div class="pin-status" id="pin-status"></div></div>
             </div>
           </div>
 
+          <div class="checkout-section-box" id="shipping-box">
+            <h3>Shipping Method</h3>
+            <div class="shipping-option active" id="ship-standard" onclick="selectShipping('standard')">
+              <input type="radio" name="shipping" value="standard" checked>
+              <label>
+                <span><strong>Standard Delivery</strong><br><small>5-7 business days via BlueDart / Delhivery</small></span>
+                <span id="ship-standard-price">₹49</span>
+              </label>
+            </div>
+            <div class="shipping-option" id="ship-express" onclick="selectShipping('express')">
+              <input type="radio" name="shipping" value="express">
+              <label>
+                <span><strong>Express Delivery</strong><br><small>2-3 business days via BlueDart Air</small></span>
+                <span id="ship-express-price">₹99</span>
+              </label>
+            </div>
+            <div class="shipping-option" style="border-style:dashed" id="ship-free" onclick="selectShipping('free')">
+              <input type="radio" name="shipping" value="free">
+              <label>
+                <span><strong>Free Shipping</strong><br><small>5-7 business days · Orders above ₹999</small></span>
+                <span style="color:var(--success);font-weight:600">FREE</span>
+              </label>
+            </div>
+            <div class="estimated-delivery" id="delivery-estimate" style="display:none"></div>
+          </div>
+
           <div class="checkout-section-box" id="payment-section">
-            <h3>Payment</h3>
+            <h3>Payment Method</h3>
             <div class="test-hint">
               <strong>🧪 Test Mode</strong>
-              This is a demo. Click "Place Order" to see Razorpay Checkout with UPI, cards, netbanking & wallets. No real money is charged.
+              This is a demo. Click "Place Order" to see Razorpay Checkout. No real money is charged.
             </div>
-            <p style="font-size:13px;color:var(--gray-700);margin-bottom:12px;line-height:1.6">
-              Complete your purchase securely via <strong>Razorpay</strong>. We accept all major payment methods.
-            </p>
-            <div class="rzp-logos">
-              <span class="rzp-badge">📱 UPI</span>
-              <span class="rzp-badge">💳 Cards</span>
-              <span class="rzp-badge">🏦 Netbanking</span>
-              <span class="rzp-badge">🪪 Wallet</span>
-              <span class="rzp-badge">📱 EMI</span>
+
+            <div class="payment-options">
+              <label class="payment-option active" onclick="selectPayment('online')">
+                <input type="radio" name="payment" value="online" checked>
+                <span>💳 Pay Online (UPI / Card / Netbanking)</span>
+              </label>
+              <label class="payment-option" onclick="selectPayment('cod')">
+                <input type="radio" name="payment" value="cod">
+                <span>📦 Cash on Delivery <small style="color:var(--gray-500)">(+₹49 COD charge)</small></span>
+              </label>
+            </div>
+
+            <div id="online-payment-section">
+              <p style="font-size:13px;color:var(--gray-700);margin-bottom:10px;line-height:1.6">
+                Pay securely via Razorpay. All major payment methods supported.
+              </p>
+              <div class="rzp-logos">
+                <span class="rzp-badge">📱 UPI</span>
+                <span class="rzp-badge">💳 Cards</span>
+                <span class="rzp-badge">🏦 Netbanking</span>
+                <span class="rzp-badge">🪪 Wallet</span>
+              </div>
             </div>
 
             <div class="payment-processing" id="payment-processing">
@@ -96,10 +148,11 @@
             <div id="checkout-items"></div>
             <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">₹0.00</span></div>
             <div class="summary-row"><span>Shipping</span><span id="co-shipping">—</span></div>
+            <div class="summary-row" id="cod-row" style="display:none"><span>COD Charge</span><span id="co-cod">₹0.00</span></div>
             <div class="summary-row"><span>GST (18%)</span><span id="co-tax">₹0.00</span></div>
             <div class="summary-row total"><span>Total</span><span id="co-total">₹0.00</span></div>
             <button class="btn btn-primary btn-lg btn-block" id="pay-button" onclick="startPayment()">
-              <span id="pay-button-text">Pay <span id="pay-amount">₹0.00</span></span>
+              <span id="pay-button-text">Place Order · <span id="pay-amount">₹0.00</span></span>
             </button>
             <p class="secure-note">🔒 Secure checkout · 128-bit SSL encrypted</p>
           </div>
@@ -113,10 +166,10 @@
   <div class="modal-content order-confirm">
     <div class="success-icon">✅</div>
     <h2>Order Placed!</h2>
-    <p>Thank you for your purchase, <strong id="customer-name-display"></strong>!</p>
-    <p>Order <strong id="order-id-display"></strong> has been confirmed.</p>
-    <p>Payment ID: <strong id="payment-id-display"></strong></p>
-    <p style="font-size:13px;color:var(--gray-500)">A confirmation email will be sent to <span id="email-display"></span></p>
+    <p>Thank you, <strong id="customer-name-display"></strong>!</p>
+    <p>Order <strong id="order-id-display"></strong> confirmed</p>
+    <p>Payment: <strong id="payment-info-display"></strong></p>
+    <p style="font-size:13px;color:var(--gray-500)">Tracking details sent to <span id="email-display"></span></p>
     <div class="confirm-actions">
       <a href="index.html" class="btn btn-primary">Continue Shopping</a>
       <button class="btn btn-outline" onclick="document.getElementById('confirmation-modal').style.display='none'">Close</button>
@@ -131,9 +184,100 @@
 <script src="js/cart.js"></script>
 <script src="js/app.js"></script>
 <script>
-// ── RAZORPAY CONFIG ──
-// Replace with your keys from: https://dashboard.razorpay.com/app/keys
-var RAZORPAY_KEY_ID = 'rzp_test_SRossAV0KomF8P'; // test key — replace with yours
+var RAZORPAY_KEY_ID = 'rzp_test_SRossAV0KomF8P';
+var isPaymentOnline = true;
+var selectedShipping = 'standard';
+var pincodeOk = true;
+
+function checkPincode(val) {
+  var el = document.getElementById("pin-status");
+  if (!val || val.length < 6) { el.textContent = ''; pincodeOk = true; return; }
+  pincodeOk = val.length === 6 && /^[1-9][0-9]{5}$/.test(val);
+  if (pincodeOk) {
+    var pin = parseInt(val);
+    if (pin >= 110001 && pin <= 110099) el.innerHTML = '<span class="pin-ok">✓ Delhi — 5-7 days</span>';
+    else if (pin >= 400001 && pin <= 400199) el.innerHTML = '<span class="pin-ok">✓ Mumbai — 5-7 days</span>';
+    else if (pin >= 560001 && pin <= 560100) el.innerHTML = '<span class="pin-ok">✓ Bengaluru — 5-7 days</span>';
+    else if (pin >= 700001 && pin <= 700159) el.innerHTML = '<span class="pin-ok">✓ Kolkata — 7-9 days</span>';
+    else if (pin >= 600001 && pin <= 600120) el.innerHTML = '<span class="pin-ok">✓ Chennai — 5-7 days</span>';
+    else if (pin >= 500001 && pin <= 500099) el.innerHTML = '<span class="pin-ok">✓ Hyderabad — 5-7 days</span>';
+    else if (pin >= 380001 && pin <= 380099) el.innerHTML = '<span class="pin-ok">✓ Ahmedabad — 5-7 days</span>';
+    else if (pin >= 110000 && pin <= 999999) el.innerHTML = '<span class="pin-ok">✓ Serviceable — 7-10 days</span>';
+    else el.innerHTML = '<span class="pin-fail">✗ Please enter a valid 6-digit PIN code</span>';
+  } else {
+    el.innerHTML = '<span class="pin-fail">✗ Invalid PIN code</span>';
+    pincodeOk = false;
+  }
+}
+
+function selectShipping(method) {
+  selectedShipping = method;
+  document.querySelectorAll('.shipping-option').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('ship-' + method).classList.add('active');
+  document.querySelector('input[name="shipping"][value="' + method + '"]').checked = true;
+  updateTotals();
+}
+
+function selectPayment(method) {
+  isPaymentOnline = method === 'online';
+  document.querySelectorAll('.payment-option').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelector('input[name="payment"][value="' + method + '"]').parentElement.classList.add('active');
+  document.querySelector('input[name="payment"][value="' + method + '"]').checked = true;
+  document.getElementById("online-payment-section").style.display = isPaymentOnline ? "block" : "none";
+  document.getElementById("cod-row").style.display = isPaymentOnline ? "none" : "table-row";
+  updateTotals();
+}
+
+function updateTotals() {
+  var subtotal = getCartTotal();
+  var shipping = selectedShipping === 'free' ? 0 : (selectedShipping === 'express' ? 99 : 49);
+  var freeThreshold = 999;
+  
+  if (subtotal >= freeThreshold) {
+    shipping = 0;
+    document.getElementById('ship-standard-price').textContent = 'FREE';
+    document.getElementById('ship-express-price').textContent = '₹49';
+    document.getElementById('ship-free').style.borderColor = 'var(--success)';
+  } else {
+    document.getElementById('ship-standard-price').textContent = '₹49';
+    document.getElementById('ship-express-price').textContent = '₹99';
+    document.getElementById('ship-free').style.borderColor = '';
+  }
+  
+  var cod = !isPaymentOnline ? 49 : 0;
+  var taxable = subtotal + shipping + cod;
+  var tax = taxable * 0.18;
+  var total = taxable + tax;
+
+  document.getElementById("co-subtotal").textContent = "₹" + subtotal.toFixed(2);
+  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "₹" + shipping.toFixed(2);
+  document.getElementById("co-cod").textContent = cod > 0 ? "₹" + cod.toFixed(2) : "₹0.00";
+  document.getElementById("co-tax").textContent = "₹" + tax.toFixed(2);
+  document.getElementById("co-total").textContent = "₹" + total.toFixed(2);
+  document.getElementById("pay-amount").textContent = "₹" + total.toFixed(2);
+
+  var btnText = isPaymentOnline ? "Pay ₹" : "Place Order · ₹";
+  document.getElementById("pay-button-text").innerHTML = btnText + total.toFixed(2);
+
+  window._orderShipping = shipping;
+  window._orderCod = cod;
+  window._orderTax = tax;
+  window._orderTotal = total;
+  window._orderSubtotal = subtotal;
+
+  updateDeliveryEstimate();
+}
+
+function updateDeliveryEstimate() {
+  var el = document.getElementById("delivery-estimate");
+  var now = new Date();
+  var days = selectedShipping === 'express' ? 2 : (selectedShipping === 'free' ? 6 : 5);
+  var minDate = new Date(now.getTime() + days * 86400000);
+  var maxDate = new Date(now.getTime() + (days + (selectedShipping === 'express' ? 1 : 2)) * 86400000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  el.style.display = "block";
+  el.innerHTML = '<strong>Estimated Delivery:</strong> ' + minDate.getDate() + ' ' + months[minDate.getMonth()] + ' – ' + maxDate.getDate() + ' ' + months[maxDate.getMonth()] + ' ' + maxDate.getFullYear();
+}
 
 function renderCheckout() {
   var cart = getCart();
@@ -147,23 +291,11 @@ function renderCheckout() {
 
   var itemsHtml = "";
   cart.forEach(function(item) {
-    var imgHtml = '<img src="' + item.image + '" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'">';
+    var imgHtml = '<img src="' + item.image + '" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:18px>📦</span>\'">';
     itemsHtml += '<div class="co-item"><div class="co-item-img">' + imgHtml + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>₹' + (item.price * item.qty).toFixed(2) + '</div></div>';
   });
   document.getElementById("checkout-items").innerHTML = itemsHtml;
-
-  var subtotal = getCartTotal();
-  var shipping = subtotal >= 4150 ? 0 : 499;
-  var tax = (subtotal + shipping) * 0.18;
-  var total = subtotal + shipping + tax;
-
-  document.getElementById("co-subtotal").textContent = "₹" + subtotal.toFixed(2);
-  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "₹" + shipping.toFixed(2);
-  document.getElementById("co-tax").textContent = "₹" + tax.toFixed(2);
-  document.getElementById("co-total").textContent = "₹" + total.toFixed(2);
-  document.getElementById("pay-amount").textContent = "₹" + total.toFixed(2);
-  window._orderTotalINR = total;
-  window._orderTotalUSD = totalUSD;
+  updateTotals();
 }
 
 function startPayment() {
@@ -172,41 +304,48 @@ function startPayment() {
   var phone = document.getElementById("c-phone").value.trim();
   var address = document.getElementById("c-address").value.trim();
   var city = document.getElementById("c-city").value.trim();
+  var zip = document.getElementById("c-zip").value.trim();
 
-  if (!name || !email || !phone || !address || !city) {
+  if (!name || !email || !phone || !address || !city || !zip) {
     showToast("Please fill all required fields marked with *");
     return;
   }
+  if (zip.length !== 6 || !/^[1-9][0-9]{5}$/.test(zip)) {
+    showToast("Please enter a valid 6-digit Indian PIN code");
+    return;
+  }
 
-  var amountInPaise = Math.round(window._orderTotalINR * 100);
+  if (!isPaymentOnline) {
+    // Cash on Delivery — skip Razorpay, place order directly
+    document.getElementById("payment-processing").classList.add("show");
+    var order = createOrder(name, email, phone, address, null);
+    setTimeout(function() {
+      document.getElementById("payment-processing").classList.remove("show");
+      showConfirmation(order, name, email, 'Cash on Delivery');
+    }, 1200);
+    return;
+  }
 
+  // Online payment via Razorpay
   var options = {
     key: RAZORPAY_KEY_ID,
-    amount: amountInPaise,
+    amount: Math.round(window._orderTotal * 100),
     currency: "INR",
     name: "Glamour Cosmetics",
     description: "Beauty Products Order",
     image: "https://cdn-icons-png.flaticon.com/128/991/991952.png",
-    prefill: {
-      name: name,
-      email: email,
-      contact: phone
-    },
+    prefill: { name: name, email: email, contact: phone },
     notes: {
       address: address + (document.getElementById("c-apt").value ? ", " + document.getElementById("c-apt").value : ""),
-      city: city,
-      state: document.getElementById("c-state").value,
-      zip: document.getElementById("c-zip").value
+      shipping: selectedShipping, city: city, state: document.getElementById("c-state").value, zip: zip
     },
     theme: { color: "#d4a574" },
-    modal: {
-      ondismiss: function() {
-        showToast("Payment cancelled. You can try again.");
-      }
-    },
+    modal: { ondismiss: function() { showToast("Payment cancelled."); } },
     handler: function(response) {
       document.getElementById("payment-processing").classList.add("show");
-      finalizeOrder(name, email, phone, address, response);
+      var order = createOrder(name, email, phone, address, response);
+      document.getElementById("payment-processing").classList.remove("show");
+      showConfirmation(order, name, email, 'Razorpay · ' + response.razorpay_payment_id);
     }
   };
 
@@ -217,13 +356,11 @@ function startPayment() {
   rzp.open();
 }
 
-function finalizeOrder(name, email, phone, address, paymentResponse) {
+function createOrder(name, email, phone, address, paymentResponse) {
   var cart = getCart();
   var orderId = "GC-" + Date.now().toString(36).toUpperCase();
-
   var order = {
-    id: orderId,
-    date: new Date().toISOString(),
+    id: orderId, date: new Date().toISOString(),
     customer: {
       name: name, email: email, phone: phone,
       address: address + (document.getElementById("c-apt").value ? " " + document.getElementById("c-apt").value : ""),
@@ -231,26 +368,24 @@ function finalizeOrder(name, email, phone, address, paymentResponse) {
       state: document.getElementById("c-state").value,
       zip: document.getElementById("c-zip").value
     },
-    items: cart.map(function(i) {
-      return { productId: i.id, name: i.name, price: i.price, qty: i.qty };
-    }),
-    subtotal: getCartTotal(),
-    total: window._orderTotalINR,
-    status: "confirmed",
-    paymentMethod: "razorpay",
-    razorpayPaymentId: paymentResponse.razorpay_payment_id,
-    razorpayOrderId: paymentResponse.razorpay_order_id,
-    razorpaySignature: paymentResponse.razorpay_signature
+    items: cart.map(function(i) { return { productId: i.id, name: i.name, price: i.price, qty: i.qty }; }),
+    subtotal: window._orderSubtotal, shipping: window._orderShipping, codCharge: window._orderCod,
+    tax: window._orderTax, total: window._orderTotal, shippingMethod: selectedShipping,
+    status: "confirmed", paymentMethod: isPaymentOnline ? "razorpay" : "cod",
+    razorpayPaymentId: paymentResponse ? paymentResponse.razorpay_payment_id : null,
+    razorpayOrderId: paymentResponse ? paymentResponse.razorpay_order_id : null,
+    razorpaySignature: paymentResponse ? paymentResponse.razorpay_signature : null
   };
-
   addOrder(order);
   saveCart([]);
   updateCartCount();
+  return order;
+}
 
-  document.getElementById("payment-processing").classList.remove("show");
+function showConfirmation(order, name, email, paymentInfo) {
   document.getElementById("customer-name-display").textContent = name;
-  document.getElementById("order-id-display").textContent = orderId;
-  document.getElementById("payment-id-display").textContent = paymentResponse.razorpay_payment_id;
+  document.getElementById("order-id-display").textContent = order.id;
+  document.getElementById("payment-info-display").textContent = paymentInfo;
   document.getElementById("email-display").textContent = email;
   document.getElementById("confirmation-modal").style.display = "flex";
 }

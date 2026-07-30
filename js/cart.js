@@ -62,7 +62,7 @@ function renderCartPage() {
   if (itemsEl) itemsEl.innerHTML = html;
   
   const subtotal = getCartTotal();
-  const shipping = subtotal >= 4150 ? 0 : 499;
+  const shipping = subtotal >= 999 ? 0 : 49;
   const tax = (subtotal + shipping) * 0.18;
   const total = subtotal + shipping + tax;
   

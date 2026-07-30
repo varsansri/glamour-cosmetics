@@ -113,6 +113,9 @@ const DEFAULT_PRODUCTS = [
   }
 ];
 
+function formatINR(amount) { return '₹' + amount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
+function formatINR2(amount) { return '₹' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
 var COUPONS = { "GOLDEN15": { type: "percent", value: 15, minOrder: 999 }, "KANAK200": { type: "flat", value: 200, minOrder: 1499 }, "WELCOME10": { type: "percent", value: 10, minOrder: 0 } };
 
 var PRODUCT_STORE_KEY = "glamour_products", ORDER_STORE_KEY = "glamour_orders";

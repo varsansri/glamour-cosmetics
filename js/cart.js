@@ -90,7 +90,7 @@ function renderCartPage() {
   var html = '<div class="cart-items-list">';
   cart.forEach(function(item) {
     var maxQty = item.maxStock || 99;
-    html += '<div class="cart-item"><div class="cart-item-img"><img src="' + item.image + '" alt="" onerror="this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'" style="width:100%;height:100%;object-fit:cover"></div><div class="cart-item-info"><h4>' + item.name + '</h4><p>₹' + item.price.toFixed(2) + '</p></div><div class="cart-item-qty"><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty - 1) + ')">−</button><span>' + item.qty + '</span><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty + 1) + ')">+</button></div><div class="cart-item-total">₹' + (item.price * item.qty).toFixed(2) + '</div><button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\')">✕</button></div>';
+    html += '<div class="cart-item"><div class="cart-item-img"><img src="' + item.image + '" alt="" onerror="this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'" style="width:100%;height:100%;object-fit:cover"></div><div class="cart-item-info"><h4>' + item.name + '</h4><p>' + formatINR(item.price) + '</p></div><div class="cart-item-qty"><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty - 1) + ')">−</button><span>' + item.qty + '</span><button onclick="updateCartQty(\'' + item.id + '\',' + (item.qty + 1) + ')">+</button></div><div class="cart-item-total">' + formatINR(item.price * item.qty) + '</div><button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\')">✕</button></div>';
   });
   html += '</div>';
   if (itemsEl) itemsEl.innerHTML = html;
@@ -103,11 +103,13 @@ function renderCartPage() {
   
   var tax = (subtotal - discount + shipping) * 0.18;
   var total = subtotal - discount + shipping + tax;
+
+  var subEl = document.getElementById("cart-subtotal"), shipEl = document.getElementById("cart-shipping"), taxEl = document.getElementById("cart-tax"), totalEl = document.getElementById("cart-total");
   
-  if (subEl) subEl.textContent = '₹' + subtotal.toFixed(2);
-  if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : '₹' + shipping.toFixed(2);
-  if (taxEl) taxEl.textContent = '₹' + tax.toFixed(2);
-  if (totalEl) totalEl.textContent = '₹' + total.toFixed(2);
+  if (subEl) subEl.textContent = formatINR(subtotal);
+  if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : formatINR(shipping);
+  if (taxEl) taxEl.textContent = formatINR(tax);
+  if (totalEl) totalEl.textContent = formatINR(total);
   
   var discRow = document.getElementById("cart-discount-row");
   var discEl = document.getElementById("cart-discount");
@@ -136,7 +138,7 @@ function updateShippingProgress(subtotal) {
     document.getElementById("progress-fill").style.width = "100%";
   } else {
     var remaining = threshold - subtotal;
-    document.getElementById("progress-text").innerHTML = 'Add <strong>₹' + remaining.toFixed(2) + '</strong> more for free shipping';
+    document.getElementById("progress-text").innerHTML = 'Add <strong>' + formatINR(remaining) + '</strong> more for free shipping';
     document.getElementById("progress-fill").style.width = progress.toFixed(0) + "%";
   }
 }

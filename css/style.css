@@ -393,8 +393,15 @@ img{max-width:100%;display:block}
 .page-404 h1{font-size:48px;margin-bottom:12px}
 .page-404 p{color:var(--text-light);font-size:16px;margin-bottom:30px}
 
-/* ═══ SITE TAG (SEO) ═══ */
-.site-tag{text-align:center;padding:20px;font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--text-light);opacity:.6}
+/* ═══ COOKIE BANNER ═══ */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--espresso);color:var(--white);padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:16px;z-index:300;font-size:13px;flex-wrap:wrap}
+.cookie-banner a{color:var(--gold);text-decoration:underline}
+.cookie-banner .btn{flex-shrink:0}
+
+/* ═══ FLASH SALE ═══ */
+.flash-sale{text-align:center}
+
+/* ═══ SITE TAG ═══ */
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1024px){

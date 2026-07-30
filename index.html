@@ -1,171 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kanak — Your skin is gold.</title>
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kanak — Your skin is gold. | Premium Indian Beauty</title>
+<meta name="description" content="Kanak means gold in Sanskrit. Premium cosmetics crafted for Indian skin — clean, conscious, and made with love. Free shipping above ₹999.">
+<meta property="og:title" content="Kanak — Your skin is gold."><meta property="og:description" content="Premium cosmetics crafted for Indian skin. Clean, conscious, made with love."><meta property="og:type" content="website"><meta property="og:image" content="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=630&fit=crop">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✨</text></svg>">
 <link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
+</head><body>
 
-<header class="header">
-  <div class="header-top"><p>Free shipping above ₹999 ✨ | COD available 🇮🇳</p></div>
-  <div class="header-main">
-    <div class="container">
-      <a href="index.html" class="logo">Kanak</a>
-      <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="products.html">Shop</a>
-        <a href="products.html?cat=skincare">Skincare</a>
-        <a href="products.html?cat=makeup">Makeup</a>
-        <a href="index.html#about">About</a>
-      </nav>
-      <div class="header-icons">
-        <a href="cart.html" class="cart-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span class="cart-count" id="cart-count">0</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+<div class="cookie-banner" id="cookie-banner"><p>We use cookies to give you the best experience. <a href="privacy.html">Learn more</a></p><button class="btn btn-sm btn-primary" onclick="acceptCookies()">Got it</button></div>
 
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-tag">Kanak — Sanskrit for Gold</div>
-    <h1>Because <em>your skin</em><br>is gold.</h1>
-    <p class="hero-slogan">Your skin is gold.</p>
-    <p>Premium cosmetics crafted for Indian skin. Every product celebrates the natural radiance that is already within you. Clean, conscious, and made with love.</p>
-    <div class="hero-btns">
-      <a href="products.html" class="btn btn-primary">Explore the Collection</a>
-      <a href="#about" class="btn btn-outline">Our Story</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-shape"></div>
-    <div class="hero-product-card">
-      <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop" alt="24K Gold Elixir">
-      <span class="hero-product-label">Best Seller</span>
-      <p>24K Gold Elixir</p>
-      <small>₹4,199</small>
-    </div>
-  </div>
-</section>
+<header class="header"><div class="header-top"><p>Free shipping above ₹999 ✨ | COD available 🇮🇳 | Try code <strong>GOLDEN15</strong> for 15% off</p></div>
+<div class="header-main"><div class="container"><a href="index.html" class="logo">Kanak</a><button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
+<nav class="nav" id="main-nav"><a href="index.html" class="active">Home</a><a href="products.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+<div class="header-icons"><a href="cart.html" class="cart-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cart-count">0</span></a></div></div></div></header>
+<div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" onclick="closeMobileNav()">✕</button><a href="index.html" onclick="closeMobileNav()">Home</a><a href="products.html" onclick="closeMobileNav()">Shop</a><a href="about.html" onclick="closeMobileNav()">About</a><a href="contact.html" onclick="closeMobileNav()">Contact</a><a href="cart.html" onclick="closeMobileNav()">Cart</a><a href="track.html" onclick="closeMobileNav()">Track Order</a><a href="admin/login.html" onclick="closeMobileNav()">Admin</a></div>
 
-<div class="slogan-strip">
-  <p>Your skin is gold. Treat it that way.</p>
-</div>
+<section class="hero"><div class="hero-content"><div class="hero-tag">Kanak — Sanskrit for Gold</div><h1>Because <em>your skin</em><br>is gold.</h1><p class="hero-slogan">Your skin is gold.</p><p>Premium cosmetics crafted for Indian skin. Every product celebrates the natural radiance that is already within you. Clean, conscious, vegan, and made with love.</p><div class="hero-btns"><a href="products.html" class="btn btn-primary">Shop Collection</a><a href="about.html" class="btn btn-outline">Our Story</a></div></div><div class="hero-visual"><div class="hero-shape"></div><div class="hero-product-card"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=200&h=200&fit=crop" alt="24K Gold Elixir" loading="lazy"><span class="hero-product-label">Best Seller</span><p>24K Gold Elixir</p><small>₹4,199</small></div></div></section>
 
-<section class="categories">
-  <div class="container">
-    <h2>Shop by Ritual</h2>
-    <div class="cat-grid">
-      <a href="products.html?cat=skincare" class="cat-card">
-        <div class="cat-icon">🧴</div><h3>Skincare</h3><p>Serums, creams & oils that feed your gold</p>
-      </a>
-      <a href="products.html?cat=makeup" class="cat-card">
-        <div class="cat-icon">💄</div><h3>Makeup</h3><p>Colors that celebrate, never hide</p>
-      </a>
-      <a href="products.html?cat=tools" class="cat-card">
-        <div class="cat-icon">🪥</div><h3>Tools</h3><p>Every golden touch matters</p>
-      </a>
-      <a href="products.html?cat=sets" class="cat-card">
-        <div class="cat-icon">🎁</div><h3>Gift Sets</h3><p>For the precious people in your life</p>
-      </a>
-    </div>
-  </div>
-</section>
+<div class="slogan-strip"><p>Your skin is gold. Treat it that way.</p></div>
 
-<section class="featured">
-  <div class="container">
-    <h2>The Gold Standard</h2>
-    <div class="product-grid" id="featured-products"></div>
-  </div>
-</section>
+<section class="trust-badges"><div class="container"><div class="trust-grid"><div class="trust-item"><div class="trust-icon">🐰</div><strong>100% Cruelty-Free</strong><span>PETA Certified</span></div><div class="trust-item"><div class="trust-icon">🌿</div><strong>Clean Ingredients</strong><span>No parabens or sulfates</span></div><div class="trust-item"><div class="trust-icon">🇮🇳</div><strong>Made for India</strong><span>22 foundation shades</span></div><div class="trust-item"><div class="trust-icon">🚚</div><strong>Free Shipping</strong><span>On orders above ₹999</span></div></div></div></section>
 
-<section class="promo">
-  <div class="container">
-    <div class="promo-content">
-      <span>New Launch</span>
-      <h2>The Gold Edit<br>Summer 2026</h2>
-      <p>A limited-edition collection inspired by the molten gold of Indian summers. Three new shades. One golden rule: you are enough.</p>
-      <a href="products.html" class="btn btn-primary">Shop the Edit</a>
-    </div>
-  </div>
-</section>
+<section class="flash-sale" id="flash-sale" style="background:var(--espresso);padding:24px 0;display:none"><div class="container" style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap"><div style="color:var(--gold);font-weight:700;font-size:18px">⚡ Flash Sale — 20% off sitewide!</div><div id="flash-timer" style="color:var(--white);font-size:28px;font-weight:700;font-family:monospace;background:rgba(255,255,255,.1);padding:8px 16px;border-radius:6px">00:00:00</div><a href="products.html" class="btn btn-primary">Shop Now</a></div></section>
 
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text">
-        <span class="label">Our Philosophy</span>
-        <h2>Beauty is not a standard.<br>It's an inheritance.</h2>
-        <p>In Sanskrit, <em>Kanak</em> means gold — and we believe every person carries gold within them. Our products don't create beauty. They reveal what's already there.</p>
-        <p>Every formulation is clean, cruelty-free, and designed specifically for Indian skin tones and climates. No parabens, no sulfates, no compromises.</p>
-        <div class="about-stats">
-          <div><strong>100%</strong><span>Cruelty-Free</span></div>
-          <div><strong>22</strong><span>Foundation Shades</span></div>
-          <div><strong>50K+</strong><span>Golden Community</span></div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="about-img-placeholder">✨</div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="categories"><div class="container"><h2>Shop by Ritual</h2><div class="cat-grid"><a href="products.html?cat=skincare" class="cat-card"><div class="cat-icon">🧴</div><h3>Skincare</h3><p>Serums, creams & oils</p></a><a href="products.html?cat=makeup" class="cat-card"><div class="cat-icon">💄</div><h3>Makeup</h3><p>Colors that celebrate</p></a><a href="products.html?cat=tools" class="cat-card"><div class="cat-icon">🪥</div><h3>Tools</h3><p>Every golden touch</p></a><a href="products.html?cat=sets" class="cat-card"><div class="cat-icon">🎁</div><h3>Gift Sets</h3><p>For precious people</p></a></div></div></section>
 
-<section class="newsletter">
-  <div class="container">
-    <h2>The Golden Circle</h2>
-    <p>Join 50,000+ who get early access to launches, skincare rituals, and 15% off your first order. Gold comes to those who subscribe.</p>
-    <form class="newsletter-form" id="newsletter-form">
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit" class="btn btn-primary">Join Free</button>
-    </form>
-  </div>
-</section>
+<section class="featured"><div class="container"><h2>The Gold Standard</h2><div class="product-grid" id="featured-products"></div></div></section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h3>Kanak</h3>
-        <p class="slogan-footer">Your skin is gold.</p>
-        <p>Premium cosmetics crafted for Indian skin. Clean, conscious, made with love.</p>
-      </div>
-      <div>
-        <h4>Shop</h4>
-        <a href="products.html?cat=skincare">Skincare</a>
-        <a href="products.html?cat=makeup">Makeup</a>
-        <a href="products.html?cat=tools">Tools</a>
-        <a href="products.html?cat=sets">Gift Sets</a>
-      </div>
-      <div>
-        <h4>Help</h4>
-        <a href="#">Shipping & Returns</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Track Order</a>
-      </div>
-      <div>
-        <h4>Connect</h4>
-        <a href="#">Instagram</a>
-        <a href="#">YouTube</a>
-        <a href="#">Pinterest</a>
-        <a href="#">WhatsApp</a>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div>
-  </div>
-</footer>
+<section class="promo"><div class="container"><div class="promo-content"><span>Limited Edition</span><h2>The Gold Edit<br>Summer 2026</h2><p>A limited-edition collection inspired by the molten gold of Indian summers. Three new shades, one golden rule: you are enough.</p><a href="products.html" class="btn btn-primary">Shop the Edit</a></div></div></section>
 
+<section class="about" id="about"><div class="container"><div class="about-grid"><div class="about-text"><span class="label">Our Philosophy</span><h2>Beauty is not a standard.<br>It's an inheritance.</h2><p>In Sanskrit, <em>Kanak</em> means gold — and we believe every person carries gold within them. Our products don't create beauty. They reveal what's already there.</p><p>Every formulation is clean, cruelty-free, and designed specifically for Indian skin tones and climates.</p><div class="about-stats"><div><strong>100%</strong><span>Cruelty-Free</span></div><div><strong>22</strong><span>Foundation Shades</span></div><div><strong>50K+</strong><span>Golden Community</span></div></div></div><div class="about-visual"><div class="about-img-placeholder">✨</div></div></div></div></section>
+
+<section class="newsletter"><div class="container"><h2>The Golden Circle</h2><p>Join 50,000+ for early access to launches, skincare rituals, and 15% off your first order.</p><form class="newsletter-form" id="newsletter-form"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn btn-primary">Join Free</button></form></div></section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Kanak</h3><p class="slogan-footer">Your skin is gold.</p><p>Premium cosmetics crafted for Indian skin. Clean, conscious, made with love.</p></div><div><h4>Shop</h4><a href="products.html?cat=skincare">Skincare</a><a href="products.html?cat=makeup">Makeup</a><a href="products.html?cat=tools">Tools</a><a href="products.html?cat=sets">Gift Sets</a></div><div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="contact.html">Contact Us</a><a href="track.html">Track Order</a></div><div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="returns.html">Return Policy</a></div></div><div class="footer-bottom"><p>&copy; 2026 Kanak. All rights reserved. Your skin is gold. ✨</p></div></div></footer>
+
+<a href="https://wa.me/919XXXXXXXXX" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><span>💬</span></a>
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 <div class="toast" id="toast"></div>
-<script src="js/products.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/app.js"></script>
-</body>
-</html>
+
+<script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/app.js"></script>
+<script>
+(function flashSale(){var now=new Date();var end=new Date(now);end.setHours(23,59,59,0);var t=end-now;if(t<3600000)return;document.getElementById("flash-sale").style.display="block";var el=document.getElementById("flash-timer");function tick(){var r=end-new Date();if(r<=0){el.textContent="00:00:00";return}var h=Math.floor(r/3600000),m=Math.floor((r%3600000)/60000),s=Math.floor((r%60000)/1000);el.textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}tick();setInterval(tick,1000)})();
+function acceptCookies(){document.getElementById("cookie-banner").style.display="none";localStorage.setItem("cookies_accepted","true")}
+if(localStorage.getItem("cookies_accepted"))document.getElementById("cookie-banner").style.display="none";
+</script>
+</body></html>

@@ -14,7 +14,7 @@ function renderProductCard(product) {
     '<span class="product-category">' + product.category + '</span>' +
     '<h3>' + product.name + '</h3>' +
     '<div class="product-stars">' + renderStars(product.rating) + '<span>(' + product.reviews + ')</span></div>' +
-    '<div class="product-price"><span class="current">₹' + product.price.toFixed(2) + '</span>' + (product.originalPrice ? '<span class="original">₹' + product.originalPrice.toFixed(2) + '</span>' : '') + '</div>' +
+    '<div class="product-price"><span class="current">' + formatINR(product.price) + '</span>' + (product.originalPrice ? '<span class="original">' + formatINR(product.originalPrice) + '</span>' : '') + '</div>' +
     '<button class="btn btn-sm btn-primary" onclick="event.stopPropagation();addToCart(\'' + product.id + '\')">Add to Cart</button>' +
     '</div></div>';
 }
@@ -104,11 +104,11 @@ function initProductDetail() {
     '<p class="breadcrumb"><a href="products.html">Shop</a> / <a href="products.html?cat=' + product.category + '">' + product.category + '</a> / ' + product.name + '</p>' +
     '<h1>' + product.name + '</h1>' +
     '<div class="product-stars">' + renderStars(product.rating) + ' <span>' + product.rating + ' (' + product.reviews + ' reviews)</span></div>' +
-    '<div class="product-price large"><span class="current">₹' + product.price.toFixed(2) + '</span>' + (product.originalPrice ? '<span class="original">₹' + product.originalPrice.toFixed(2) + '</span>' : '') + (discount > 0 ? '<span class="save-badge">Save ' + discount + '%</span>' : '') + '</div>' +
+    '<div class="product-price large"><span class="current">' + formatINR(product.price) + '</span>' + (product.originalPrice ? '<span class="original">' + formatINR(product.originalPrice) + '</span>' : '') + (discount > 0 ? '<span class="save-badge">Save ' + discount + '%</span>' : '') + '</div>' +
     '<p class="product-description">' + product.description + '</p>' +
     colorsHtml +
     '<div class="qty-selector"><span>Quantity:</span><button onclick="changeQty(-1)">−</button><input type="number" id="qty-input" value="1" min="1" max="10" onchange="updateQty(this.value)"><button onclick="changeQty(1)">+</button></div>' +
-    '<div class="product-actions"><button class="btn btn-primary btn-lg" onclick="addToCartWithQty()" ' + (product.stock < 1 ? 'disabled' : '') + '>Add to Cart — ₹' + product.price.toFixed(2) + '</button><button class="btn btn-outline btn-lg" onclick="buyNow()">Buy Now</button></div>' +
+    '<div class="product-actions"><button class="btn btn-primary btn-lg" onclick="addToCartWithQty()" ' + (product.stock < 1 ? 'disabled' : '') + '>Add to Cart — ' + formatINR(product.price) + '</button><button class="btn btn-outline btn-lg" onclick="buyNow()">Buy Now</button></div>' +
     '<div class="product-meta"><p>' + (product.stock > 0 ? '<span class="in-stock">✓ In Stock</span> — ' + product.stock + ' left' : '<span class="out-stock">✕ Out of Stock</span>') + '</p></div>' +
     '<div class="share-buttons"><span style="font-size:12px;color:var(--text-light);margin-right:4px">Share:</span>' +
     '<button class="share-btn" onclick="shareProduct(\'whatsapp\')" title="WhatsApp">📱</button>' +

@@ -470,3 +470,259 @@ footer{background:var(--eerie-black);padding:30px 0}
 .sticky-atc-bar{position:fixed;bottom:70px;left:0;right:0;background:var(--white);padding:10px 16px;box-shadow:0 -4px 16px rgba(0,0,0,.08);z-index:90;display:none;align-items:center;gap:12px}@media(max-width:1023px){.sticky-atc-bar.show{display:flex}}@media(min-width:1024px){.sticky-atc-bar{display:none}}
 .sticky-atc-bar .sticky-name{font-size:var(--fs-8);font-weight:var(--weight-600);color:var(--eerie-black);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sticky-atc-bar .sticky-price{font-size:var(--fs-7);font-weight:var(--weight-700);color:var(--salmon-pink)}
+/* ═══════════════════════════════════════════
+   EMIL KOWALSKI — Motion Layer
+   Proper easing, spring physics, stagger
+   All Anon classes preserved — motion only
+   ═══════════════════════════════════════════ */
+
+/* Spring easing function */
+:root{--spring-ease:cubic-bezier(0.34,1.56,0.64,1);--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-in-out:cubic-bezier(0.4,0,0.2,1)}
+
+/* Button spring on hover */
+.btn,.add-cart-btn,.banner-btn{transition:transform 0.25s var(--spring-ease),box-shadow 0.25s var(--ease-in-out),background 0.2s ease}
+
+/* Product card hover spring */
+.showcase{transition:transform 0.35s var(--spring-ease),box-shadow 0.35s var(--ease-in-out),border-color 0.25s ease}
+
+/* Image zoom with proper easing */
+.showcase-banner img{transition:transform 0.5s var(--spring-ease)}
+
+/* Category card hover */
+.category-item{transition:transform 0.3s var(--spring-ease)}
+.category-item:hover{transform:translateY(-4px)}
+
+/* Banner content entrance animation */
+.banner-content{animation:fadeUp 0.8s var(--ease-out-expo) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* Staggered product grid entrance */
+.product-grid .showcase{animation:cardIn 0.6s var(--ease-out-expo) both}
+.product-grid .showcase:nth-child(1){animation-delay:0.05s}
+.product-grid .showcase:nth-child(2){animation-delay:0.1s}
+.product-grid .showcase:nth-child(3){animation-delay:0.15s}
+.product-grid .showcase:nth-child(4){animation-delay:0.2s}
+.product-grid .showcase:nth-child(5){animation-delay:0.25s}
+.product-grid .showcase:nth-child(6){animation-delay:0.3s}
+.product-grid .showcase:nth-child(7){animation-delay:0.35s}
+.product-grid .showcase:nth-child(8){animation-delay:0.4s}
+@keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* @media(prefers-reduced-motion){.product-grid .showcase{animation:none}} */
+
+/* Toast notification spring */
+.toast{transition:opacity 0.25s ease,transform 0.35s var(--spring-ease)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Mobile nav spring slide */
+.mobile-navigation-menu{transition:left 0.4s var(--ease-out-expo)}
+.mobile-navigation-menu.active{left:0}
+
+/* Overlay fade */
+.overlay{transition:opacity 0.35s var(--ease-in-out)}
+
+/* Button click bounce */
+.btn:active,.add-cart-btn:active,.banner-btn:active{transform:scale(0.96)!important;transition:transform 0.1s ease}
+
+/* Wishlist heart pop */
+.btn-action:active{transform:scale(0.85);transition:transform 0.15s var(--spring-ease)}
+
+/* Rating star hover spring */
+#review-stars span{transition:transform 0.2s var(--spring-ease);display:inline-block}
+#review-stars span:hover{transform:scale(1.3)}
+
+/* Focus ring animation */
+input:focus,select:focus,textarea:focus{transition:border-color 0.2s ease,box-shadow 0.3s var(--ease-out-expo)}
+
+/* Section title underline animation */
+.title{position:relative}
+.title::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:var(--salmon-pink);transition:width 0.4s var(--ease-out-expo)}
+.title:hover::after{width:60px}
+
+/* Menu underline slide */
+.menu-category>.menu-title::after{transition:transform 0.3s var(--spring-ease)}
+
+/* Back-to-top button spring */
+.back-to-top{transition:opacity 0.3s ease,transform 0.4s var(--spring-ease),background 0.2s ease}
+
+/* Sticky ATC bar slide-up */
+.sticky-atc-bar{transition:transform 0.35s var(--ease-out-expo);transform:translateY(100%)}
+.sticky-atc-bar.show{transform:translateY(0)}
+
+/* Countdown gentle pulse */
+.countdown-content{animation:pulseSoft 2s var(--ease-in-out) infinite}
+@keyframes pulseSoft{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+
+/* Newsletter input focus glow */
+.newsletter-form input:focus{box-shadow:0 0 0 4px rgba(0,0,0,.04);transition:box-shadow 0.3s var(--ease-out-expo)}
+
+/* Press strip logos subtle fade */
+.press-logos span{transition:opacity 0.3s ease}.press-logos span:hover{opacity:0.8}
+
+/* Routine step hover lift */
+.routine-step{transition:transform 0.3s var(--spring-ease)}.routine-step:hover{transform:translateY(-4px)}
+
+/* Ingredient card hover */
+.ingredient-card{transition:transform 0.3s var(--spring-ease),box-shadow 0.3s var(--ease-in-out)}
+.ingredient-card:hover{transform:translateY(-4px)}
+
+/* Footer link underline animation */
+.footer-nav-link{background:linear-gradient(var(--salmon-pink),var(--salmon-pink)) 0 100%/0 1px no-repeat;transition:background-size 0.3s var(--ease-out-expo)}
+.footer-nav-link:hover{background-size:100% 1px}
+
+/* Mega menu dropdown spring */
+.mega-dropdown{transition:opacity 0.25s ease,transform 0.3s var(--ease-out-expo),visibility 0.25s;transform:translateY(12px)}
+.menu-item:hover .mega-dropdown,.mega-dropdown:hover{transform:translateY(0)}
+
+/* Deal status bar fill animation */
+.showcase-status-bar::before{transition:width 1.5s var(--ease-out-expo)}
+
+/* Coupon input valid/invalid shake */
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+.cart-coupon-invalid{animation:shake 0.4s var(--ease-in-out)}
+
+/* Theme toggle spin */
+.theme-toggle-btn{transition:transform 0.3s var(--spring-ease),box-shadow 0.25s var(--ease-in-out)}
+
+/* Theme picker panel spring */
+.theme-picker-panel{transition:opacity 0.2s ease,transform 0.3s var(--spring-ease);transform:translateY(12px)}
+.theme-picker-panel.show{transform:translateY(0)}
+/* ═══════════════════════════════════════════
+   TASTE SKILL — Polish Layer
+   Spacing, hierarchy, focus, empty states
+   All Anon classes preserved
+   ═══════════════════════════════════════════ */
+
+/* Consistent section spacing rhythm */
+.product-featured{margin-bottom:0}
+.product-featured+.product-featured{padding-top:0}
+.category{margin-bottom:0}
+
+/* Better visual hierarchy — section titles */
+.title{letter-spacing:0.3px}
+
+/* Empty state refinement */
+.empty-state{text-align:center;padding:60px 20px;grid-column:1/-1}
+.empty-state .empty-icon{font-size:56px;margin-bottom:12px;opacity:.6}
+.empty-state h3{color:var(--eerie-black);font-size:var(--fs-4);margin-bottom:6px;font-family:'Poppins',sans-serif;font-weight:var(--weight-600)}
+.empty-state p{color:var(--sonic-silver);font-size:var(--fs-7);margin-bottom:20px;max-width:320px;margin-left:auto;margin-right:auto}
+.empty-state .add-cart-btn{display:inline-block;width:auto;padding:10px 24px}
+
+/* Better focus states for all interactive elements */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--salmon-pink);outline-offset:2px;border-radius:2px}
+
+/* Card consistency — all cards get unified treatment */
+.showcase,.category-item,.testimonial-card,.review-card,.ingredient-card{border:1px solid var(--cultured)}
+
+/* Typography micro-improvements */
+.showcase-title{font-weight:var(--weight-400)}
+.price{font-weight:var(--weight-700)}
+.add-cart-btn{letter-spacing:0.3px}
+
+/* Better touch targets on mobile */
+@media(max-width:1023px){
+  .action-btn{padding:12px 14px}
+  .add-cart-btn{padding:10px 16px}
+  .banner-btn{padding:8px 16px}
+}
+
+/* Content card spacing */
+.content-card{padding:28px 24px}@media(min-width:768px){.content-card{padding:36px 32px}}
+
+/* Newsletter section spacing */
+.newsletter .newsletter-desc{margin-bottom:0}
+
+/* Footer link spacing */
+.footer-nav-item{padding:4px 0}
+
+/* Deal section counter spacing */
+.countdown-content{padding:8px 10px}
+
+/* Review card spacing */
+.review-card{padding:24px}
+
+/* Form label spacing */
+.form-group label{margin-bottom:4px}
+
+/* Trust bar icon spacing */
+.trust-icon-wrap{display:inline-flex;align-items:center;justify-content:center}
+
+/* Press logos section */
+.press-logos{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap;padding:24px 0;opacity:.6}
+
+/* Routine builder step spacing */
+.routine-step{padding:24px 16px}
+
+/* Better divider rhythm */
+.section-divider{height:1px;background:var(--cultured);margin:40px 0;border:none}
+
+/* Sticky ATC polish */
+.sticky-atc-bar{padding:14px 20px}
+@media(max-width:1023px){.sticky-atc-bar.show{display:flex}}
+
+/* Product detail meta spacing */
+.pdp-meta{gap:16px}
+
+/* Gallery thumb active state */
+.gallery-thumb{border:2px solid transparent;transition:border-color 0.2s ease,opacity 0.2s ease}
+.gallery-thumb.active{border-color:var(--salmon-pink);opacity:1}
+
+/* Wishlist page heart icon sizing */
+.wishlist-heart{font-size:22px}
+
+/* Cookie/notification banner spacing */
+.cookie-banner{padding:14px 24px;gap:16px}
+
+/* Theme switcher spacing */
+.theme-picker-container{right:20px}
+.theme-swatch{padding:8px}
+.swatch-color{width:32px;height:32px}
+
+/* Responsive gap fixes */
+@media(max-width:767px){
+  .product-grid{gap:14px}
+  .cat-grid{gap:12px}
+  .routine-steps{gap:16px}
+  .footer-nav{gap:20px}
+  .press-logos{gap:24px}
+  .content-card{padding:20px 16px}
+}
+@media(max-width:480px){
+  .product-grid{gap:10px}
+  .showcase-content{padding:12px 14px 8px}
+  .section-header{margin-bottom:24px}
+}
+/* ═══════════════════════════════════════════
+   WEB DESIGN AGENCY — /polish pass
+   Tighten shadows, borders, responsive
+   ═══════════════════════════════════════════ */
+
+/* Consistent shadow usage */
+.showcase:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.product-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.category-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.06)}
+
+/* Smoother border transitions */
+.showcase,.product-card,.category-item,.checkout-section-box,.review-card{border:1px solid var(--cultured);transition:border-color 0.2s ease,box-shadow 0.35s var(--ease-in-out),transform 0.35s var(--spring-ease)}
+
+/* Mega menu class (referenced in animations) */
+.mega-dropdown{display:none}.menu-item:hover .mega-dropdown,.mega-dropdown:hover{display:flex}
+
+/* Print styles */
+@media print{
+  .header,.mobile-bottom-navigation,.mobile-navigation-menu,.overlay,.footer,.toast,.back-to-top,.theme-picker-container,.sticky-atc-bar,.whatsapp-float{display:none!important}
+  body{padding:0!important;font-size:12pt;color:#000;background:#fff}
+  .container{max-width:100%!important;padding:0!important}
+  .showcase{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc}
+  .add-cart-btn,.btn,.banner-btn{display:none!important}
+  a{color:#000;text-decoration:underline}
+}
+
+/* Smooth theme transitions */
+body,header,.header,.header-top,.header-main,footer,.footer,.showcase,.showcase-banner,.add-cart-btn,.btn,.banner-btn,.title,.toast,.newsletter,.promo,.banner,.category-item{transition:background-color 0.3s ease,color 0.3s ease,border-color 0.2s ease}
+
+/* Fix iOS tap highlight */
+*{-webkit-tap-highlight-color:transparent}
+
+/* Selection color */
+::selection{background:var(--salmon-pink);color:var(--white)}

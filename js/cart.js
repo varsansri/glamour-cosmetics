@@ -49,4 +49,5 @@ function updateCartCount(){var count=getCartCount();document.querySelectorAll("#
 function showToast(msg){var t=document.getElementById("toast");if(!t){t=document.createElement("div");t.id="toast";t.className="toast";document.body.appendChild(t)}t.textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},2500)}
 
 document.addEventListener("DOMContentLoaded",function(){updateCartCount();if(document.getElementById("cart-page"))renderCartPage()});
+document.addEventListener("scroll",function(){var b=document.getElementById("back-to-top");if(b)b.classList.toggle("show",window.scrollY>400)});
 window.addToCart=addToCart;window.removeFromCart=removeFromCart;window.updateCartQty=updateCartQty;window.applyCouponCode=applyCouponCode;window.renderCartPage=renderCartPage;window.showToast=showToast;

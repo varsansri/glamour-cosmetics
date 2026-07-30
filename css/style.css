@@ -460,3 +460,13 @@ footer{background:var(--eerie-black);padding:30px 0}
   #routine-steps{grid-template-columns:1fr!important;max-width:400px;margin:0 auto}
   #testimonial-grid{grid-template-columns:1fr!important}
 }
+
+/* ── BACK TO TOP ── */
+.back-to-top{position:fixed;bottom:80px;right:70px;width:40px;height:40px;border-radius:50%;background:var(--eerie-black);color:var(--white);border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:50;opacity:0;transform:translateY(20px);transition:all .3s;pointer-events:none}
+.back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:var(--salmon-pink)}@media(min-width:1024px){.back-to-top{bottom:30px;right:30px}}
+
+/* ── STICKY MOBILE ATC ── */
+.sticky-atc-bar{position:fixed;bottom:70px;left:0;right:0;background:var(--white);padding:10px 16px;box-shadow:0 -4px 16px rgba(0,0,0,.08);z-index:90;display:none;align-items:center;gap:12px}@media(max-width:1023px){.sticky-atc-bar.show{display:flex}}@media(min-width:1024px){.sticky-atc-bar{display:none}}
+.sticky-atc-bar .sticky-name{font-size:var(--fs-8);font-weight:var(--weight-600);color:var(--eerie-black);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sticky-atc-bar .sticky-price{font-size:var(--fs-7);font-weight:var(--weight-700);color:var(--salmon-pink)}

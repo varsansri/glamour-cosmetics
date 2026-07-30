@@ -7,7 +7,7 @@ function renderProductCard(product){
       '<img src="'+product.image+'" alt="'+product.name+'" loading="lazy" onerror="this.style.display=\'none\'">'+
       (product.badge?'<p class="showcase-badge'+(product.badge==='Premium'?' black':'')+(product.badge==='Gift Set'?' pink':'')+'">'+product.badge+'</p>':'')+
       '<div class="showcase-actions">'+
-        '<button class="btn-action" onclick="event.stopPropagation();addToCart(\''+product.id+'\')" title="Wishlist"><ion-icon name="heart-outline"></ion-icon></button>'+
+        '<button class="btn-action" onclick="event.stopPropagation();var a=toggleWishlist(\''+product.id+'\',event);this.querySelector(\'ion-icon\').setAttribute(\'name\',a?\'heart\':\'heart-outline\')" title="Wishlist"><ion-icon name="'+(isWishlisted(product.id)?'heart':'heart-outline')+'"></ion-icon></button>'+
         '<button class="btn-action" onclick="event.stopPropagation();addToCart(\''+product.id+'\')" title="Add to Cart"><ion-icon name="bag-add-outline"></ion-icon></button>'+
       '</div>'+
     '</div>'+
@@ -97,7 +97,7 @@ function initProductDetail(){
       reviewsHtml+='<div style="padding:12px 0;border-bottom:1px solid var(--cultured)"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="color:var(--eerie-black);font-size:var(--fs-9)">'+R.user+' <span style="color:#01AB31;font-size:10px">✓ Verified</span></strong><span style="color:var(--sonic-silver);font-size:var(--fs-10)">'+renderStars(R.rating)+' · '+R.date+'</span></div><p style="color:var(--sonic-silver);font-size:var(--fs-9)">'+R.comment+'</p></div>';
     }
   }else{reviewsHtml+='<p style="color:var(--sonic-silver);font-size:var(--fs-9)">No reviews yet. Be the first!</p>';}
-  reviewsHtml+='<div style="margin-top:15px;background:var(--white);padding:15px;border:1px solid var(--cultured);border-radius:var(--radius-md)"><p style="font-size:var(--fs-8);color:var(--eerie-black);font-weight:var(--weight-600);margin-bottom:10px">Write a Review</p><div id="review-stars" style="display:flex;gap:4px;font-size:24px;cursor:pointer;margin-bottom:8px">★☆★☆★</div><input type="text" id="review-name" placeholder="Your name" style="width:100%;padding:8px 12px;border:1px solid var(--cultured);border-radius:var(--radius-sm);font-size:var(--fs-8);margin-bottom:8px"><textarea id="review-comment" rows="3" placeholder="Share your experience..." style="width:100%;padding:8px 12px;border:1px solid var(--cultured);border-radius:var(--radius-sm);font-size:var(--fs-8);margin-bottom:8px;resize:vertical"></textarea><button class="add-cart-btn" onclick="submitReview()" style="font-size:var(--fs-9);padding:8px 16px;width:auto">Submit Review</button></div></div>';
+  reviewsHtml+='<div style="margin-top:15px;background:var(--white);padding:15px;border:1px solid var(--cultured);border-radius:var(--radius-md)"><p style="font-size:var(--fs-8);color:var(--eerie-black);font-weight:var(--weight-600);margin-bottom:10px">Write a Review</p><div id="review-stars" style="display:flex;gap:4px;font-size:24px;cursor:pointer;margin-bottom:8px">'+[1,2,3,4,5].map(function(i){return '<span onclick="setReviewRating('+i+')" style="color:var(--sandy-brown)">☆</span>'}).join('')+'</div><input type="text" id="review-name" placeholder="Your name" style="width:100%;padding:8px 12px;border:1px solid var(--cultured);border-radius:var(--radius-sm);font-size:var(--fs-8);margin-bottom:8px"><textarea id="review-comment" rows="3" placeholder="Share your experience..." style="width:100%;padding:8px 12px;border:1px solid var(--cultured);border-radius:var(--radius-sm);font-size:var(--fs-8);margin-bottom:8px;resize:vertical"></textarea><button class="add-cart-btn" onclick="submitReview()" style="font-size:var(--fs-9);padding:8px 16px;width:auto">Submit Review</button></div></div>';
 
   document.getElementById("product-detail").innerHTML=
     '<div class="container" style="padding:40px 0">'+
@@ -119,7 +119,8 @@ function initProductDetail(){
       '<div style="display:flex;gap:10px;margin-bottom:15px"><button class="add-cart-btn" style="flex:1;padding:12px 24px;font-size:var(--fs-7)" onclick="addToCartWithQty()" '+(product.stock<1?'disabled':'')+'>Add to Cart — '+formatINR(product.price)+'</button><button class="add-cart-btn" style="flex:1;padding:12px 24px;font-size:var(--fs-7);background:var(--eerie-black)" onclick="buyNow()">Buy Now</button></div>'+
       '<p style="font-size:var(--fs-8);color:'+(product.stock>0?'var(--ocean-green)':'var(--bittersweet)')+'">'+(product.stock>0?'✓ In Stock — '+product.stock+' left':'✕ Out of Stock')+'</p>'+
       reviewsHtml+
-    '</div></div></div>';
+    '</div></div></div>'+
+    '<div class="sticky-atc-bar" id="sticky-atc"><span class="sticky-name">'+product.name+'</span><span class="sticky-price">'+formatINR(product.price)+'</span><button class="add-cart-btn" onclick="addToCartWithQty()" style="padding:8px 20px;font-size:var(--fs-9);width:auto">Add to Cart</button></div>';
 
   renderRelatedProducts(id);renderRecentlyViewed();
   window._galleryImages=images;window._galleryIdx=0;
@@ -145,10 +146,10 @@ function renderRecentlyViewed(){
 
 function selectVariant(el){document.querySelectorAll(".color-tag-opt").forEach(function(t){t.style.borderColor='var(--cultured)';t.style.color='var(--sonic-silver)'});el.style.borderColor='var(--salmon-pink)';el.style.color='var(--salmon-pink)'}
 
-var reviewStarsEl;
 function setReviewRating(r){
-  var stars=document.querySelectorAll("#review-stars span");if(!stars.length)stars=document.getElementById("review-stars").children;
-  for(var i=0;i<5;i++)stars[i].textContent=i<r?'★':'☆';window._revRating=r;
+  var stars=document.querySelectorAll("#review-stars span");
+  for(var i=0;i<stars.length;i++){stars[i].textContent=i<r?'★':'☆';stars[i].style.color=i<r?'var(--sandy-brown)':'var(--sonic-silver)'}
+  window._revRating=r;
 }
 function submitReview(){
   if(!window._revRating){showToast("Click stars to rate");return}
@@ -173,4 +174,5 @@ window.galleryPrev=galleryPrev;window.galleryNext=galleryNext;
 
 document.addEventListener("DOMContentLoaded",function(){
   renderFeaturedProducts();initShopPage();initProductDetail();renderRecentlyViewed();
+  window.addEventListener("scroll",function(){var a=document.getElementById("sticky-atc");if(a)a.classList.toggle("show",window.scrollY>500)});
 });

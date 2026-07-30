@@ -30,9 +30,20 @@ function renderDashboard() {
   document.getElementById("stat-products").textContent = products.length;
   document.getElementById("stat-orders").textContent = orders.length;
   var revenue = orders.reduce(function(s, o) { return o.status !== "cancelled" ? s + o.total : s; }, 0);
-  document.getElementById("stat-revenue").textContent = "₹" + revenue.toFixed(2);
+  document.getElementById("stat-revenue").textContent = "₹" + revenue.toLocaleString('en-IN', {minimumFractionDigits:0,maximumFractionDigits:0});
   var today = new Date().toISOString().split("T")[0];
-  document.getElementById("stat-today").textContent = orders.filter(function(o) { return o.date.startsWith(today); }).length;
+  var todayOrders = orders.filter(function(o) { return o.date.startsWith(today); });
+  document.getElementById("stat-today").textContent = todayOrders.length;
+  var todayRevenue = todayOrders.reduce(function(s, o) { return s + o.total; }, 0);
+  document.getElementById("stat-today-label").textContent = "₹" + todayRevenue.toLocaleString('en-IN', {minimumFractionDigits:0,maximumFractionDigits:0}) + " today";
+  
+  // Topbar date
+  var d = new Date();
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var topbarEl = document.getElementById("topbar-date");
+  if (topbarEl) topbarEl.textContent = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  
   renderRevenueChart(orders);
   renderRecentOrders();
   renderLowStock();
@@ -81,7 +92,7 @@ function renderProductsPage(searchTerm) {
   if (searchTerm) products = products.filter(function(p) { return p.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1; });
   var tbody = document.getElementById("products-table");
   tbody.innerHTML = products.map(function(p) {
-    return '<tr><td><input type="checkbox" class="bulk-check" value="' + p.id + '" onchange="updateBulkBar()"></td><td><img src="' + p.image + '" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:4px;vertical-align:middle" onerror="this.outerHTML=\'<span>📦</span>\'"></td><td><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '</td><td><span class="tag">' + p.category + '</span></td><td>₹' + p.price.toFixed(2) + '</td><td>' + p.stock + '</td><td>⭐ ' + p.rating + '</td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
+    return '<tr><td><input type="checkbox" class="bulk-check" value="' + p.id + '" onchange="updateBulkBar()"></td><td style="display:flex;align-items:center;gap:10px"><img src="' + p.image + '" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:6px" onerror="this.outerHTML=\'<span style=font-size:22px>📦</span>\'"><div><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '<br><small style="color:var(--gray-500)">' + p.id + '</small></div></td><td><span class="tag">' + p.category + '</span></td><td>₹' + p.price.toLocaleString('en-IN') + '</td><td>' + (p.stock < 30 ? '<span class="stock-warning">' + p.stock + '</span>' : p.stock) + '</td><td>⭐ ' + p.rating + ' <small style="color:var(--gray-500)">(' + p.reviews + ')</small></td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
   }).join("");
   document.getElementById("bulk-bar").style.display = "none";
 }
@@ -92,11 +103,23 @@ function renderOrdersPage(filterStatus, searchTerm) {
   var filter = filterStatus || document.getElementById("order-status-filter").value;
   if (filter !== "all") orders = orders.filter(function(o) { return o.status === filter; });
   if (searchTerm) orders = orders.filter(function(o) { return o.id.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || o.customer.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1; });
+  
+  // Order stats mini cards
+  var allOrders = loadOrders();
+  var stats = {pending:0,confirmed:0,shipped:0,delivered:0,cancelled:0};
+  allOrders.forEach(function(o){if(stats[o.status]!==undefined)stats[o.status]++});
+  var statsEl = document.getElementById("order-stats");
+  if (statsEl) {
+    var statuses = ['pending','confirmed','shipped','delivered','cancelled'];
+    var colors = {pending:'#fef3c7',confirmed:'#dbeafe',shipped:'#e0e7ff',delivered:'#d1fae5',cancelled:'#fee2e2'};
+    statsEl.innerHTML = statuses.map(function(s){return '<div class="order-stat-mini'+(filter===s?' active':'')+'" onclick="document.getElementById(\'order-status-filter\').value=\''+s+'\';renderOrdersPage(\''+s+'\')"><span class="os-count">'+stats[s]+'</span><span class="os-label" style="color:'+(colors[s]?'var(--gray-700)':'var(--gray-500)')+'">'+s+'</span></div>'}).join('');
+  }
+  
   var tbody = document.getElementById("orders-table");
   if (orders.length === 0) { tbody.innerHTML = '<tr><td colspan="7" class="empty-cell">No orders found</td></tr>'; return; }
   tbody.innerHTML = orders.map(function(o) {
     var statusOpts = ["pending","confirmed","shipped","delivered","cancelled"].map(function(s) { return '<option value="' + s + '"' + (o.status === s ? ' selected' : '') + '>' + s.charAt(0).toUpperCase() + s.slice(1) + '</option>'; }).join("");
-    return '<tr><td><code>' + o.id + '</code></td><td><strong>' + o.customer.name + '</strong><br><small>' + o.customer.email + '</small></td><td>' + o.items.length + ' item' + (o.items.length > 1 ? 's' : '') + '</td><td>₹' + o.total.toFixed(2) + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td><td class="actions-cell"><select onchange="updateOrderStatus(\'' + o.id + '\',this.value)" class="status-select">' + statusOpts + '</select><button class="btn btn-sm btn-outline" onclick="viewOrderDetails(\'' + o.id + '\')">View</button></td></tr>';
+    return '<tr><td><code>' + o.id + '</code></td><td><strong>' + o.customer.name + '</strong><br><small>' + o.customer.email + '</small></td><td>' + o.items.length + ' item' + (o.items.length > 1 ? 's' : '') + '</td><td>₹' + o.total.toLocaleString('en-IN') + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td><td class="actions-cell"><select onchange="updateOrderStatus(\'' + o.id + '\',this.value)" class="status-select">' + statusOpts + '</select><button class="btn btn-sm btn-outline" onclick="viewOrderDetails(\'' + o.id + '\')">View</button></td></tr>';
   }).join("");
 }
 

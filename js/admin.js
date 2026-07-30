@@ -35,7 +35,7 @@ function renderDashboard() {
   document.getElementById("stat-products").textContent = products.length;
   document.getElementById("stat-orders").textContent = orders.length;
   var revenue = orders.reduce(function(s, o) { return o.status !== "cancelled" ? s + o.total : s; }, 0);
-  document.getElementById("stat-revenue").textContent = "$" + revenue.toFixed(2);
+  document.getElementById("stat-revenue").textContent = "₹" + revenue.toFixed(2);
   
   var today = new Date().toISOString().split("T")[0];
   var todayOrders = orders.filter(function(o) { return o.date.startsWith(today); });
@@ -53,7 +53,7 @@ function renderRecentOrders() {
     return;
   }
   tbody.innerHTML = orders.map(function(o) {
-    return '<tr><td><code>' + o.id + '</code></td><td>' + o.customer.name + '</td><td>$' + o.total.toFixed(2) + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td></tr>';
+    return '<tr><td><code>' + o.id + '</code></td><td>' + o.customer.name + '</td><td>₹' + o.total.toFixed(2) + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td></tr>';
   }).join("");
 }
 
@@ -65,7 +65,7 @@ function renderLowStock() {
     return;
   }
   tbody.innerHTML = products.map(function(p) {
-    return '<tr><td><img src="' + p.image + '" alt="" style="width:28px;height:28px;object-fit:cover;border-radius:3px;vertical-align:middle;margin-right:8px" onerror="this.outerHTML=\'<span>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"> ' + p.name + '</td><td>' + p.category + '</td><td>$' + p.price.toFixed(2) + '</td><td><span class="stock-warning">' + p.stock + '</span></td></tr>';
+    return '<tr><td><img src="' + p.image + '" alt="" style="width:28px;height:28px;object-fit:cover;border-radius:3px;vertical-align:middle;margin-right:8px" onerror="this.outerHTML=\'<span>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"> ' + p.name + '</td><td>' + p.category + '</td><td>₹' + p.price.toFixed(2) + '</td><td><span class="stock-warning">' + p.stock + '</span></td></tr>';
   }).join("");
 }
 
@@ -73,7 +73,7 @@ function renderProductsPage() {
   var products = loadProducts();
   var tbody = document.getElementById("products-table");
   tbody.innerHTML = products.map(function(p) {
-    return '<tr><td><span class="table-emoji"><img src="' + p.image + '" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:4px;vertical-align:middle" onerror="this.outerHTML=\'<span style=font-size:24px>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"></span></td><td><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '</td><td><span class="tag">' + p.category + '</span></td><td>$' + p.price.toFixed(2) + '</td><td>' + p.stock + '</td><td>⭐ ' + p.rating + '</td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
+    return '<tr><td><span class="table-emoji"><img src="' + p.image + '" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:4px;vertical-align:middle" onerror="this.outerHTML=\'<span style=font-size:24px>' + (p.image && p.image.length <= 4 ? p.image : '📦') + '</span>\'"></span></td><td><strong>' + p.name + '</strong>' + (p.featured ? ' <span class="table-badge">Featured</span>' : '') + '</td><td><span class="tag">' + p.category + '</span></td><td>₹' + p.price.toFixed(2) + '</td><td>' + p.stock + '</td><td>⭐ ' + p.rating + '</td><td class="actions-cell"><button class="btn btn-sm btn-outline" onclick="editProduct(\'' + p.id + '\')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteProduct(\'' + p.id + '\')">Delete</button></td></tr>';
   }).join("");
 }
 
@@ -91,7 +91,7 @@ function renderOrdersPage() {
     var statusOpts = ["pending","confirmed","shipped","delivered","cancelled"].map(function(s) {
       return '<option value="' + s + '"' + (o.status === s ? ' selected' : '') + '>' + s.charAt(0).toUpperCase() + s.slice(1) + '</option>';
     }).join("");
-    return '<tr><td><code>' + o.id + '</code></td><td><strong>' + o.customer.name + '</strong><br><small>' + o.customer.email + '</small></td><td>' + o.items.length + ' item' + (o.items.length > 1 ? 's' : '') + '</td><td>$' + o.total.toFixed(2) + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td><td class="actions-cell"><select onchange="updateOrderStatus(\'' + o.id + '\',this.value)" class="status-select">' + statusOpts + '</select><button class="btn btn-sm btn-outline" onclick="viewOrderDetails(\'' + o.id + '\')">View</button></td></tr>';
+    return '<tr><td><code>' + o.id + '</code></td><td><strong>' + o.customer.name + '</strong><br><small>' + o.customer.email + '</small></td><td>' + o.items.length + ' item' + (o.items.length > 1 ? 's' : '') + '</td><td>₹' + o.total.toFixed(2) + '</td><td><span class="status-badge status-' + o.status + '">' + o.status + '</span></td><td>' + new Date(o.date).toLocaleDateString() + '</td><td class="actions-cell"><select onchange="updateOrderStatus(\'' + o.id + '\',this.value)" class="status-select">' + statusOpts + '</select><button class="btn btn-sm btn-outline" onclick="viewOrderDetails(\'' + o.id + '\')">View</button></td></tr>';
   }).join("");
 }
 
@@ -105,13 +105,13 @@ function viewOrderDetails(orderId) {
   var orders = loadOrders();
   var order = orders.find(function(o) { return o.id === orderId; });
   if (!order) return;
-  var itemsStr = order.items.map(function(i) { return "  - " + i.name + " x" + i.qty + " @ $" + i.price; }).join("\n");
+  var itemsStr = order.items.map(function(i) { return "  - " + i.name + " x" + i.qty + " @ ₹" + i.price; }).join("\n");
   var msg = "Order: " + order.id + "\nDate: " + new Date(order.date).toLocaleString() + "\n\n" +
     "Customer: " + order.customer.name + "\nEmail: " + order.customer.email + "\n" +
     "Address: " + order.customer.address + ", " + order.customer.city + ", " + order.customer.state + " " + order.customer.zip + "\n\n" +
     "Items:\n" + itemsStr + "\n\n" +
-    "Subtotal: $" + order.subtotal.toFixed(2) + "\nShipping: $" + order.shipping.toFixed(2) + "\n" +
-    "Tax: $" + order.tax.toFixed(2) + "\nTotal: $" + order.total.toFixed(2) + "\n" +
+    "Subtotal: ₹" + order.subtotal.toFixed(2) + "\nShipping: ₹" + order.shipping.toFixed(2) + "\n" +
+    "Tax: ₹" + order.tax.toFixed(2) + "\nTotal: ₹" + order.total.toFixed(2) + "\n" +
     "Payment: " + order.paymentMethod + "\nStatus: " + order.status;
   alert(msg);
 }

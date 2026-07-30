@@ -6,21 +6,16 @@
 <title>Checkout — Glamour Cosmetics</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://js.stripe.com/v3/"></script>
 <style>
-.StripeElement{box-sizing:border-box;padding:13px 14px;border:1.5px solid var(--gray-300);border-radius:6px;background:var(--white);transition:border .2s,box-shadow .2s}
-.StripeElement--focus{border-color:var(--primary);box-shadow:0 0 0 1px rgba(212,165,116,.3)}
-.StripeElement--invalid{border-color:var(--danger)}
-.StripeElement--complete{border-color:var(--success)}
-#card-errors{color:var(--danger);font-size:12px;margin-top:6px;min-height:18px}
+.razorpay-note{font-size:11px;color:var(--gray-500);text-align:center;margin-top:6px}
+.rzp-logos{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:8px;flex-wrap:wrap}
+.rzp-badge{background:var(--gray-100);padding:4px 10px;border-radius:4px;font-size:11px;color:var(--gray-700);font-weight:500}
+.test-hint{background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:10px 14px;font-size:11px;color:#92400e;margin-bottom:14px;line-height:1.6}
+.test-hint strong{display:block;margin-bottom:3px;font-size:12px}
 .payment-processing{display:none;text-align:center;padding:40px 0}
 .payment-processing.show{display:block}
 .spinner{width:44px;height:44px;border:3px solid var(--gray-200);border-top:3px solid var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.stripe-note{font-size:11px;color:var(--gray-500);margin-top:6px;text-align:center}
-.stripe-note img{height:20px;vertical-align:middle;margin-left:4px}
-.test-card-hint{background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-bottom:14px;line-height:1.5}
-.test-card-hint strong{display:block;margin-bottom:2px}
 </style>
 </head>
 <body>
@@ -53,46 +48,45 @@
             <h3>Contact Information</h3>
             <div class="form-row">
               <div class="form-group"><label>Email *</label><input type="email" id="c-email" required placeholder="you@example.com"></div>
-              <div class="form-group"><label>Phone</label><input type="tel" id="c-phone" placeholder="+1 (555) 000-0000"></div>
+              <div class="form-group"><label>Phone *</label><input type="tel" id="c-phone" required placeholder="+91 9876543210"></div>
             </div>
           </div>
 
           <div class="checkout-section-box">
             <h3>Shipping Address</h3>
-            <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required placeholder="Jane Doe"></div>
-            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required placeholder="123 Beauty Lane"></div>
-            <div class="form-group"><label>Apartment, suite, etc.</label><input type="text" id="c-apt" placeholder="Apt 4B"></div>
+            <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required placeholder="Priya Sharma"></div>
+            <div class="form-group"><label>Address *</label><input type="text" id="c-address" required placeholder="123, MG Road"></div>
+            <div class="form-group"><label>Landmark, apartment, etc.</label><input type="text" id="c-apt" placeholder="Near City Mall"></div>
             <div class="form-row three">
-              <div class="form-group"><label>City *</label><input type="text" id="c-city" required placeholder="Los Angeles"></div>
-              <div class="form-group"><label>State *</label><input type="text" id="c-state" required placeholder="CA"></div>
-              <div class="form-group"><label>ZIP *</label><input type="text" id="c-zip" required placeholder="90001"></div>
+              <div class="form-group"><label>City *</label><input type="text" id="c-city" required placeholder="Mumbai"></div>
+              <div class="form-group"><label>State *</label><input type="text" id="c-state" required placeholder="Maharashtra"></div>
+              <div class="form-group"><label>PIN Code *</label><input type="text" id="c-zip" required placeholder="400001"></div>
             </div>
           </div>
 
           <div class="checkout-section-box" id="payment-section">
             <h3>Payment</h3>
-            <div class="test-card-hint">
-              <strong>🔬 Test Mode</strong>
-              Use card: <code>4242 4242 4242 4242</code>, any future date, any CVC.
+            <div class="test-hint">
+              <strong>🧪 Test Mode</strong>
+              This is a demo. Click "Place Order" to see Razorpay Checkout with UPI, cards, netbanking & wallets. No real money is charged.
             </div>
-
-            <div class="form-group">
-              <label>Card Information</label>
-              <div id="card-element"></div>
-              <div id="card-errors"></div>
+            <p style="font-size:13px;color:var(--gray-700);margin-bottom:12px;line-height:1.6">
+              Complete your purchase securely via <strong>Razorpay</strong>. We accept all major payment methods.
+            </p>
+            <div class="rzp-logos">
+              <span class="rzp-badge">📱 UPI</span>
+              <span class="rzp-badge">💳 Cards</span>
+              <span class="rzp-badge">🏦 Netbanking</span>
+              <span class="rzp-badge">🪪 Wallet</span>
+              <span class="rzp-badge">📱 EMI</span>
             </div>
 
             <div class="payment-processing" id="payment-processing">
               <div class="spinner"></div>
-              <p>Processing your payment securely...</p>
+              <p>Processing your order...</p>
               <p style="font-size:12px;color:var(--gray-500)">Please don't close this page</p>
             </div>
-
-            <div class="form-group" style="margin-top:8px">
-              <label>Name on Card</label>
-              <input type="text" id="c-card-name" required placeholder="Jane Doe">
-            </div>
-            <p class="stripe-note">Payments secured by <strong>Stripe</strong></p>
+            <p class="razorpay-note">Payments powered by <strong>Razorpay</strong></p>
           </div>
         </div>
 
@@ -100,14 +94,14 @@
           <div class="checkout-order-summary">
             <h3>Order Summary</h3>
             <div id="checkout-items"></div>
-            <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
+            <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">₹0.00</span></div>
             <div class="summary-row"><span>Shipping</span><span id="co-shipping">—</span></div>
-            <div class="summary-row"><span>Tax</span><span id="co-tax">$0.00</span></div>
-            <div class="summary-row total"><span>Total</span><span id="co-total">$0.00</span></div>
-            <button class="btn btn-primary btn-lg btn-block" id="pay-button" onclick="handlePayment()">
-              <span id="pay-button-text">Pay <span id="pay-amount">$0.00</span></span>
+            <div class="summary-row"><span>GST (18%)</span><span id="co-tax">₹0.00</span></div>
+            <div class="summary-row total"><span>Total</span><span id="co-total">₹0.00</span></div>
+            <button class="btn btn-primary btn-lg btn-block" id="pay-button" onclick="startPayment()">
+              <span id="pay-button-text">Pay <span id="pay-amount">₹0.00</span></span>
             </button>
-            <p class="secure-note">🔒 Secure checkout · Your info is safe</p>
+            <p class="secure-note">🔒 Secure checkout · 128-bit SSL encrypted</p>
           </div>
         </div>
       </div>
@@ -119,9 +113,10 @@
   <div class="modal-content order-confirm">
     <div class="success-icon">✅</div>
     <h2>Order Placed!</h2>
-    <p>Thank you for your purchase.</p>
-    <p>Order <strong id="order-id-display"></strong> confirmed.</p>
-    <p>A confirmation email will be sent shortly.</p>
+    <p>Thank you for your purchase, <strong id="customer-name-display"></strong>!</p>
+    <p>Order <strong id="order-id-display"></strong> has been confirmed.</p>
+    <p>Payment ID: <strong id="payment-id-display"></strong></p>
+    <p style="font-size:13px;color:var(--gray-500)">A confirmation email will be sent to <span id="email-display"></span></p>
     <div class="confirm-actions">
       <a href="index.html" class="btn btn-primary">Continue Shopping</a>
       <button class="btn btn-outline" onclick="document.getElementById('confirmation-modal').style.display='none'">Close</button>
@@ -131,42 +126,14 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/app.js"></script>
 <script>
-var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-var elements = stripe.elements();
-var card = null;
-var cardComplete = false;
-
-function initStripe() {
-  if (!document.getElementById("card-element")) return;
-  
-  card = elements.create('card', {
-    style: {
-      base: {
-        fontFamily: '"Inter", sans-serif',
-        fontSize: '15px',
-        color: '#1a1a1a',
-        '::placeholder': { color: '#999' }
-      },
-      invalid: { color: '#c62828' }
-    },
-    hidePostalCode: true
-  });
-  card.mount('#card-element');
-  
-  card.on('change', function(event) {
-    cardComplete = event.complete;
-    var displayError = document.getElementById('card-errors');
-    if (event.error) {
-      displayError.textContent = event.error.message;
-    } else {
-      displayError.textContent = '';
-    }
-  });
-}
+// ── RAZORPAY CONFIG ──
+// Replace with your keys from: https://dashboard.razorpay.com/app/keys
+var RAZORPAY_KEY_ID = 'rzp_test_SRossAV0KomF8P'; // test key — replace with yours
 
 function renderCheckout() {
   var cart = getCart();
@@ -180,109 +147,100 @@ function renderCheckout() {
 
   var itemsHtml = "";
   cart.forEach(function(item) {
-    var imgHtml = '<img src="' + item.image + '" alt="" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'">';
-    itemsHtml += '<div class="co-item"><div class="co-item-img">' + imgHtml + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>$' + (item.price * item.qty).toFixed(2) + '</div></div>';
+    var imgHtml = '<img src="' + item.image + '" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span>' + (item.image && item.image.length <= 4 ? item.image : '📦') + '</span>\'">';
+    itemsHtml += '<div class="co-item"><div class="co-item-img">' + imgHtml + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>₹' + (item.price * item.qty).toFixed(2) + '</div></div>';
   });
   document.getElementById("checkout-items").innerHTML = itemsHtml;
 
   var subtotal = getCartTotal();
-  var shipping = subtotal >= 50 ? 0 : 5.99;
-  var tax = subtotal * 0.08;
+  var shipping = subtotal >= 4150 ? 0 : 499;
+  var tax = (subtotal + shipping) * 0.18;
   var total = subtotal + shipping + tax;
 
-  document.getElementById("co-subtotal").textContent = "$" + subtotal.toFixed(2);
-  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "$" + shipping.toFixed(2);
-  document.getElementById("co-tax").textContent = "$" + tax.toFixed(2);
-  document.getElementById("co-total").textContent = "$" + total.toFixed(2);
-  document.getElementById("pay-amount").textContent = "$" + total.toFixed(2);
-  window._orderTotal = total;
-  window._orderSubtotal = subtotal;
-  window._orderShipping = shipping;
-  window._orderTax = tax;
+  document.getElementById("co-subtotal").textContent = "₹" + subtotal.toFixed(2);
+  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "₹" + shipping.toFixed(2);
+  document.getElementById("co-tax").textContent = "₹" + tax.toFixed(2);
+  document.getElementById("co-total").textContent = "₹" + total.toFixed(2);
+  document.getElementById("pay-amount").textContent = "₹" + total.toFixed(2);
+  window._orderTotalINR = total;
+  window._orderTotalUSD = totalUSD;
 }
 
-async function handlePayment() {
+function startPayment() {
   var name = document.getElementById("c-name").value.trim();
   var email = document.getElementById("c-email").value.trim();
+  var phone = document.getElementById("c-phone").value.trim();
   var address = document.getElementById("c-address").value.trim();
   var city = document.getElementById("c-city").value.trim();
 
-  if (!name || !email || !address || !city) {
-    showToast("Please fill all required shipping fields.");
-    return;
-  }
-  if (!cardComplete) {
-    showToast("Please complete your card information.");
-    document.getElementById("card-errors").textContent = "Please fill in all card details correctly.";
+  if (!name || !email || !phone || !address || !city) {
+    showToast("Please fill all required fields marked with *");
     return;
   }
 
-  var btn = document.getElementById("pay-button");
-  btn.disabled = true;
-  document.getElementById("pay-button-text").textContent = "Processing…";
-  document.getElementById("payment-processing").classList.add("show");
+  var amountInPaise = Math.round(window._orderTotalINR * 100);
 
-  try {
-    var result = await stripe.createPaymentMethod({
-      type: 'card',
-      card: card,
-      billing_details: {
-        name: document.getElementById("c-card-name").value || name,
-        email: email,
-        address: {
-          line1: address,
-          city: city,
-          state: document.getElementById("c-state").value,
-          postal_code: document.getElementById("c-zip").value
-        }
+  var options = {
+    key: RAZORPAY_KEY_ID,
+    amount: amountInPaise,
+    currency: "INR",
+    name: "Glamour Cosmetics",
+    description: "Beauty Products Order",
+    image: "https://cdn-icons-png.flaticon.com/128/991/991952.png",
+    prefill: {
+      name: name,
+      email: email,
+      contact: phone
+    },
+    notes: {
+      address: address + (document.getElementById("c-apt").value ? ", " + document.getElementById("c-apt").value : ""),
+      city: city,
+      state: document.getElementById("c-state").value,
+      zip: document.getElementById("c-zip").value
+    },
+    theme: { color: "#d4a574" },
+    modal: {
+      ondismiss: function() {
+        showToast("Payment cancelled. You can try again.");
       }
-    });
-
-    if (result.error) {
-      document.getElementById("card-errors").textContent = result.error.message;
-      btn.disabled = false;
-      document.getElementById("pay-button-text").innerHTML = 'Pay <span id="pay-amount">$' + window._orderTotal.toFixed(2) + '</span>';
-      document.getElementById("payment-processing").classList.remove("show");
-      return;
+    },
+    handler: function(response) {
+      document.getElementById("payment-processing").classList.add("show");
+      finalizeOrder(name, email, phone, address, response);
     }
+  };
 
-    // Payment method created successfully
-    // In production, send result.paymentMethod.id to your server to create a charge
-    finalizeOrder(name, email, address, result.paymentMethod.id);
-
-  } catch (err) {
-    document.getElementById("card-errors").textContent = "Payment failed. Please try again.";
-    btn.disabled = false;
-    document.getElementById("pay-button-text").innerHTML = 'Pay <span id="pay-amount">$' + window._orderTotal.toFixed(2) + '</span>';
-    document.getElementById("payment-processing").classList.remove("show");
-  }
+  var rzp = new Razorpay(options);
+  rzp.on('payment.failed', function(response) {
+    showToast("Payment failed: " + response.error.description);
+  });
+  rzp.open();
 }
 
-function finalizeOrder(name, email, address, paymentMethodId) {
+function finalizeOrder(name, email, phone, address, paymentResponse) {
   var cart = getCart();
-  var orderId = "GC-" + Date.now().toString(36).toUpperCase() + "-" + Math.random().toString(36).substring(2, 6).toUpperCase();
+  var orderId = "GC-" + Date.now().toString(36).toUpperCase();
 
   var order = {
     id: orderId,
     date: new Date().toISOString(),
     customer: {
-      name: name, email: email,
+      name: name, email: email, phone: phone,
       address: address + (document.getElementById("c-apt").value ? " " + document.getElementById("c-apt").value : ""),
       city: document.getElementById("c-city").value,
       state: document.getElementById("c-state").value,
-      zip: document.getElementById("c-zip").value,
-      phone: document.getElementById("c-phone").value
+      zip: document.getElementById("c-zip").value
     },
     items: cart.map(function(i) {
       return { productId: i.id, name: i.name, price: i.price, qty: i.qty };
     }),
-    subtotal: window._orderSubtotal,
-    shipping: window._orderShipping,
-    tax: window._orderTax,
-    total: window._orderTotal,
+    subtotal: getCartTotal(),
+    total: window._orderTotalINR,
     status: "confirmed",
-    paymentMethod: "card",
-    paymentId: paymentMethodId
+    paymentMethod: "razorpay",
+    razorpayPaymentId: paymentResponse.razorpay_payment_id,
+    razorpayOrderId: paymentResponse.razorpay_order_id,
+    razorpaySignature: paymentResponse.razorpay_signature
   };
 
   addOrder(order);
@@ -290,14 +248,14 @@ function finalizeOrder(name, email, address, paymentMethodId) {
   updateCartCount();
 
   document.getElementById("payment-processing").classList.remove("show");
+  document.getElementById("customer-name-display").textContent = name;
   document.getElementById("order-id-display").textContent = orderId;
+  document.getElementById("payment-id-display").textContent = paymentResponse.razorpay_payment_id;
+  document.getElementById("email-display").textContent = email;
   document.getElementById("confirmation-modal").style.display = "flex";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  renderCheckout();
-  initStripe();
-});
+document.addEventListener("DOMContentLoaded", renderCheckout);
 </script>
 </body>
 </html>

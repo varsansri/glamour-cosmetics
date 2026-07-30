@@ -62,8 +62,8 @@ function renderCartPage() {
   if (itemsEl) itemsEl.innerHTML = html;
   
   const subtotal = getCartTotal();
-  const shipping = subtotal >= 50 ? 0 : 5.99;
-  const tax = subtotal * 0.08;
+  const shipping = subtotal >= 4150 ? 0 : 499;
+  const tax = (subtotal + shipping) * 0.18;
   const total = subtotal + shipping + tax;
   
   const subEl = document.getElementById("cart-subtotal");
@@ -71,10 +71,10 @@ function renderCartPage() {
   const taxEl = document.getElementById("cart-tax");
   const totalEl = document.getElementById("cart-total");
   
-  if (subEl) subEl.textContent = '$' + subtotal.toFixed(2);
-  if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2);
-  if (taxEl) taxEl.textContent = '$' + tax.toFixed(2);
-  if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+  if (subEl) subEl.textContent = '₹' + subtotal.toFixed(2);
+  if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : '₹' + shipping.toFixed(2);
+  if (taxEl) taxEl.textContent = '₹' + tax.toFixed(2);
+  if (totalEl) totalEl.textContent = '₹' + total.toFixed(2);
 }
 
 function showToast(msg) {

@@ -7,7 +7,7 @@ function renderProductCard(product) {
   var discount = product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
   var badgeHtml = product.badge ? '<span class="product-badge">' + product.badge + '</span>' : '';
   var discountHtml = discount > 0 ? '<span class="product-discount">-' + discount + '%</span>' : '';
-  var origPriceHtml = product.originalPrice ? '<span class="original">$' + product.originalPrice.toFixed(2) + '</span>' : '';
+  var origPriceHtml = product.originalPrice ? '<span class="original">₹' + product.originalPrice.toFixed(2) + '</span>' : '';
   
   return '<div class="product-card" onclick="location.href=\'product.html?id=' + product.id + '\'">' +
     '<div class="product-img">' +
@@ -19,7 +19,7 @@ function renderProductCard(product) {
       '<h3>' + product.name + '</h3>' +
       '<div class="product-stars">' + renderStars(product.rating) + '<span>(' + product.reviews + ')</span></div>' +
       '<div class="product-price">' +
-        '<span class="current">$' + product.price.toFixed(2) + '</span>' +
+        '<span class="current">₹' + product.price.toFixed(2) + '</span>' +
         origPriceHtml +
       '</div>' +
       '<button class="btn btn-sm btn-primary" onclick="event.stopPropagation();addToCart(\'' + product.id + '\')">Add to Cart</button>' +
@@ -126,7 +126,7 @@ function initProductDetail() {
   }
   
   var saveBadge = discount > 0 ? '<span class="save-badge">Save ' + discount + '%</span>' : '';
-  var origPrice = product.originalPrice ? '<span class="original">$' + product.originalPrice.toFixed(2) + '</span>' : '';
+  var origPrice = product.originalPrice ? '<span class="original">₹' + product.originalPrice.toFixed(2) + '</span>' : '';
   var badges = product.badge ? '<span class="product-badge large">' + product.badge + '</span>' : '';
   var stockStatus = product.stock > 0 ? '<span class="in-stock">✓ In Stock</span>' : '<span class="out-stock">✕ Out of Stock</span>';
   
@@ -140,7 +140,7 @@ function initProductDetail() {
       '<h1>' + product.name + '</h1>' +
       '<div class="product-stars">' + renderStars(product.rating) + ' <span>' + product.rating + ' (' + product.reviews + ' reviews)</span></div>' +
       '<div class="product-price large">' +
-        '<span class="current">$' + product.price.toFixed(2) + '</span>' +
+        '<span class="current">₹' + product.price.toFixed(2) + '</span>' +
         origPrice + saveBadge +
       '</div>' +
       '<p class="product-description">' + product.description + '</p>' +
@@ -151,14 +151,14 @@ function initProductDetail() {
         '<button onclick="changeQty(1)">+</button>' +
       '</div>' +
       '<div class="product-actions">' +
-        '<button class="btn btn-primary btn-lg" onclick="addToCartWithQty()">Add to Cart — $' + product.price.toFixed(2) + '</button>' +
+        '<button class="btn btn-primary btn-lg" onclick="addToCartWithQty()">Add to Cart — ₹' + product.price.toFixed(2) + '</button>' +
         '<button class="btn btn-outline btn-lg" onclick="buyNow()">Buy Now</button>' +
       '</div>' +
       '<div class="product-meta"><p>' + stockStatus + ' — Only ' + product.stock + ' left</p></div>' +
       '<div class="accordion">' +
         '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Ingredients</button><div class="accordion-content"><p>' + (product.ingredients || 'N/A') + '</p></div></div>' +
         '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">How to Use</button><div class="accordion-content"><p>' + (product.howToUse || 'N/A') + '</p></div></div>' +
-        '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Shipping & Returns</button><div class="accordion-content"><p>Free shipping on orders over $50. 30-day hassle-free returns. All products are cruelty-free and vegan.</p></div></div>' +
+        '<div class="accordion-item"><button class="accordion-btn" onclick="toggleAccordion(this)">Shipping & Returns</button><div class="accordion-content"><p>Free shipping on orders over ₹4,150. 30-day hassle-free returns. All products are cruelty-free and vegan.</p></div></div>' +
       '</div>' +
     '</div></div></div></section>';
     

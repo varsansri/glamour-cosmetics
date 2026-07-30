@@ -71,7 +71,7 @@ var KANAK_THEMES = {
     }
   },
   "gold": {
-    name: "Kanak Gold",
+    name: "GScosmatics Gold",
     emoji: "✨",
     css: {
       "--salmon-pink": "hsl(35,53%,51%)",

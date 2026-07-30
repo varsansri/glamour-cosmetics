@@ -45,7 +45,7 @@ const DEFAULT_PRODUCTS = [
     rating: 4.9,
     reviews: 312,
     ingredients: "Mica, Squalane, Vitamin E, Silica, Pearl Powder, Diamond Powder",
-    howToUse: "Apply to the high points of your face - cheekbones, brow bone, and cupid's bow. Use a fan brush for a subtle glow or a dense brush for maximum impact.",
+    howToUse: "Apply to the high points of your face — cheekbones, brow bone, and cupid's bow. Use a fan brush for subtle glow or a dense brush for maximum impact.",
     colors: ["Champagne Diamond", "Rose Quartz", "Golden Pearl", "Silver Frost"],
     badge: "Top Rated"
   },
@@ -62,7 +62,7 @@ const DEFAULT_PRODUCTS = [
     rating: 4.5,
     reviews: 178,
     ingredients: "SPF 30 (Zinc Oxide), Hyaluronic Acid, Niacinamide, Squalane, Glycerin, Vitamin E",
-    howToUse: "Shake well. Apply 1-2 pumps to moisturized face using fingertips, brush, or sponge. Blend outward for even coverage. Build layers for more coverage.",
+    howToUse: "Shake well. Apply 1-2 pumps to moisturized face using fingertips, brush, or sponge. Blend outward for even coverage.",
     colors: ["Porcelain", "Ivory", "Sand", "Warm Beige", "Golden", "Deep Tan", "Espresso"],
     badge: null
   },
@@ -79,7 +79,7 @@ const DEFAULT_PRODUCTS = [
     rating: 4.7,
     reviews: 423,
     ingredients: "Talc, Mica, Dimethicone, Zinc Stearate, Caprylyl Glycol, Vitamin E",
-    howToUse: "Use lighter shades as base and transition colors. Apply deeper shades to the crease and outer corner. Pat shimmer shades onto the center of the lid with a flat brush or fingertip.",
+    howToUse: "Use lighter shades as base and transition colors. Apply deeper shades to the crease and outer corner. Pat shimmer shades onto center of lid.",
     badge: null
   },
   {
@@ -201,40 +201,39 @@ const PRODUCT_STORE_KEY = "glamour_products";
 const ORDER_STORE_KEY = "glamour_orders";
 
 function loadProducts() {
-  const stored = localStorage.getItem(PRODUCT_STORE_KEY);
-  if (stored) return JSON.parse(stored);
-  localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
-  return DEFAULT_PRODUCTS;
+  let products;
+  try {
+    const stored = localStorage.getItem(PRODUCT_STORE_KEY);
+    products = stored ? JSON.parse(stored) : null;
+  } catch (e) { products = null; }
+  if (!products || !Array.isArray(products) || products.length === 0) {
+    localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
+    return [...DEFAULT_PRODUCTS];
+  }
+  return products;
 }
 
-function saveProducts(products) {
-  localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(products));
+function saveProducts(products) { localStorage.setItem(PRODUCT_STORE_KEY, JSON.stringify(products)); }
+
+function getCart() { try { return JSON.parse(localStorage.getItem("glamour_cart")) || []; } catch(e) { return []; } }
+function saveCart(cart) { localStorage.setItem("glamour_cart", JSON.stringify(cart)); }
+
+function loadOrders() { try { return JSON.parse(localStorage.getItem(ORDER_STORE_KEY)) || []; } catch(e) { return []; } }
+function saveOrders(orders) { localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(orders)); }
+function addOrder(order) { const orders = loadOrders(); orders.unshift(order); saveOrders(orders); }
+function isAdminLoggedIn() { return sessionStorage.getItem("glamour_admin") === "true"; }
+
+function renderStars(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.25 && rating % 1 < 0.75 ? 1 : 0;
+  const extra = rating % 1 >= 0.75 ? 1 : 0;
+  let html = '';
+  for (let i = 0; i < full + extra; i++) html += '★';
+  if (half) html += '½';
+  const shown = full + extra + half;
+  for (let i = shown; i < 5; i++) html += '<span style=\"color:#ddd\">★</span>';
+  return html;
 }
 
-function getCart() {
-  const stored = localStorage.getItem("glamour_cart");
-  return stored ? JSON.parse(stored) : [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem("glamour_cart", JSON.stringify(cart));
-}
-
-function loadOrders() {
-  const stored = localStorage.getItem(ORDER_STORE_KEY);
-  return stored ? JSON.parse(stored) : [];
-}
-
-function saveOrders(orders) {
-  localStorage.setItem(ORDER_STORE_KEY, JSON.stringify(orders));
-}
-
-function addOrder(order) {
-  const orders = loadOrders();
-  orders.unshift(order);
-  saveOrders(orders);
-}
-
-function isAdminLoggedIn() {
-  return sessionStorage.getItem("glamour_admin") === "true";
-}
+function getCartTotal() { return getCart().reduce((s, i) => s + i.price * i.qty, 0); }
+function getCartCount() { return getCart().reduce((s, i) => s + i.qty, 0); }

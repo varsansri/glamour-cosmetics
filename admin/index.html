@@ -139,15 +139,17 @@
     <!-- SETTINGS PAGE -->
     <div class="page" id="page-settings">
       <h1>Settings</h1>
-      <div class="panel">
-        <div class="panel-header"><h3>Store Settings</h3></div>
-        <div class="form-row"><div class="form-group"><label>Store Name</label><input type="text" value="Glamour Cosmetics"></div></div>
-        <div class="form-row"><div class="form-group"><label>Admin Password</label><input type="password" id="admin-password-input" placeholder="New password"></div></div>
-        <div class="form-row"><div class="form-group"><label>Store Email</label><input type="email" value="hello@glamourcosmetics.com"></div></div>
-        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+      <div class="panel" style="padding:22px">
+        <div class="panel-header" style="padding:0 0 14px"><h3>Store Settings</h3></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group"><label>Store Name</label><input type="text" value="Glamour Cosmetics"></div>
+          <div class="form-group"><label>Admin Password</label><input type="password" id="admin-password-input" placeholder="New password"></div>
+          <div class="form-group"><label>Store Email</label><input type="email" value="hello@glamourcosmetics.com"></div>
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()" style="margin-top:8px">Save Settings</button>
       </div>
-      <div class="panel">
-        <div class="panel-header"><h3>Danger Zone</h3></div>
+      <div class="panel" style="padding:22px">
+        <div class="panel-header" style="padding:0 0 14px"><h3>Danger Zone</h3></div>
         <button class="btn btn-danger" onclick="resetStore()">Reset All Data</button>
         <p style="margin-top:8px;color:var(--gray-500);font-size:13px">This will reset all products to defaults and delete all orders.</p>
       </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout - Glamour Cosmetics</title>
+<title>Checkout — Glamour Cosmetics</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -19,17 +19,19 @@
 
 <section class="checkout-section">
   <div class="container" id="checkout-page">
-    <div id="checkout-empty" style="display:none;">
+
+    <div id="checkout-empty" style="display:none">
       <div class="empty-cart">
         <div class="empty-icon">📦</div>
         <h2>Nothing to checkout</h2>
         <a href="products.html" class="btn btn-primary">Shop Now</a>
       </div>
     </div>
-    
+
     <div id="checkout-content">
       <h1>Checkout</h1>
       <div class="checkout-layout">
+
         <div class="checkout-form-col">
           <div class="checkout-section-box">
             <h3>Contact Information</h3>
@@ -38,21 +40,19 @@
               <div class="form-group"><label>Phone</label><input type="tel" id="c-phone"></div>
             </div>
           </div>
-          
+
           <div class="checkout-section-box">
             <h3>Shipping Address</h3>
-            <div class="form-row">
-              <div class="form-group full"><label>Full Name *</label><input type="text" id="c-name" required></div>
-            </div>
+            <div class="form-group"><label>Full Name *</label><input type="text" id="c-name" required></div>
             <div class="form-group"><label>Address *</label><input type="text" id="c-address" required></div>
-            <div class="form-group"><label>Apartment, suite, etc. (optional)</label><input type="text" id="c-apt"></div>
-            <div class="form-row">
+            <div class="form-group"><label>Apartment, suite, etc.</label><input type="text" id="c-apt"></div>
+            <div class="form-row three">
               <div class="form-group"><label>City *</label><input type="text" id="c-city" required></div>
               <div class="form-group"><label>State *</label><input type="text" id="c-state" required></div>
-              <div class="form-group"><label>ZIP Code *</label><input type="text" id="c-zip" required></div>
+              <div class="form-group"><label>ZIP *</label><input type="text" id="c-zip" required></div>
             </div>
           </div>
-          
+
           <div class="checkout-section-box">
             <h3>Payment Method</h3>
             <div class="payment-options">
@@ -79,17 +79,17 @@
             </div>
           </div>
         </div>
-        
+
         <div class="checkout-summary-col">
           <div class="checkout-order-summary">
             <h3>Order Summary</h3>
             <div id="checkout-items"></div>
             <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
-            <div class="summary-row"><span>Shipping</span><span id="co-shipping">-</span></div>
+            <div class="summary-row"><span>Shipping</span><span id="co-shipping">—</span></div>
             <div class="summary-row"><span>Tax (8%)</span><span id="co-tax">$0.00</span></div>
             <div class="summary-row total"><span>Total</span><span id="co-total">$0.00</span></div>
             <button class="btn btn-primary btn-lg btn-block" onclick="placeOrder()">Place Order</button>
-            <p class="secure-note">🔒 Secure checkout. Your information is safe.</p>
+            <p class="secure-note">🔒 Secure checkout. Your info is safe.</p>
           </div>
         </div>
       </div>
@@ -97,11 +97,11 @@
   </div>
 </section>
 
-<div id="confirmation-modal" class="modal" style="display:none;">
+<div id="confirmation-modal" class="modal" style="display:none">
   <div class="modal-content order-confirm">
     <div class="success-icon">✅</div>
-    <h2>Order Placed Successfully!</h2>
-    <p>Thank you for your purchase. Your order <strong id="order-id-display"></strong> has been confirmed.</p>
+    <h2>Order Placed!</h2>
+    <p>Thank you for your purchase. Order <strong id="order-id-display"></strong> has been confirmed.</p>
     <p>A confirmation email will be sent shortly.</p>
     <div class="confirm-actions">
       <a href="index.html" class="btn btn-primary">Continue Shopping</a>
@@ -111,19 +111,19 @@
 </div>
 
 <div class="toast" id="toast"></div>
-
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/app.js"></script>
 <script>
 function togglePayment() {
-  const val = document.querySelector('input[name="payment"]:checked').value;
+  var val = document.querySelector('input[name="payment"]:checked').value;
   document.getElementById("card-fields").style.display = val === "card" ? "block" : "none";
-  document.querySelectorAll(".payment-option").forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(".payment-option").forEach(function(el){el.classList.remove("active")});
   document.querySelector('input[name="payment"]:checked').parentElement.classList.add("active");
 }
 
 function renderCheckout() {
-  const cart = getCart();
+  var cart = getCart();
   if (cart.length === 0) {
     document.getElementById("checkout-empty").style.display = "block";
     document.getElementById("checkout-content").style.display = "none";
@@ -131,72 +131,55 @@ function renderCheckout() {
   }
   document.getElementById("checkout-empty").style.display = "none";
   document.getElementById("checkout-content").style.display = "block";
-  
-  let itemsHTML = "";
-  cart.forEach(item => {
-    itemsHTML += `<div class="co-item"><div class="co-item-img">${item.image}</div><div><strong>${item.name}</strong><br><small>Qty: ${item.qty}</small></div><div>$${(item.price * item.qty).toFixed(2)}</div></div>`;
+
+  var itemsHtml = "";
+  cart.forEach(function(item) {
+    itemsHtml += '<div class="co-item"><div class="co-item-img">' + item.image + '</div><div><strong>' + item.name + '</strong><br><small>Qty: ' + item.qty + '</small></div><div>$' + (item.price * item.qty).toFixed(2) + '</div></div>';
   });
-  document.getElementById("checkout-items").innerHTML = itemsHTML;
-  
-  const subtotal = getCartTotal();
-  const shipping = subtotal >= 50 ? 0 : 5.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shipping + tax;
-  
-  document.getElementById("co-subtotal").textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`;
-  document.getElementById("co-tax").textContent = `$${tax.toFixed(2)}`;
-  document.getElementById("co-total").textContent = `$${total.toFixed(2)}`;
+  document.getElementById("checkout-items").innerHTML = itemsHtml;
+
+  var subtotal = getCartTotal();
+  var shipping = subtotal >= 50 ? 0 : 5.99;
+  var tax = subtotal * 0.08;
+  var total = subtotal + shipping + tax;
+
+  document.getElementById("co-subtotal").textContent = "$" + subtotal.toFixed(2);
+  document.getElementById("co-shipping").textContent = shipping === 0 ? "FREE" : "$" + shipping.toFixed(2);
+  document.getElementById("co-tax").textContent = "$" + tax.toFixed(2);
+  document.getElementById("co-total").textContent = "$" + total.toFixed(2);
 }
 
 function placeOrder() {
-  const cart = getCart();
-  if (cart.length === 0) {
-    showToast("Your cart is empty!");
-    return;
-  }
-  
-  const name = document.getElementById("c-name").value.trim();
-  const email = document.getElementById("c-email").value.trim();
-  const address = document.getElementById("c-address").value.trim();
-  const city = document.getElementById("c-city").value.trim();
-  
-  if (!name || !email || !address || !city) {
-    showToast("Please fill all required fields.");
-    return;
-  }
-  
-  const subtotal = getCartTotal();
-  const shipping = subtotal >= 50 ? 0 : 5.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shipping + tax;
-  const orderId = "GC-" + Date.now().toString(36).toUpperCase();
-  const payment = document.querySelector('input[name="payment"]:checked').value;
-  
-  const order = {
-    id: orderId,
-    date: new Date().toISOString(),
+  var cart = getCart();
+  if (cart.length === 0) { showToast("Your cart is empty!"); return; }
+
+  var name = document.getElementById("c-name").value.trim();
+  var email = document.getElementById("c-email").value.trim();
+  var address = document.getElementById("c-address").value.trim();
+  var city = document.getElementById("c-city").value.trim();
+  if (!name || !email || !address || !city) { showToast("Please fill all required fields"); return; }
+
+  var subtotal = getCartTotal();
+  var shipping = subtotal >= 50 ? 0 : 5.99;
+  var tax = subtotal * 0.08;
+  var total = subtotal + shipping + tax;
+  var orderId = "GC-" + Date.now().toString(36).toUpperCase();
+  var payment = document.querySelector('input[name="payment"]:checked').value;
+
+  addOrder({
+    id: orderId, date: new Date().toISOString(),
     customer: {
-      name, email,
+      name: name, email: email,
       address: address + (document.getElementById("c-apt").value ? " " + document.getElementById("c-apt").value : ""),
-      city, state: document.getElementById("c-state").value, zip: document.getElementById("c-zip").value,
+      city: city, state: document.getElementById("c-state").value, zip: document.getElementById("c-zip").value,
       phone: document.getElementById("c-phone").value
     },
-    items: cart.map(i => ({
-      productId: i.id,
-      name: i.name,
-      price: i.price,
-      qty: i.qty
-    })),
-    subtotal, shipping, tax, total,
-    status: "confirmed",
-    paymentMethod: payment
-  };
-  
-  addOrder(order);
-  saveCart([]);
-  updateCartCount();
-  
+    items: cart.map(function(i) { return { productId: i.id, name: i.name, price: i.price, qty: i.qty }; }),
+    subtotal: subtotal, shipping: shipping, tax: tax, total: total,
+    status: "confirmed", paymentMethod: payment
+  });
+
+  saveCart([]); updateCartCount();
   document.getElementById("order-id-display").textContent = orderId;
   document.getElementById("confirmation-modal").style.display = "flex";
 }

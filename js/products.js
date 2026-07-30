@@ -6,7 +6,11 @@ const DEFAULT_PRODUCTS = [
     images: ["https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1570194065650-d99fb4ee2e17?w=600&h=600&fit=crop","https://images.unsplash.com/photo-1599305090598-fe179d501227?w=600&h=600&fit=crop"],
     stock: 85, featured: true, rating: 4.8, reviews: 234, reviewsData: [{user:"Priya S.",rating:5,comment:"This serum is pure magic. My skin has never glowed like this!","date":"2026-07-15"},{user:"Ananya K.",rating:5,comment:"Worth every rupee. The gold flakes feel so luxurious."}],
     ingredients: "24K Gold Flakes, Rosehip Oil, Vitamin C, Hyaluronic Acid, Jojoba Oil, Vitamin E",
-    howToUse: "Apply 3-4 drops to clean, damp skin morning and evening. Gently press into face and neck. Your skin is gold.", badge: "Best Seller"
+    howToUse: "Apply 3-4 drops to clean, damp skin morning and evening. Gently press into face and neck. Your skin is gold.",
+    skinType: "all", concern: "dullness", texture: "Lightweight oil-serum", scent: "Rose & Sandalwood", sizeOptions: ["30ml", "50ml"],
+    ingredientExplanations: {"24K Gold Flakes":"Boosts collagen production and reduces inflammation","Rosehip Oil":"Rich in Vitamin A & C. Brightens scars and evens skin tone","Hyaluronic Acid":"Holds 1000x its weight in water. Instantly plumps.","Vitamin C":"Powerful antioxidant that protects against pollution damage"},
+    faq: [{q:"Can I use this with retinol?",a:"Yes, apply serum in the morning and retinol at night."},{q:"How long does one bottle last?",a:"30ml lasts ~3 months with daily use (3-4 drops per application)."}],
+    badge: "Best Seller"
   },
   {
     id: "pure-gold-lip-oil", name: "Pure Gold Lip Oil", category: "makeup", price: 1999,
